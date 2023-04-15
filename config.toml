@@ -1,4 +1,4 @@
-baseurl = "https://6e7fc6c2.addzey-dev.pages.dev/"
+baseurl = "https://addzey-dev.pages.dev/"
 languageCode = "en-us"
 theme = "terminal"
 paginate = 5
@@ -21,13 +21,14 @@ paginate = 5
   fullWidthTheme = false
 
   # center theme with default width
-  centerTheme = false
+  centerTheme = true
 
   # set a custom favicon (default is a `themeColor` square)
   # favicon = "favicon.ico"
 
   # set post to show the last updated
   # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
+  enableGitInfo = true
   showLastUpdated = false
   # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
   # updatedDatePrefix = "Updated"
@@ -46,11 +47,11 @@ paginate = 5
 [languages]
   [languages.en]
     languageName = "English"
-    title = "Terminal"
+    title = "ADDZEY-DEV"
     subtitle = "A simple, retro theme for Hugo"
-    owner = ""
-    keywords = ""
-    copyright = ""
+    owner = "Adam Rogers"
+    keywords = "blog cloud tech devops"
+    copyright = "Adam Rogers"
     menuMore = "Show more"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
@@ -58,7 +59,7 @@ paginate = 5
     missingBackButtonLabel = "Back to home page"
 
     [languages.en.params.logo]
-      logoText = "Terminal"
+      logoText = "ADDZEY-DEV"
       logoHomeLink = "/"
 
     [languages.en.menu]
@@ -70,3 +71,15 @@ paginate = 5
         identifier = "showcase"
         name = "Showcase"
         url = "/showcase"
+      [[languages.en.menu.main]]
+        weight = 10
+        pre = '<i class="fa-brands fa-github-square"></i>'
+        identifier = "GitHub"
+        name = "GitHub"
+        url = "https://github.com/addzey"
+      [[languages.en.menu.main]]
+        weight = 20
+        pre = '<i class="fa-brands fa-linkedin"></i>'
+        identifier = "LinkedIn"
+        name = "LinkedIn"
+        url = "https://linkedin.com/in/profile"
