@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Terminal</title>
-    <link>http://local/</link>
+    <link>https://6e7fc6c2.addzey-dev.pages.dev/</link>
     <description>Recent content on Terminal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Apr 2023 20:42:06 +0930</lastBuildDate><atom:link href="http://local/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Apr 2023 20:42:06 +0930</lastBuildDate><atom:link href="https://6e7fc6c2.addzey-dev.pages.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>http://local/posts/hello-world/</link>
+      <link>https://6e7fc6c2.addzey-dev.pages.dev/posts/hello-world/</link>
       <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
       
-      <guid>http://local/posts/hello-world/</guid>
+      <guid>https://6e7fc6c2.addzey-dev.pages.dev/posts/hello-world/</guid>
       <description></description>
       <content></content>
     </item>

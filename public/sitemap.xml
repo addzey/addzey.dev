@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://local/posts/hello-world/</loc>
+    <loc>https://6e7fc6c2.addzey-dev.pages.dev/posts/hello-world/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
-    <loc>http://local/posts/</loc>
+    <loc>https://6e7fc6c2.addzey-dev.pages.dev/posts/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
-    <loc>http://local/</loc>
+    <loc>https://6e7fc6c2.addzey-dev.pages.dev/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
-    <loc>http://local/categories/</loc>
+    <loc>https://6e7fc6c2.addzey-dev.pages.dev/categories/</loc>
   </url><url>
-    <loc>http://local/tags/</loc>
+    <loc>https://6e7fc6c2.addzey-dev.pages.dev/tags/</loc>
   </url>
 </urlset>

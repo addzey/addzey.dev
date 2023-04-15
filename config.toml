@@ -1,4 +1,4 @@
-baseurl = "http://local/"
+baseurl = "https://6e7fc6c2.addzey-dev.pages.dev/"
 languageCode = "en-us"
 theme = "terminal"
 paginate = 5
