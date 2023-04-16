@@ -19,14 +19,45 @@
     </item>
     
     <item>
+      <title>Homelab</title>
+      <link>https://addzey.dev/homelab/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/homelab/</guid>
+      <description>Logging and metrics UPS Router NAS Monitoring stack Prometheus/Grafana/Loki running as rootless containers using Podman
+Pod </description>
+      <content>&lt;h1 id=&#34;logging-and-metrics&#34;&gt;Logging and metrics&lt;/h1&gt;
+&lt;h3 id=&#34;ups&#34;&gt;UPS&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;../UPS-2023-04-01_213311.png&#34; alt=&#34;UPS&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;router&#34;&gt;Router&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;../Router-2023-04-01_212959.png&#34; alt=&#34;Router&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;nas&#34;&gt;NAS&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;../NAS-2023-04-01_213149.png&#34; alt=&#34;NAS&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;monitoring-stack&#34;&gt;Monitoring stack&lt;/h1&gt;
+&lt;p&gt;Prometheus/Grafana/Loki running as rootless containers using Podman&lt;/p&gt;
+&lt;h3 id=&#34;pod&#34;&gt;Pod&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;../Monitoring_Stack-2023-04-01_214146.png&#34; alt=&#34;POD&#34;&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>https://addzey.dev/about/</link>
       <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/about/</guid>
-      <description>About page Placeholder for about page!</description>
-      <content>&lt;h1 id=&#34;about-page&#34;&gt;About page&lt;/h1&gt;
-&lt;p&gt;Placeholder for about page!&lt;/p&gt;
+      <description>About This is my tech blog!
+I will be using this as a personal Wiki and a way to improve my communication, documentation and platform/network diaraming skills
+What you&amp;rsquo;ll find here:  Homelab Self hosting Tech study  </description>
+      <content>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
+&lt;p&gt;This is my tech blog!&lt;/p&gt;
+&lt;p&gt;I will be using this as a personal Wiki and a way to improve my communication, documentation and platform/network diaraming skills&lt;/p&gt;
+&lt;h3 id=&#34;what-youll-find-here&#34;&gt;What you&amp;rsquo;ll find here:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Homelab&lt;/li&gt;
+&lt;li&gt;Self hosting&lt;/li&gt;
+&lt;li&gt;Tech study&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     </item>
     

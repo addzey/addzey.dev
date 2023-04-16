@@ -50,7 +50,7 @@ paginate = 5
     title = "ADDZEY.DEV"
     subtitle = "Adam's tech blog!"
     owner = "Adam Rogers"
-    keywords = "blog cloud tech devops"
+    keywords = "blog cloud tech devops homelab selfhosting"
     copyright = "Adam Rogers"
     menuMore = "Show more"
     readMore = "Read more"
@@ -65,9 +65,14 @@ paginate = 5
     [languages.en.menu]
       [[languages.en.menu.main]]
         weight = 10
-        identifier = "about"
+        identifier = "About"
         name = "About"
         url = "/about"
+      [[languages.en.menu.main]]
+        weight = 20
+        identifier = "Homelab"
+        name = "Homelab"
+        url = "/homelab"
       [[languages.en.menu.main]]
         weight = 20
         identifier = "showcase"

@@ -19,11 +19,51 @@
     </item>
     
     <item>
+      <title>homelab</title>
+      <link>https://addzey.dev/tags/homelab/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/homelab/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Red Hat</title>
+      <link>https://addzey.dev/tags/red-hat/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/red-hat/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>rhel</title>
+      <link>https://addzey.dev/tags/rhel/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/rhel/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
       <title>testing</title>
       <link>https://addzey.dev/tags/testing/</link>
       <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
       
       <guid>https://addzey.dev/tags/testing/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>ZFS</title>
+      <link>https://addzey.dev/tags/zfs/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/zfs/</guid>
       <description></description>
       <content></content>
     </item>
