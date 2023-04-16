@@ -5,10 +5,13 @@
     <loc>https://addzey.dev/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
+    <loc>https://addzey.dev/posts/hello-world/</loc>
+    <lastmod>2023-04-15T20:42:06+09:30</lastmod>
+  </url><url>
     <loc>https://addzey.dev/tags/firstpost/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
-    <loc>https://addzey.dev/posts/hello-world/</loc>
+    <loc>https://addzey.dev/tags/grafana/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/homelab/</loc>
@@ -17,7 +20,13 @@
     <loc>https://addzey.dev/tags/homelab/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
+    <loc>https://addzey.dev/tags/podman/</loc>
+    <lastmod>2023-04-15T20:42:06+09:30</lastmod>
+  </url><url>
     <loc>https://addzey.dev/posts/</loc>
+    <lastmod>2023-04-15T20:42:06+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/prometheus/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/red-hat/</loc>

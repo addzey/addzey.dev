@@ -1,5 +1,5 @@
 +++
-title = "Hello World"
+title = "First post"
 date = "2023-04-15T20:42:06+09:30"
 author = "Adam"
 authorTwitter = "" #do not include @
@@ -12,3 +12,7 @@ readingTime = false
 hideComments = false
 color = "" #color from the theme settings
 +++
+
+# First post  
+Tech blog online using Hugo -> Github -> Cloudflare  
+![Blog](http://localhost:1313/Blog-2023-04-15_235819.png)
