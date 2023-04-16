@@ -7,7 +7,7 @@ author = "Adam"
 # About
 This is my tech blog!
 
-I will be using this as a personal Wiki and a way to improve my communication, documentation and platform/network diaraming skills
+I will be using this as a personal Wiki as well as a way to improve my communication, documentation and platform/network diagraming skills
 
 ### What you'll find here:
 - Homelab
