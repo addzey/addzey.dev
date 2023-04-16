@@ -15,4 +15,4 @@ color = "" #color from the theme settings
 
 # First post  
 Tech blog online using Hugo -> Github -> Cloudflare  
-![Blog](http://addzey.dev/Blog-2023-04-15_235819.png)
+![Blog](https://addzey.dev/Blog-2023-04-15_235819.png)
