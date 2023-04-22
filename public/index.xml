@@ -7,7 +7,56 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sat, 15 Apr 2023 20:42:06 +0930</lastBuildDate><atom:link href="https://addzey.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Apr 2023 22:24:59 +0930</lastBuildDate><atom:link href="https://addzey.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RHEL Move LVM Volume</title>
+      <link>https://addzey.dev/posts/rhel-lvm-move/</link>
+      <pubDate>Fri, 21 Apr 2023 22:24:59 +0930</pubDate>
+      
+      <guid>https://addzey.dev/posts/rhel-lvm-move/</guid>
+      <description>How to move an LVM volume to a new drive When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk
+By default RHEL 9.x installs to disk by creating 3 partitions:
+ /boot/efi /boot LVM  Volume Group = &amp;lsquo;rhel&amp;rsquo;  Logical Volume = &amp;lsquo;root&amp;rsquo; Logical Volume = &amp;lsquo;swap&amp;rsquo;      I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!</description>
+      <content>&lt;h1 id=&#34;how-to-move-an-lvm-volume-to-a-new-drive&#34;&gt;How to move an LVM volume to a new drive&lt;/h1&gt;
+&lt;p&gt;When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk&lt;/p&gt;
+&lt;p&gt;By default RHEL 9.x installs to disk by creating 3 partitions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/boot/efi&lt;/li&gt;
+&lt;li&gt;/boot&lt;/li&gt;
+&lt;li&gt;LVM
+&lt;ul&gt;
+&lt;li&gt;Volume Group = &amp;lsquo;rhel&amp;rsquo;
+&lt;ul&gt;
+&lt;li&gt;Logical Volume = &amp;lsquo;root&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;Logical Volume = &amp;lsquo;swap&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is /dev/sdb[3]&lt;br&gt;
+&lt;strong&gt;DESTINATION&lt;/strong&gt; disk is /dev/sda&lt;/p&gt;
+&lt;h2 id=&#34;extend-lvm-volume-group-to-include-the-destination-disk&#34;&gt;Extend LVM Volume Group to include the destination disk&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo vgextend rhel /dev/sda 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;move-the-data-from-source-disk-to-destination-disk&#34;&gt;Move the data from source disk to destination disk&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo pvmove /dev/sdb3 /dev/sda  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;remove-the-source-disk-from-the-volume-group&#34;&gt;Remove the source disk from the Volume Group&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo vgreduce rhel /dev/sdb3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;remove-the-source-disk-from-physical-volumes&#34;&gt;Remove the source disk from Physical Volumes&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo pvremove /dev/sdb3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem&#34;&gt;Extend the volume to fill the destination disk and resize the filesystem&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo lvextend -r -l+100%FREE /dev/rhel/root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;done&#34;&gt;Done!&lt;/h3&gt;
+&lt;p&gt;There should be no need to update &lt;em&gt;/etc/fstab&lt;/em&gt; as the existing entry will be pointing to the LVM volume eg. &lt;em&gt;/dev/mapper/rhel-root&lt;/em&gt; which on the physical level is now already pointing to our new disk with the migrated data&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>First post</title>
       <link>https://addzey.dev/posts/hello-world/</link>
@@ -51,15 +100,15 @@ Pod </description>
       <guid>https://addzey.dev/about/</guid>
       <description>About This is my tech blog!
 I will be using this as a personal Wiki and as a way to improve my technical documentation skills
-What you&amp;rsquo;ll find here:  Homelab Self hosting Tech study  </description>
+What you&amp;rsquo;ll find here:  Tech study Homelab Self-hosting  </description>
       <content>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
 &lt;p&gt;This is my tech blog!&lt;/p&gt;
 &lt;p&gt;I will be using this as a personal Wiki and as a way to improve my technical documentation skills&lt;/p&gt;
 &lt;h3 id=&#34;what-youll-find-here&#34;&gt;What you&amp;rsquo;ll find here:&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Homelab&lt;/li&gt;
-&lt;li&gt;Self hosting&lt;/li&gt;
 &lt;li&gt;Tech study&lt;/li&gt;
+&lt;li&gt;Homelab&lt;/li&gt;
+&lt;li&gt;Self-hosting&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     </item>

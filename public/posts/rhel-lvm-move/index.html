@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   
-    <title>First post :: ADDZEY.DEV</title>
+    <title>RHEL Move LVM Volume :: ADDZEY.DEV</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="First post Tech blog online using Hugo -&amp;gt; Github -&amp;gt; Cloudflare" />
-<meta name="keywords" content="firstpost, testing" />
+<meta name="description" content="How to move an LVM volume to a new drive" />
+<meta name="keywords" content="rhel, homelab" />
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="https://addzey.dev/posts/hello-world/" />
+<link rel="canonical" href="https://addzey.dev/posts/rhel-lvm-move/" />
 
 
 
@@ -52,9 +52,9 @@
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="First post">
-<meta property="og:description" content="First post Tech blog online using Hugo -&amp;gt; Github -&amp;gt; Cloudflare" />
-<meta property="og:url" content="https://addzey.dev/posts/hello-world/" />
+<meta property="og:title" content="RHEL Move LVM Volume">
+<meta property="og:description" content="How to move an LVM volume to a new drive" />
+<meta property="og:url" content="https://addzey.dev/posts/rhel-lvm-move/" />
 <meta property="og:site_name" content="ADDZEY.DEV" />
 
   
@@ -65,7 +65,7 @@
 <meta property="og:image:height" content="627">
 
 
-  <meta property="article:published_time" content="2023-04-15 20:42:06 &#43;0930 ACST" />
+  <meta property="article:published_time" content="2023-04-21 22:24:59 &#43;0930 ACST" />
 
 
 
@@ -166,14 +166,14 @@
     
 <article class="post">
   <h1 class="post-title">
-    <a href="https://addzey.dev/posts/hello-world/">First post</a>
+    <a href="https://addzey.dev/posts/rhel-lvm-move/">RHEL Move LVM Volume</a>
   </h1>
   <div class="post-meta">
     
       <time class="post-date">
-        2023-04-15 ::
+        2023-04-21 ::
         
-          [Updated :: 2023-04-15]
+          [Updated :: 2023-04-21]
         
       </time>
     
@@ -186,9 +186,11 @@
   
     <span class="post-tags">
       
-      #<a href="https://addzey.dev/tags/firstpost/">firstpost</a>&nbsp;
+      #<a href="https://addzey.dev/tags/rhel/">rhel</a>&nbsp;
       
-      #<a href="https://addzey.dev/tags/testing/">testing</a>&nbsp;
+      #<a href="https://addzey.dev/tags/lvm/">LVM</a>&nbsp;
+      
+      #<a href="https://addzey.dev/tags/nas/">NAS</a>&nbsp;
       
     </span>
   
@@ -198,9 +200,43 @@
   
 
   <div class="post-content"><div>
-        <h1 id="first-post">First post<a href="#first-post" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>Tech blog online using Hugo -&gt; Github -&gt; Cloudflare<br>
-<img src="https://addzey.dev/Blog-2023-04-15_235819.png" alt="Blog"></p>
+        <h1 id="how-to-move-an-lvm-volume-to-a-new-drive">How to move an LVM volume to a new drive<a href="#how-to-move-an-lvm-volume-to-a-new-drive" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk</p>
+<p>By default RHEL 9.x installs to disk by creating 3 partitions:</p>
+<ul>
+<li>/boot/efi</li>
+<li>/boot</li>
+<li>LVM
+<ul>
+<li>Volume Group = &lsquo;rhel&rsquo;
+<ul>
+<li>Logical Volume = &lsquo;root&rsquo;</li>
+<li>Logical Volume = &lsquo;swap&rsquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I&rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &lsquo;rhel&rsquo; to a new disk!</p>
+<p><strong>SOURCE</strong> disk is /dev/sdb[3]<br>
+<strong>DESTINATION</strong> disk is /dev/sda</p>
+<h2 id="extend-lvm-volume-group-to-include-the-destination-disk">Extend LVM Volume Group to include the destination disk<a href="#extend-lvm-volume-group-to-include-the-destination-disk" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre><code>sudo vgextend rhel /dev/sda 
+</code></pre>
+<h2 id="move-the-data-from-source-disk-to-destination-disk">Move the data from source disk to destination disk<a href="#move-the-data-from-source-disk-to-destination-disk" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre><code>sudo pvmove /dev/sdb3 /dev/sda  
+</code></pre>
+<h2 id="remove-the-source-disk-from-the-volume-group">Remove the source disk from the Volume Group<a href="#remove-the-source-disk-from-the-volume-group" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre><code>sudo vgreduce rhel /dev/sdb3
+</code></pre>
+<h2 id="remove-the-source-disk-from-physical-volumes">Remove the source disk from Physical Volumes<a href="#remove-the-source-disk-from-physical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre><code>sudo pvremove /dev/sdb3
+</code></pre>
+<h2 id="extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem">Extend the volume to fill the destination disk and resize the filesystem<a href="#extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre><code>sudo lvextend -r -l+100%FREE /dev/rhel/root
+</code></pre>
+<h3 id="done">Done!<a href="#done" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>There should be no need to update <em>/etc/fstab</em> as the existing entry will be pointing to the LVM volume eg. <em>/dev/mapper/rhel-root</em> which on the physical level is now already pointing to our new disk with the migrated data</p>
 
       </div></div>
 
@@ -213,13 +249,13 @@
     </div>
     <div class="pagination__buttons">
         
-        <span class="button previous">
-            <a href="https://addzey.dev/posts/rhel-lvm-move/">
-                <span class="button__icon">←</span>
-                <span class="button__text">RHEL Move LVM Volume</span>
+        
+        <span class="button next">
+            <a href="https://addzey.dev/posts/hello-world/">
+                <span class="button__text">First post</span>
+                <span class="button__icon">→</span>
             </a>
         </span>
-        
         
     </div>
 </div>
