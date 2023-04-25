@@ -4,7 +4,7 @@ date = "2023-04-21T22:24:59+09:30"
 author = "Adam"
 authorTwitter = "" #do not include @
 cover = ""
-tags = ["rhel", "LVM", "NAS"]
+tags = ["rhel", "LVM"]
 keywords = ["rhel", "homelab"]
 description = "How to move an LVM volume to a new drive"
 showFullContent = false
@@ -22,7 +22,7 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
     * Logical Volume = 'root'
     * Logical Volume = 'swap'  
 
-I'm happy to leave the boot paritions as they are but I want to move the LVM VG 'rhel' to a new disk!
+I'm happy to leave the boot partitions as they are but I want to move the LVM VG 'rhel' to a new disk!
 
 **SOURCE** disk is /dev/sdb[3]  
 **DESTINATION** disk is /dev/sda

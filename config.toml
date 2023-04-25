@@ -74,11 +74,6 @@ paginate = 5
         name = "Homelab"
         url = "/homelab"
       [[languages.en.menu.main]]
-        weight = 20
-        identifier = "showcase"
-        name = "Showcase"
-        url = "/showcase"
-      [[languages.en.menu.main]]
         weight = 100
         pre = '<i class="fa-brands fa-github-square"></i>'
         identifier = "GitHub"
