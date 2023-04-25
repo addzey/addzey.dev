@@ -1,5 +1,5 @@
 +++
-title = "Rhel With Zfs"
+title = "RHEL With ZFS"
 date = "2023-04-23T17:31:12+09:30"
 author = "Adam"
 authorTwitter = "" #do not include @
