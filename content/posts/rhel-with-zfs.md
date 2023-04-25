@@ -45,4 +45,4 @@ I will be naming the pool '**nas01-raid10**'
     sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
 
 Everything looking good!  
-![ZPOOL](../ZFS-2023-04-25_202804.png)
+![ZPOOL](../../ZFS-2023-04-25_202804.png)
