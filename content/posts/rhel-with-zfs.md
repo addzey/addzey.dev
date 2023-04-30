@@ -46,3 +46,10 @@ I will be naming the pool '**nas01-raid10**'
 
 Everything looking good!  
 ![ZPOOL](../../ZFS-2023-04-25_202804.png)
+
+## Enable Compression at the root level
+Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting    
+
+Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it [here](https://en.wikipedia.org/wiki/Zstd) 
+
+    sudo zfs set compression=zstd nas01-raid10

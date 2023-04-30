@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   
-    <title>First post :: ADDZEY.DEV</title>
+    <title>RHEL With ZFS :: ADDZEY.DEV</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="First post Tech blog online using static site generator Hugo and a basic CI/CI pipeline!" />
-<meta name="keywords" content="firstpost, testing" />
+<meta name="description" content="Using ZFS with Red Hat Enterprise Linux" />
+<meta name="keywords" content="rhel, homelab" />
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="https://addzey.dev/posts/hello-world/" />
+<link rel="canonical" href="https://addzey.dev/posts/rhel-with-zfs/" />
 
 
 
@@ -52,9 +52,9 @@
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="First post">
-<meta property="og:description" content="First post Tech blog online using static site generator Hugo and a basic CI/CI pipeline!" />
-<meta property="og:url" content="https://addzey.dev/posts/hello-world/" />
+<meta property="og:title" content="RHEL With ZFS">
+<meta property="og:description" content="Using ZFS with Red Hat Enterprise Linux" />
+<meta property="og:url" content="https://addzey.dev/posts/rhel-with-zfs/" />
 <meta property="og:site_name" content="ADDZEY.DEV" />
 
   
@@ -65,7 +65,7 @@
 <meta property="og:image:height" content="627">
 
 
-  <meta property="article:published_time" content="2023-04-15 20:42:06 &#43;0930 ACST" />
+  <meta property="article:published_time" content="2023-04-23 17:31:12 &#43;0930 ACST" />
 
 
 
@@ -158,14 +158,14 @@
     
 <article class="post">
   <h1 class="post-title">
-    <a href="https://addzey.dev/posts/hello-world/">First post</a>
+    <a href="https://addzey.dev/posts/rhel-with-zfs/">RHEL With ZFS</a>
   </h1>
   <div class="post-meta">
     
       <time class="post-date">
-        2023-04-15 ::
+        2023-04-23 ::
         
-          [Updated :: 2023-04-15]
+          [Updated :: 2023-04-23]
         
       </time>
     
@@ -178,9 +178,9 @@
   
     <span class="post-tags">
       
-      #<a href="https://addzey.dev/tags/firstpost/">firstpost</a>&nbsp;
+      #<a href="https://addzey.dev/tags/rhel/">rhel</a>&nbsp;
       
-      #<a href="https://addzey.dev/tags/testing/">testing</a>&nbsp;
+      #<a href="https://addzey.dev/tags/zfs/">ZFS</a>&nbsp;
       
     </span>
   
@@ -190,9 +190,38 @@
   
 
   <div class="post-content"><div>
-        <h1 id="first-post">First post<a href="#first-post" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>Tech blog online using static site generator Hugo and a basic CI/CI pipeline!</p>
-<p><img src="https://addzey.dev/Blog-2023-04-15_235819.png" alt="Blog"></p>
+        <h1 id="using-zfs-with-red-hat-enterprise-linux">Using ZFS with Red Hat Enterprise Linux<a href="#using-zfs-with-red-hat-enterprise-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>ZFS is not officially supported due to potential licensing issues however this shouldn&rsquo;t be a problem for homelab use, we will just need to do some extra steps!</p>
+<p>Official guide to getting ZFS running on various Linux distros <a href="https://openzfs.github.io/openzfs-docs/Getting%20Started/index.html">here</a></p>
+<h2 id="install-zfs-kernel-module">Install ZFS Kernel Module<a href="#install-zfs-kernel-module" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn&rsquo;t require re-compiling the module</p>
+<h3 id="add-the-openzfs-repo">Add the OpenZFS repo<a href="#add-the-openzfs-repo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &quot;%{dist}&quot;).noarch.rpm
+</code></pre>
+<h3 id="set-and-install-zfs-kmod">Set and install ZFS kmod<a href="#set-and-install-zfs-kmod" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>    sudo dnf config-manager --disable zfs
+    sudo dnf config-manager --enable zfs-kmod
+    sudo dnf install zfs
+</code></pre>
+<p>Once the above completes all OK we are ready to create our ZFS pool!</p>
+<h2 id="create-zfs-pool">Create ZFS pool<a href="#create-zfs-pool" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I have 4x 8TB SATA HDD&rsquo;s that will be used:</p>
+<ul>
+<li>/dev/sda</li>
+<li>/dev/sdb</li>
+<li>/dev/sdc</li>
+<li>/dev/sdd</li>
+</ul>
+<p>I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV&rsquo;s each with 2 of the 4 disks</p>
+<p>I will be naming the pool &lsquo;<strong>nas01-raid10</strong>&rsquo;</p>
+<pre><code>sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
+</code></pre>
+<p>Everything looking good!<br>
+<img src="../../ZFS-2023-04-25_202804.png" alt="ZPOOL"></p>
+<h2 id="enable-compression-at-the-root-level">Enable Compression at the root level<a href="#enable-compression-at-the-root-level" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting</p>
+<p>Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it <a href="https://en.wikipedia.org/wiki/Zstd">here</a></p>
+<pre><code>sudo zfs set compression=zstd nas01-raid10</code></pre>
 
       </div></div>
 
@@ -205,13 +234,13 @@
     </div>
     <div class="pagination__buttons">
         
-        <span class="button previous">
+        
+        <span class="button next">
             <a href="https://addzey.dev/posts/rhel-lvm-move/">
-                <span class="button__icon">←</span>
                 <span class="button__text">RHEL Move LVM Volume</span>
+                <span class="button__icon">→</span>
             </a>
         </span>
-        
         
     </div>
 </div>

@@ -7,7 +7,51 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Fri, 21 Apr 2023 22:24:59 +0930</lastBuildDate><atom:link href="https://addzey.dev/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Apr 2023 17:31:12 +0930</lastBuildDate><atom:link href="https://addzey.dev/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RHEL With ZFS</title>
+      <link>https://addzey.dev/posts/rhel-with-zfs/</link>
+      <pubDate>Sun, 23 Apr 2023 17:31:12 +0930</pubDate>
+      
+      <guid>https://addzey.dev/posts/rhel-with-zfs/</guid>
+      <description>Using ZFS with Red Hat Enterprise Linux ZFS is not officially supported due to potential licensing issues however this shouldn&amp;rsquo;t be a problem for homelab use, we will just need to do some extra steps!
+Official guide to getting ZFS running on various Linux distros here
+Install ZFS Kernel Module We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn&amp;rsquo;t require re-compiling the module</description>
+      <content>&lt;h1 id=&#34;using-zfs-with-red-hat-enterprise-linux&#34;&gt;Using ZFS with Red Hat Enterprise Linux&lt;/h1&gt;
+&lt;p&gt;ZFS is not officially supported due to potential licensing issues however this shouldn&amp;rsquo;t be a problem for homelab use, we will just need to do some extra steps!&lt;/p&gt;
+&lt;p&gt;Official guide to getting ZFS running on various Linux distros &lt;a href=&#34;https://openzfs.github.io/openzfs-docs/Getting%20Started/index.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;install-zfs-kernel-module&#34;&gt;Install ZFS Kernel Module&lt;/h2&gt;
+&lt;p&gt;We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn&amp;rsquo;t require re-compiling the module&lt;/p&gt;
+&lt;h3 id=&#34;add-the-openzfs-repo&#34;&gt;Add the OpenZFS repo&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &amp;quot;%{dist}&amp;quot;).noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;set-and-install-zfs-kmod&#34;&gt;Set and install ZFS kmod&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    sudo dnf config-manager --disable zfs
+    sudo dnf config-manager --enable zfs-kmod
+    sudo dnf install zfs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once the above completes all OK we are ready to create our ZFS pool!&lt;/p&gt;
+&lt;h2 id=&#34;create-zfs-pool&#34;&gt;Create ZFS pool&lt;/h2&gt;
+&lt;p&gt;I have 4x 8TB SATA HDD&amp;rsquo;s that will be used:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/dev/sda&lt;/li&gt;
+&lt;li&gt;/dev/sdb&lt;/li&gt;
+&lt;li&gt;/dev/sdc&lt;/li&gt;
+&lt;li&gt;/dev/sdd&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV&amp;rsquo;s each with 2 of the 4 disks&lt;/p&gt;
+&lt;p&gt;I will be naming the pool &amp;lsquo;&lt;strong&gt;nas01-raid10&lt;/strong&gt;&amp;rsquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Everything looking good!&lt;br&gt;
+&lt;img src=&#34;../../ZFS-2023-04-25_202804.png&#34; alt=&#34;ZPOOL&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;enable-compression-at-the-root-level&#34;&gt;Enable Compression at the root level&lt;/h2&gt;
+&lt;p&gt;Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting&lt;/p&gt;
+&lt;p&gt;Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it &lt;a href=&#34;https://en.wikipedia.org/wiki/Zstd&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo zfs set compression=zstd nas01-raid10&lt;/code&gt;&lt;/pre&gt;
+</content>
+    </item>
+    
     <item>
       <title>RHEL Move LVM Volume</title>
       <link>https://addzey.dev/posts/rhel-lvm-move/</link>
@@ -16,7 +60,7 @@
       <guid>https://addzey.dev/posts/rhel-lvm-move/</guid>
       <description>How to move an LVM volume to a new drive When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk
 By default RHEL 9.x installs to disk by creating 3 partitions:
- /boot/efi /boot LVM  Volume Group = &amp;lsquo;rhel&amp;rsquo;  Logical Volume = &amp;lsquo;root&amp;rsquo; Logical Volume = &amp;lsquo;swap&amp;rsquo;      I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!</description>
+ /boot/efi /boot LVM  Volume Group = &amp;lsquo;rhel&amp;rsquo;  Logical Volume = &amp;lsquo;root&amp;rsquo; Logical Volume = &amp;lsquo;swap&amp;rsquo;      I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!</description>
       <content>&lt;h1 id=&#34;how-to-move-an-lvm-volume-to-a-new-drive&#34;&gt;How to move an LVM volume to a new drive&lt;/h1&gt;
 &lt;p&gt;When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk&lt;/p&gt;
 &lt;p&gt;By default RHEL 9.x installs to disk by creating 3 partitions:&lt;/p&gt;
@@ -34,7 +78,7 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is /dev/sdb[3]&lt;br&gt;
 &lt;strong&gt;DESTINATION&lt;/strong&gt; disk is /dev/sda&lt;/p&gt;
 &lt;h2 id=&#34;extend-lvm-volume-group-to-include-the-destination-disk&#34;&gt;Extend LVM Volume Group to include the destination disk&lt;/h2&gt;

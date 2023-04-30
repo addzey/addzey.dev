@@ -14,5 +14,6 @@ color = "" #color from the theme settings
 +++
 
 # First post  
-Tech blog online using Hugo -> Github -> Cloudflare  
+Tech blog online using static site generator Hugo and a basic CI/CI pipeline!
+  
 ![Blog](https://addzey.dev/Blog-2023-04-15_235819.png)

@@ -3,21 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://addzey.dev/</loc>
-    <lastmod>2023-04-21T22:24:59+09:30</lastmod>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/posts/</loc>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/rhel/</loc>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/posts/rhel-with-zfs/</loc>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/</loc>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/zfs/</loc>
+    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/lvm/</loc>
     <lastmod>2023-04-21T22:24:59+09:30</lastmod>
   </url><url>
-    <loc>https://addzey.dev/posts/</loc>
-    <lastmod>2023-04-21T22:24:59+09:30</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/rhel/</loc>
-    <lastmod>2023-04-21T22:24:59+09:30</lastmod>
-  </url><url>
     <loc>https://addzey.dev/posts/rhel-lvm-move/</loc>
-    <lastmod>2023-04-21T22:24:59+09:30</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/</loc>
     <lastmod>2023-04-21T22:24:59+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/posts/hello-world/</loc>
@@ -45,9 +51,6 @@
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/testing/</loc>
-    <lastmod>2023-04-15T20:42:06+09:30</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/zfs/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/about/</loc>

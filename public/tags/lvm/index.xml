@@ -16,7 +16,7 @@
       <guid>https://addzey.dev/posts/rhel-lvm-move/</guid>
       <description>How to move an LVM volume to a new drive When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk
 By default RHEL 9.x installs to disk by creating 3 partitions:
- /boot/efi /boot LVM  Volume Group = &amp;lsquo;rhel&amp;rsquo;  Logical Volume = &amp;lsquo;root&amp;rsquo; Logical Volume = &amp;lsquo;swap&amp;rsquo;      I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!</description>
+ /boot/efi /boot LVM  Volume Group = &amp;lsquo;rhel&amp;rsquo;  Logical Volume = &amp;lsquo;root&amp;rsquo; Logical Volume = &amp;lsquo;swap&amp;rsquo;      I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!</description>
       <content>&lt;h1 id=&#34;how-to-move-an-lvm-volume-to-a-new-drive&#34;&gt;How to move an LVM volume to a new drive&lt;/h1&gt;
 &lt;p&gt;When setting up my NAS with RHEL 9.1 I wanted to move the initial install to a new disk&lt;/p&gt;
 &lt;p&gt;By default RHEL 9.x installs to disk by creating 3 partitions:&lt;/p&gt;
@@ -34,7 +34,7 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I&amp;rsquo;m happy to leave the boot paritions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is /dev/sdb[3]&lt;br&gt;
 &lt;strong&gt;DESTINATION&lt;/strong&gt; disk is /dev/sda&lt;/p&gt;
 &lt;h2 id=&#34;extend-lvm-volume-group-to-include-the-destination-disk&#34;&gt;Extend LVM Volume Group to include the destination disk&lt;/h2&gt;
