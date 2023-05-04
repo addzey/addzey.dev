@@ -12,6 +12,6 @@ hideComments = false
 +++
 
 # First post  
-Tech blog online using static site generator Hugo and a basic CI/CI pipeline!
+Tech blog online using static site generator Hugo and a basic CI/CD pipeline!
   
 ![Blog](https://addzey.dev/Blog-2023-04-15_235819.png)

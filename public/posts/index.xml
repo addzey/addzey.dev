@@ -110,9 +110,9 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
       <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
       
       <guid>https://addzey.dev/posts/hello-world/</guid>
-      <description>First post Tech blog online using static site generator Hugo and a basic CI/CI pipeline!</description>
+      <description>First post Tech blog online using static site generator Hugo and a basic CI/CD pipeline!</description>
       <content>&lt;h1 id=&#34;first-post&#34;&gt;First post&lt;/h1&gt;
-&lt;p&gt;Tech blog online using static site generator Hugo and a basic CI/CI pipeline!&lt;/p&gt;
+&lt;p&gt;Tech blog online using static site generator Hugo and a basic CI/CD pipeline!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://addzey.dev/Blog-2023-04-15_235819.png&#34; alt=&#34;Blog&#34;&gt;&lt;/p&gt;
 </content>
     </item>
