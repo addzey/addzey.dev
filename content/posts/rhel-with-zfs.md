@@ -48,8 +48,8 @@ Everything looking good!
 ## Enable Compression at the root level
 Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting    
 
-Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it [here](https://en.wikipedia.org/wiki/Zstd) 
+Zstandard is almost always going to be the optimal compression algorithm these days, for all use cases, you can read more about it [here](https://en.wikipedia.org/wiki/Zstd) 
 
     sudo zfs set compression=zstd nas01-raid10  
-Compression is now enabled at root level and will be inherited:
+Compression is now enabled at the top level and will be inherited:
 ![ZFS Compression](../../ZFS-Compression-2023-05-04_182001.png)
