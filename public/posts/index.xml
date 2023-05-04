@@ -48,7 +48,10 @@ Install ZFS Kernel Module We will use the kABI-tracking kmod rather than DKMS so
 &lt;h2 id=&#34;enable-compression-at-the-root-level&#34;&gt;Enable Compression at the root level&lt;/h2&gt;
 &lt;p&gt;Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting&lt;/p&gt;
 &lt;p&gt;Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it &lt;a href=&#34;https://en.wikipedia.org/wiki/Zstd&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo zfs set compression=zstd nas01-raid10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;sudo zfs set compression=zstd nas01-raid10  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking good!
+&lt;img src=&#34;../../ZFS-Compression-2023-05-04_182001.png&#34; alt=&#34;ZFS Compression&#34;&gt;&lt;/p&gt;
 </content>
     </item>
     

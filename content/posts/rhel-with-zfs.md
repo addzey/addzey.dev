@@ -2,7 +2,6 @@
 title = "RHEL With ZFS"
 date = "2023-04-23T17:31:12+09:30"
 author = "Adam"
-authorTwitter = "" #do not include @
 cover = ""
 tags = ["rhel", "ZFS"]
 keywords = ["rhel", "homelab"]
@@ -10,7 +9,6 @@ description = "Using ZFS with Red Hat Enterprise Linux"
 showFullContent = false
 readingTime = false
 hideComments = false
-color = "" #color from the theme settings
 +++
 
 # Using ZFS with Red Hat Enterprise Linux
@@ -52,4 +50,6 @@ Next we will enable compression at the root level so any sub-volumes and dataset
 
 Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it [here](https://en.wikipedia.org/wiki/Zstd) 
 
-    sudo zfs set compression=zstd nas01-raid10
+    sudo zfs set compression=zstd nas01-raid10  
+Looking good!
+![ZFS Compression](../../ZFS-Compression-2023-05-04_182001.png)

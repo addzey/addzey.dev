@@ -2,13 +2,11 @@
 title = "RHEL Move LVM Volume"
 date = "2023-04-21T22:24:59+09:30"
 author = "Adam"
-authorTwitter = "" #do not include @
 cover = ""
 tags = ["rhel", "LVM"]
 keywords = ["rhel", "homelab"]
 description = "How to move an LVM volume to a new drive"
 showFullContent = false
-color = "" #color from the theme settings
 +++
 
 # How to move an LVM volume to a new drive  

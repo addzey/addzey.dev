@@ -46,7 +46,7 @@
   
     <meta name="twitter:site" content="" />
   
-    <meta name="twitter:creator" content="" />
+    <meta name="twitter:creator" content="Adam" />
 
 
 
@@ -221,7 +221,10 @@
 <h2 id="enable-compression-at-the-root-level">Enable Compression at the root level<a href="#enable-compression-at-the-root-level" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Next we will enable compression at the root level so any sub-volumes and datasets will inherit this setting</p>
 <p>Zstandard is almost always going to be the optimal compression algorithm to use these days for all use cases, you can read more about it <a href="https://en.wikipedia.org/wiki/Zstd">here</a></p>
-<pre><code>sudo zfs set compression=zstd nas01-raid10</code></pre>
+<pre><code>sudo zfs set compression=zstd nas01-raid10  
+</code></pre>
+<p>Looking good!
+<img src="../../ZFS-Compression-2023-05-04_182001.png" alt="ZFS Compression"></p>
 
       </div></div>
 
