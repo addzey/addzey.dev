@@ -7,7 +7,7 @@ keywords = ["RHCSA"]
 description = "My study notes for RHCSA certification"
 +++
 
-# I'll be updating this as I go through RHCSA study!
+# I'll be updating this as I go through practice tasks before my RHCSA exam!
 
 ## Understand and use essential tools
 
