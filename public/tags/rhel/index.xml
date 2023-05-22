@@ -7,7 +7,66 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 23 Apr 2023 17:31:12 +0930</lastBuildDate><atom:link href="https://addzey.dev/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/rhel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RHCSA Study Notes</title>
+      <link>https://addzey.dev/rhcsa/</link>
+      <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/rhcsa/</guid>
+      <description>I&amp;rsquo;ll be updating this as I go through RHCSA study! Understand and use essential tools  Placeholder
+ Create simple shell scripts  Placeholder
+ Operate running systems  Placeholder
+ Configure local storage  Placeholder
+ Create and configure file systems  Placeholder
+ Deploy, configure, and maintain systems  Placeholder
+ Manage basic networking  Placeholder
+ Manage users and groups  Placeholder
+ Manage security  Placeholder</description>
+      <content>&lt;h1 id=&#34;ill-be-updating-this-as-i-go-through-rhcsa-study&#34;&gt;I&amp;rsquo;ll be updating this as I go through RHCSA study!&lt;/h1&gt;
+&lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;create-simple-shell-scripts&#34;&gt;Create simple shell scripts&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;configure-local-storage&#34;&gt;Configure local storage&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;create-and-configure-file-systems&#34;&gt;Create and configure file systems&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;deploy-configure-and-maintain-systems&#34;&gt;Deploy, configure, and maintain systems&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;manage-basic-networking&#34;&gt;Manage basic networking&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;manage-users-and-groups&#34;&gt;Manage users and groups&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;manage-security&#34;&gt;Manage security&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;manage-containers&#34;&gt;Manage containers&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    </item>
+    
     <item>
       <title>RHEL With ZFS</title>
       <link>https://addzey.dev/posts/rhel-with-zfs/</link>

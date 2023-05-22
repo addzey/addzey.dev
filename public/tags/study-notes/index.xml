@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Red Hat on ADDZEY.DEV</title>
-    <link>https://addzey.dev/tags/red-hat/</link>
-    <description>Recent content in Red Hat on ADDZEY.DEV</description>
+    <title>Study Notes on ADDZEY.DEV</title>
+    <link>https://addzey.dev/tags/study-notes/</link>
+    <description>Recent content in Study Notes on ADDZEY.DEV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/study-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RHCSA Study Notes</title>
       <link>https://addzey.dev/rhcsa/</link>
@@ -64,28 +64,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;Placeholder&lt;/p&gt;
 &lt;/blockquote&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Homelab</title>
-      <link>https://addzey.dev/homelab/</link>
-      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
-      
-      <guid>https://addzey.dev/homelab/</guid>
-      <description>Logging and metrics UPS Router NAS Monitoring stack Prometheus/Grafana/Loki running as rootless containers using Podman
-Pod </description>
-      <content>&lt;h1 id=&#34;logging-and-metrics&#34;&gt;Logging and metrics&lt;/h1&gt;
-&lt;h3 id=&#34;ups&#34;&gt;UPS&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;../UPS-2023-04-01_213311.png&#34; alt=&#34;UPS&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;router&#34;&gt;Router&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;../Router-2023-04-01_212959.png&#34; alt=&#34;Router&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;nas&#34;&gt;NAS&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;../NAS-2023-04-01_213149.png&#34; alt=&#34;NAS&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;monitoring-stack&#34;&gt;Monitoring stack&lt;/h1&gt;
-&lt;p&gt;Prometheus/Grafana/Loki running as rootless containers using Podman&lt;/p&gt;
-&lt;h3 id=&#34;pod&#34;&gt;Pod&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;../Monitoring_Stack-2023-04-01_214146.png&#34; alt=&#34;POD&#34;&gt;&lt;/p&gt;
 </content>
     </item>
     
