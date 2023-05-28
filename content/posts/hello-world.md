@@ -6,12 +6,12 @@ cover = ""
 tags = ["firstpost", "testing"]
 keywords = ["firstpost", "testing"]
 description = ""
-showFullContent = false
+showFullContent = true
 readingTime = false
 hideComments = false
 +++
 
 # First post  
-Tech blog online using static site generator Hugo and a basic CI/CD pipeline!
+Tech blog online using static site generator Hugo deployed via CI/CD pipeline!
   
 ![Blog](https://addzey.dev/Blog-2023-04-15_235819.png)

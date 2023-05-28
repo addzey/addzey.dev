@@ -65,7 +65,7 @@
 <meta property="og:image:height" content="627">
 
 
-  <meta property="article:published_time" content="2023-05-22 00:00:00 &#43;0000 UTC" />
+  <meta property="article:published_time" content="2023-05-28 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -171,9 +171,7 @@
   <div class="post-meta">
     
       <time class="post-date">
-        2023-05-22 ::
-        
-          [Updated :: 2023-05-22]
+        2023-05-28 ::
         
       </time>
     
@@ -200,49 +198,210 @@
 
 
   
+    <div class="table-of-contents">
+      <h2>
+        Table of Contents
+      </h2>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#understand-and-use-essential-tools">Understand and use essential tools</a>
+          <ul>
+            <li><a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax</a></li>
+            <li><a href="#use-input-output-redirection----2-etc">Use input-output redirection (&gt;, &raquo;, |, 2&gt;, etc.)</a></li>
+            <li><a href="#use-grep-and-regular-expressions-to-analyze-text">Use grep and regular expressions to analyze text</a></li>
+            <li><a href="#access-remote-systems-using-ssh">Access remote systems using SSH</a></li>
+            <li><a href="#log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets</a></li>
+            <li><a href="#archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2">Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2</a></li>
+            <li><a href="#create-and-edit-text-files">Create and edit text files</a></li>
+            <li><a href="#create-delete-copy-and-move-files-and-directories">Create, delete, copy, and move files and directories</a></li>
+            <li><a href="#create-hard-and-soft-links">Create hard and soft links</a></li>
+            <li><a href="#list-set-and-change-standard-ugorwx-permissions">List, set, and change standard ugo/rwx permissions</a></li>
+            <li><a href="#locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc">Locate, read, and use system documentation including man, info, and files in /usr/share/doc</a></li>
+          </ul>
+        </li>
+        <li><a href="#create-simple-shell-scripts">Create simple shell scripts</a>
+          <ul>
+            <li><a href="#conditionally-execute-code-use-of-if-test--etc">Conditionally execute code (use of: if, test, [], etc.)</a></li>
+            <li><a href="#use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input</a></li>
+            <li><a href="#process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)</a></li>
+            <li><a href="#processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script</a></li>
+          </ul>
+        </li>
+        <li><a href="#operate-running-systems">Operate running systems</a>
+          <ul>
+            <li><a href="#boot-reboot-and-shut-down-a-system-normally">Boot, reboot, and shut down a system normally</a></li>
+            <li><a href="#boot-systems-into-different-targets-manually">Boot systems into different targets manually</a></li>
+            <li><a href="#interrupt-the-boot-process-in-order-to-gain-access-to-a-system">Interrupt the boot process in order to gain access to a system</a></li>
+            <li><a href="#identify-cpumemory-intensive-processes-and-kill-processes">Identify CPU/memory intensive processes and kill processes</a></li>
+            <li><a href="#adjust-process-scheduling">Adjust process scheduling</a></li>
+            <li><a href="#manage-tuning-profiles">Manage tuning profiles</a></li>
+            <li><a href="#locate-and-interpret-system-log-files-and-journals">Locate and interpret system log files and journals</a></li>
+            <li><a href="#preserve-system-journals">Preserve system journals</a></li>
+            <li><a href="#start-stop-and-check-the-status-of-network-services">Start, stop, and check the status of network services</a></li>
+            <li><a href="#securely-transfer-files-between-systems">Securely transfer files between systems</a></li>
+          </ul>
+        </li>
+        <li><a href="#configure-local-storage">Configure local storage</a>
+          <ul>
+            <li><a href="#list-create-delete-partitions-on-mbr-and-gpt-disks">List, create, delete partitions on MBR and GPT disks</a></li>
+            <li><a href="#create-and-remove-physical-volumes">Create and remove physical volumes</a></li>
+            <li><a href="#assign-physical-volumes-to-volume-groups">Assign physical volumes to volume groups</a></li>
+            <li><a href="#create-and-delete-logical-volumes">Create and delete logical volumes</a></li>
+            <li><a href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label</a></li>
+            <li><a href="#add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively">Add new partitions and logical volumes, and swap to a system non-destructively</a></li>
+          </ul>
+        </li>
+        <li><a href="#create-and-configure-file-systems">Create and configure file systems</a>
+          <ul>
+            <li><a href="#create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems">Create, mount, unmount, and use vfat, ext4, and xfs file systems</a></li>
+            <li><a href="#mount-and-unmount-network-file-systems-using-nfs">Mount and unmount network file systems using NFS</a></li>
+            <li><a href="#configure-autofs">Configure autofs</a></li>
+            <li><a href="#extend-existing-logical-volumes">Extend existing logical volumes</a></li>
+            <li><a href="#create-and-configure-set-gid-directories-for-collaboration">Create and configure set-GID directories for collaboration</a></li>
+            <li><a href="#diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems</a></li>
+          </ul>
+        </li>
+        <li><a href="#deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems</a>
+          <ul>
+            <li><a href="#schedule-tasks-using-at-and-cron">Schedule tasks using at and cron</a></li>
+            <li><a href="#start-and-stop-services-and-configure-services-to-start-automatically-at-boot">Start and stop services and configure services to start automatically at boot</a></li>
+            <li><a href="#configure-systems-to-boot-into-a-specific-target-automatically">Configure systems to boot into a specific target automatically</a></li>
+            <li><a href="#configure-time-service-clients">Configure time service clients</a></li>
+            <li><a href="#install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system">Install and update software packages from Red Hat Network, a remote repository, or from the local file system</a></li>
+            <li><a href="#modify-the-system-bootloader">Modify the system bootloader</a></li>
+          </ul>
+        </li>
+        <li><a href="#manage-basic-networking">Manage basic networking</a>
+          <ul>
+            <li><a href="#configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses</a></li>
+            <li><a href="#configure-hostname-resolution">Configure hostname resolution</a></li>
+            <li><a href="#configure-network-services-to-start-automatically-at-boot">Configure network services to start automatically at boot</a></li>
+            <li><a href="#restrict-network-access-using-firewall-cmdfirewall">Restrict network access using firewall-cmd/firewall</a></li>
+          </ul>
+        </li>
+        <li><a href="#manage-users-and-groups">Manage users and groups</a>
+          <ul>
+            <li><a href="#create-delete-and-modify-local-user-accounts">Create, delete, and modify local user accounts</a></li>
+            <li><a href="#change-passwords-and-adjust-password-aging-for-local-user-accounts">Change passwords and adjust password aging for local user accounts</a></li>
+            <li><a href="#create-delete-and-modify-local-groups-and-group-memberships">Create, delete, and modify local groups and group memberships</a></li>
+            <li><a href="#configure-superuser-access">Configure superuser access</a></li>
+          </ul>
+        </li>
+        <li><a href="#manage-security">Manage security</a>
+          <ul>
+            <li><a href="#configure-firewall-settings-using-firewall-cmdfirewalld">Configure firewall settings using firewall-cmd/firewalld</a></li>
+            <li><a href="#manage-default-file-permissions">Manage default file permissions</a></li>
+            <li><a href="#configure-key-based-authentication-for-ssh">Configure key-based authentication for SSH</a></li>
+            <li><a href="#set-enforcing-and-permissive-modes-for-selinux">Set enforcing and permissive modes for SELinux</a></li>
+            <li><a href="#list-and-identify-selinux-file-and-process-context">List and identify SELinux file and process context</a></li>
+            <li><a href="#restore-default-file-contexts">Restore default file contexts</a></li>
+            <li><a href="#manage-selinux-port-labels">Manage SELinux port labels</a></li>
+            <li><a href="#use-boolean-settings-to-modify-system-selinux-settings">Use boolean settings to modify system SELinux settings</a></li>
+            <li><a href="#diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations</a></li>
+          </ul>
+        </li>
+        <li><a href="#manage-containers">Manage containers</a>
+          <ul>
+            <li><a href="#find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry</a></li>
+            <li><a href="#inspect-container-images">Inspect container images</a></li>
+            <li><a href="#perform-container-management-using-commands-such-as-podman-and-skopeo">Perform container management using commands such as podman and skopeo</a></li>
+            <li><a href="#build-a-container-from-a-containerfile">Build a container from a Containerfile</a></li>
+            <li><a href="#perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers">Perform basic container management such as running, starting, stopping, and listing running containers</a></li>
+            <li><a href="#run-a-service-inside-a-container">Run a service inside a container</a></li>
+            <li><a href="#configure-a-container-to-start-automatically-as-a-systemd-service">Configure a container to start automatically as a systemd service</a></li>
+            <li><a href="#attach-persistent-storage-to-a-container">Attach persistent storage to a container</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  
 
   <div class="post-content"><div>
-        <h1 id="ill-be-updating-this-as-i-go-through-practice-tasks-before-my-rhcsa-exam">I&rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!<a href="#ill-be-updating-this-as-i-go-through-practice-tasks-before-my-rhcsa-exam" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+        <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>I&rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!</p>
 <h2 id="understand-and-use-essential-tools">Understand and use essential tools<a href="#understand-and-use-essential-tools" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax<a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="use-input-output-redirection----2-etc">Use input-output redirection (&gt;, &raquo;, |, 2&gt;, etc.)<a href="#use-input-output-redirection----2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="use-grep-and-regular-expressions-to-analyze-text">Use grep and regular expressions to analyze text<a href="#use-grep-and-regular-expressions-to-analyze-text" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="access-remote-systems-using-ssh">Access remote systems using SSH<a href="#access-remote-systems-using-ssh" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets<a href="#log-in-and-switch-users-in-multiuser-targets" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2">Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2<a href="#archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-and-edit-text-files">Create and edit text files<a href="#create-and-edit-text-files" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-delete-copy-and-move-files-and-directories">Create, delete, copy, and move files and directories<a href="#create-delete-copy-and-move-files-and-directories" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-hard-and-soft-links">Create hard and soft links<a href="#create-hard-and-soft-links" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="list-set-and-change-standard-ugorwx-permissions">List, set, and change standard ugo/rwx permissions<a href="#list-set-and-change-standard-ugorwx-permissions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc">Locate, read, and use system documentation including man, info, and files in /usr/share/doc<a href="#locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="create-simple-shell-scripts">Create simple shell scripts<a href="#create-simple-shell-scripts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="conditionally-execute-code-use-of-if-test--etc">Conditionally execute code (use of: if, test, [], etc.)<a href="#conditionally-execute-code-use-of-if-test--etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input<a href="#use-looping-constructs-for-etc-to-process-file-command-line-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)<a href="#process-script-inputs-1-2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script<a href="#processing-output-of-shell-commands-within-a-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="operate-running-systems">Operate running systems<a href="#operate-running-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="boot-reboot-and-shut-down-a-system-normally">Boot, reboot, and shut down a system normally<a href="#boot-reboot-and-shut-down-a-system-normally" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="boot-systems-into-different-targets-manually">Boot systems into different targets manually<a href="#boot-systems-into-different-targets-manually" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="interrupt-the-boot-process-in-order-to-gain-access-to-a-system">Interrupt the boot process in order to gain access to a system<a href="#interrupt-the-boot-process-in-order-to-gain-access-to-a-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="identify-cpumemory-intensive-processes-and-kill-processes">Identify CPU/memory intensive processes and kill processes<a href="#identify-cpumemory-intensive-processes-and-kill-processes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="adjust-process-scheduling">Adjust process scheduling<a href="#adjust-process-scheduling" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="manage-tuning-profiles">Manage tuning profiles<a href="#manage-tuning-profiles" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="locate-and-interpret-system-log-files-and-journals">Locate and interpret system log files and journals<a href="#locate-and-interpret-system-log-files-and-journals" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="preserve-system-journals">Preserve system journals<a href="#preserve-system-journals" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="start-stop-and-check-the-status-of-network-services">Start, stop, and check the status of network services<a href="#start-stop-and-check-the-status-of-network-services" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="securely-transfer-files-between-systems">Securely transfer files between systems<a href="#securely-transfer-files-between-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="configure-local-storage">Configure local storage<a href="#configure-local-storage" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="list-create-delete-partitions-on-mbr-and-gpt-disks">List, create, delete partitions on MBR and GPT disks<a href="#list-create-delete-partitions-on-mbr-and-gpt-disks" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-and-remove-physical-volumes">Create and remove physical volumes<a href="#create-and-remove-physical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="assign-physical-volumes-to-volume-groups">Assign physical volumes to volume groups<a href="#assign-physical-volumes-to-volume-groups" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-and-delete-logical-volumes">Create and delete logical volumes<a href="#create-and-delete-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label<a href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively">Add new partitions and logical volumes, and swap to a system non-destructively<a href="#add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="create-and-configure-file-systems">Create and configure file systems<a href="#create-and-configure-file-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems">Create, mount, unmount, and use vfat, ext4, and xfs file systems<a href="#create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="mount-and-unmount-network-file-systems-using-nfs">Mount and unmount network file systems using NFS<a href="#mount-and-unmount-network-file-systems-using-nfs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-autofs">Configure autofs<a href="#configure-autofs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="extend-existing-logical-volumes">Extend existing logical volumes<a href="#extend-existing-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-and-configure-set-gid-directories-for-collaboration">Create and configure set-GID directories for collaboration<a href="#create-and-configure-set-gid-directories-for-collaboration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems<a href="#diagnose-and-correct-file-permission-problems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems<a href="#deploy-configure-and-maintain-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="schedule-tasks-using-at-and-cron">Schedule tasks using at and cron<a href="#schedule-tasks-using-at-and-cron" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="start-and-stop-services-and-configure-services-to-start-automatically-at-boot">Start and stop services and configure services to start automatically at boot<a href="#start-and-stop-services-and-configure-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-systems-to-boot-into-a-specific-target-automatically">Configure systems to boot into a specific target automatically<a href="#configure-systems-to-boot-into-a-specific-target-automatically" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-time-service-clients">Configure time service clients<a href="#configure-time-service-clients" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system">Install and update software packages from Red Hat Network, a remote repository, or from the local file system<a href="#install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="modify-the-system-bootloader">Modify the system bootloader<a href="#modify-the-system-bootloader" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-basic-networking">Manage basic networking<a href="#manage-basic-networking" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses<a href="#configure-ipv4-and-ipv6-addresses" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-hostname-resolution">Configure hostname resolution<a href="#configure-hostname-resolution" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-network-services-to-start-automatically-at-boot">Configure network services to start automatically at boot<a href="#configure-network-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="restrict-network-access-using-firewall-cmdfirewall">Restrict network access using firewall-cmd/firewall<a href="#restrict-network-access-using-firewall-cmdfirewall" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-users-and-groups">Manage users and groups<a href="#manage-users-and-groups" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="create-delete-and-modify-local-user-accounts">Create, delete, and modify local user accounts<a href="#create-delete-and-modify-local-user-accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="change-passwords-and-adjust-password-aging-for-local-user-accounts">Change passwords and adjust password aging for local user accounts<a href="#change-passwords-and-adjust-password-aging-for-local-user-accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="create-delete-and-modify-local-groups-and-group-memberships">Create, delete, and modify local groups and group memberships<a href="#create-delete-and-modify-local-groups-and-group-memberships" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-superuser-access">Configure superuser access<a href="#configure-superuser-access" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-security">Manage security<a href="#manage-security" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="configure-firewall-settings-using-firewall-cmdfirewalld">Configure firewall settings using firewall-cmd/firewalld<a href="#configure-firewall-settings-using-firewall-cmdfirewalld" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="manage-default-file-permissions">Manage default file permissions<a href="#manage-default-file-permissions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-key-based-authentication-for-ssh">Configure key-based authentication for SSH<a href="#configure-key-based-authentication-for-ssh" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="set-enforcing-and-permissive-modes-for-selinux">Set enforcing and permissive modes for SELinux<a href="#set-enforcing-and-permissive-modes-for-selinux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="list-and-identify-selinux-file-and-process-context">List and identify SELinux file and process context<a href="#list-and-identify-selinux-file-and-process-context" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="restore-default-file-contexts">Restore default file contexts<a href="#restore-default-file-contexts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="manage-selinux-port-labels">Manage SELinux port labels<a href="#manage-selinux-port-labels" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="use-boolean-settings-to-modify-system-selinux-settings">Use boolean settings to modify system SELinux settings<a href="#use-boolean-settings-to-modify-system-selinux-settings" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations<a href="#diagnose-and-address-routine-selinux-policy-violations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-containers">Manage containers<a href="#manage-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<blockquote>
-<p>Placeholder</p>
-</blockquote>
+<h3 id="find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry<a href="#find-and-retrieve-container-images-from-a-remote-registry" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="inspect-container-images">Inspect container images<a href="#inspect-container-images" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="perform-container-management-using-commands-such-as-podman-and-skopeo">Perform container management using commands such as podman and skopeo<a href="#perform-container-management-using-commands-such-as-podman-and-skopeo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="build-a-container-from-a-containerfile">Build a container from a Containerfile<a href="#build-a-container-from-a-containerfile" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers">Perform basic container management such as running, starting, stopping, and listing running containers<a href="#perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="run-a-service-inside-a-container">Run a service inside a container<a href="#run-a-service-inside-a-container" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="configure-a-container-to-start-automatically-as-a-systemd-service">Configure a container to start automatically as a systemd service<a href="#configure-a-container-to-start-automatically-as-a-systemd-service" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="attach-persistent-storage-to-a-container">Attach persistent storage to a container<a href="#attach-persistent-storage-to-a-container" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 
       </div></div>
 

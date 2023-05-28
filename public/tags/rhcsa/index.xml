@@ -7,63 +7,95 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/rhcsa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/rhcsa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RHCSA Study Notes</title>
       <link>https://addzey.dev/rhcsa/</link>
-      <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/rhcsa/</guid>
-      <description>I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam! Understand and use essential tools  Placeholder
- Create simple shell scripts  Placeholder
- Operate running systems  Placeholder
- Configure local storage  Placeholder
- Create and configure file systems  Placeholder
- Deploy, configure, and maintain systems  Placeholder
- Manage basic networking  Placeholder
- Manage users and groups  Placeholder
- Manage security  Placeholder</description>
-      <content>&lt;h1 id=&#34;ill-be-updating-this-as-i-go-through-practice-tasks-before-my-rhcsa-exam&#34;&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!&lt;/h1&gt;
+      <description>Introduction I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!
+Understand and use essential tools Access a shell prompt and issue commands with correct syntax Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.) Use grep and regular expressions to analyze text Access remote systems using SSH Log in and switch users in multiuser targets Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2 Create and edit text files Create, delete, copy, and move files and directories Create hard and soft links List, set, and change standard ugo/rwx permissions Locate, read, and use system documentation including man, info, and files in /usr/share/doc Create simple shell scripts Conditionally execute code (use of: if, test, [], etc.</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;
+&lt;h3 id=&#34;use-input-output-redirection----2-etc&#34;&gt;Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.)&lt;/h3&gt;
+&lt;h3 id=&#34;use-grep-and-regular-expressions-to-analyze-text&#34;&gt;Use grep and regular expressions to analyze text&lt;/h3&gt;
+&lt;h3 id=&#34;access-remote-systems-using-ssh&#34;&gt;Access remote systems using SSH&lt;/h3&gt;
+&lt;h3 id=&#34;log-in-and-switch-users-in-multiuser-targets&#34;&gt;Log in and switch users in multiuser targets&lt;/h3&gt;
+&lt;h3 id=&#34;archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2&#34;&gt;Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2&lt;/h3&gt;
+&lt;h3 id=&#34;create-and-edit-text-files&#34;&gt;Create and edit text files&lt;/h3&gt;
+&lt;h3 id=&#34;create-delete-copy-and-move-files-and-directories&#34;&gt;Create, delete, copy, and move files and directories&lt;/h3&gt;
+&lt;h3 id=&#34;create-hard-and-soft-links&#34;&gt;Create hard and soft links&lt;/h3&gt;
+&lt;h3 id=&#34;list-set-and-change-standard-ugorwx-permissions&#34;&gt;List, set, and change standard ugo/rwx permissions&lt;/h3&gt;
+&lt;h3 id=&#34;locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc&#34;&gt;Locate, read, and use system documentation including man, info, and files in /usr/share/doc&lt;/h3&gt;
 &lt;h2 id=&#34;create-simple-shell-scripts&#34;&gt;Create simple shell scripts&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;conditionally-execute-code-use-of-if-test--etc&#34;&gt;Conditionally execute code (use of: if, test, [], etc.)&lt;/h3&gt;
+&lt;h3 id=&#34;use-looping-constructs-for-etc-to-process-file-command-line-input&#34;&gt;Use Looping constructs (for, etc.) to process file, command line input&lt;/h3&gt;
+&lt;h3 id=&#34;process-script-inputs-1-2-etc&#34;&gt;Process script inputs ($1, $2, etc.)&lt;/h3&gt;
+&lt;h3 id=&#34;processing-output-of-shell-commands-within-a-script&#34;&gt;Processing output of shell commands within a script&lt;/h3&gt;
 &lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;boot-reboot-and-shut-down-a-system-normally&#34;&gt;Boot, reboot, and shut down a system normally&lt;/h3&gt;
+&lt;h3 id=&#34;boot-systems-into-different-targets-manually&#34;&gt;Boot systems into different targets manually&lt;/h3&gt;
+&lt;h3 id=&#34;interrupt-the-boot-process-in-order-to-gain-access-to-a-system&#34;&gt;Interrupt the boot process in order to gain access to a system&lt;/h3&gt;
+&lt;h3 id=&#34;identify-cpumemory-intensive-processes-and-kill-processes&#34;&gt;Identify CPU/memory intensive processes and kill processes&lt;/h3&gt;
+&lt;h3 id=&#34;adjust-process-scheduling&#34;&gt;Adjust process scheduling&lt;/h3&gt;
+&lt;h3 id=&#34;manage-tuning-profiles&#34;&gt;Manage tuning profiles&lt;/h3&gt;
+&lt;h3 id=&#34;locate-and-interpret-system-log-files-and-journals&#34;&gt;Locate and interpret system log files and journals&lt;/h3&gt;
+&lt;h3 id=&#34;preserve-system-journals&#34;&gt;Preserve system journals&lt;/h3&gt;
+&lt;h3 id=&#34;start-stop-and-check-the-status-of-network-services&#34;&gt;Start, stop, and check the status of network services&lt;/h3&gt;
+&lt;h3 id=&#34;securely-transfer-files-between-systems&#34;&gt;Securely transfer files between systems&lt;/h3&gt;
 &lt;h2 id=&#34;configure-local-storage&#34;&gt;Configure local storage&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;list-create-delete-partitions-on-mbr-and-gpt-disks&#34;&gt;List, create, delete partitions on MBR and GPT disks&lt;/h3&gt;
+&lt;h3 id=&#34;create-and-remove-physical-volumes&#34;&gt;Create and remove physical volumes&lt;/h3&gt;
+&lt;h3 id=&#34;assign-physical-volumes-to-volume-groups&#34;&gt;Assign physical volumes to volume groups&lt;/h3&gt;
+&lt;h3 id=&#34;create-and-delete-logical-volumes&#34;&gt;Create and delete logical volumes&lt;/h3&gt;
+&lt;h3 id=&#34;configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label&#34;&gt;Configure systems to mount file systems at boot by universally unique ID (UUID) or label&lt;/h3&gt;
+&lt;h3 id=&#34;add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively&#34;&gt;Add new partitions and logical volumes, and swap to a system non-destructively&lt;/h3&gt;
 &lt;h2 id=&#34;create-and-configure-file-systems&#34;&gt;Create and configure file systems&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems&#34;&gt;Create, mount, unmount, and use vfat, ext4, and xfs file systems&lt;/h3&gt;
+&lt;h3 id=&#34;mount-and-unmount-network-file-systems-using-nfs&#34;&gt;Mount and unmount network file systems using NFS&lt;/h3&gt;
+&lt;h3 id=&#34;configure-autofs&#34;&gt;Configure autofs&lt;/h3&gt;
+&lt;h3 id=&#34;extend-existing-logical-volumes&#34;&gt;Extend existing logical volumes&lt;/h3&gt;
+&lt;h3 id=&#34;create-and-configure-set-gid-directories-for-collaboration&#34;&gt;Create and configure set-GID directories for collaboration&lt;/h3&gt;
+&lt;h3 id=&#34;diagnose-and-correct-file-permission-problems&#34;&gt;Diagnose and correct file permission problems&lt;/h3&gt;
 &lt;h2 id=&#34;deploy-configure-and-maintain-systems&#34;&gt;Deploy, configure, and maintain systems&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;schedule-tasks-using-at-and-cron&#34;&gt;Schedule tasks using at and cron&lt;/h3&gt;
+&lt;h3 id=&#34;start-and-stop-services-and-configure-services-to-start-automatically-at-boot&#34;&gt;Start and stop services and configure services to start automatically at boot&lt;/h3&gt;
+&lt;h3 id=&#34;configure-systems-to-boot-into-a-specific-target-automatically&#34;&gt;Configure systems to boot into a specific target automatically&lt;/h3&gt;
+&lt;h3 id=&#34;configure-time-service-clients&#34;&gt;Configure time service clients&lt;/h3&gt;
+&lt;h3 id=&#34;install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system&#34;&gt;Install and update software packages from Red Hat Network, a remote repository, or from the local file system&lt;/h3&gt;
+&lt;h3 id=&#34;modify-the-system-bootloader&#34;&gt;Modify the system bootloader&lt;/h3&gt;
 &lt;h2 id=&#34;manage-basic-networking&#34;&gt;Manage basic networking&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;configure-ipv4-and-ipv6-addresses&#34;&gt;Configure IPv4 and IPv6 addresses&lt;/h3&gt;
+&lt;h3 id=&#34;configure-hostname-resolution&#34;&gt;Configure hostname resolution&lt;/h3&gt;
+&lt;h3 id=&#34;configure-network-services-to-start-automatically-at-boot&#34;&gt;Configure network services to start automatically at boot&lt;/h3&gt;
+&lt;h3 id=&#34;restrict-network-access-using-firewall-cmdfirewall&#34;&gt;Restrict network access using firewall-cmd/firewall&lt;/h3&gt;
 &lt;h2 id=&#34;manage-users-and-groups&#34;&gt;Manage users and groups&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;create-delete-and-modify-local-user-accounts&#34;&gt;Create, delete, and modify local user accounts&lt;/h3&gt;
+&lt;h3 id=&#34;change-passwords-and-adjust-password-aging-for-local-user-accounts&#34;&gt;Change passwords and adjust password aging for local user accounts&lt;/h3&gt;
+&lt;h3 id=&#34;create-delete-and-modify-local-groups-and-group-memberships&#34;&gt;Create, delete, and modify local groups and group memberships&lt;/h3&gt;
+&lt;h3 id=&#34;configure-superuser-access&#34;&gt;Configure superuser access&lt;/h3&gt;
 &lt;h2 id=&#34;manage-security&#34;&gt;Manage security&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;configure-firewall-settings-using-firewall-cmdfirewalld&#34;&gt;Configure firewall settings using firewall-cmd/firewalld&lt;/h3&gt;
+&lt;h3 id=&#34;manage-default-file-permissions&#34;&gt;Manage default file permissions&lt;/h3&gt;
+&lt;h3 id=&#34;configure-key-based-authentication-for-ssh&#34;&gt;Configure key-based authentication for SSH&lt;/h3&gt;
+&lt;h3 id=&#34;set-enforcing-and-permissive-modes-for-selinux&#34;&gt;Set enforcing and permissive modes for SELinux&lt;/h3&gt;
+&lt;h3 id=&#34;list-and-identify-selinux-file-and-process-context&#34;&gt;List and identify SELinux file and process context&lt;/h3&gt;
+&lt;h3 id=&#34;restore-default-file-contexts&#34;&gt;Restore default file contexts&lt;/h3&gt;
+&lt;h3 id=&#34;manage-selinux-port-labels&#34;&gt;Manage SELinux port labels&lt;/h3&gt;
+&lt;h3 id=&#34;use-boolean-settings-to-modify-system-selinux-settings&#34;&gt;Use boolean settings to modify system SELinux settings&lt;/h3&gt;
+&lt;h3 id=&#34;diagnose-and-address-routine-selinux-policy-violations&#34;&gt;Diagnose and address routine SELinux policy violations&lt;/h3&gt;
 &lt;h2 id=&#34;manage-containers&#34;&gt;Manage containers&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;find-and-retrieve-container-images-from-a-remote-registry&#34;&gt;Find and retrieve container images from a remote registry&lt;/h3&gt;
+&lt;h3 id=&#34;inspect-container-images&#34;&gt;Inspect container images&lt;/h3&gt;
+&lt;h3 id=&#34;perform-container-management-using-commands-such-as-podman-and-skopeo&#34;&gt;Perform container management using commands such as podman and skopeo&lt;/h3&gt;
+&lt;h3 id=&#34;build-a-container-from-a-containerfile&#34;&gt;Build a container from a Containerfile&lt;/h3&gt;
+&lt;h3 id=&#34;perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers&#34;&gt;Perform basic container management such as running, starting, stopping, and listing running containers&lt;/h3&gt;
+&lt;h3 id=&#34;run-a-service-inside-a-container&#34;&gt;Run a service inside a container&lt;/h3&gt;
+&lt;h3 id=&#34;configure-a-container-to-start-automatically-as-a-systemd-service&#34;&gt;Configure a container to start automatically as a systemd service&lt;/h3&gt;
+&lt;h3 id=&#34;attach-persistent-storage-to-a-container&#34;&gt;Attach persistent storage to a container&lt;/h3&gt;
 </content>
     </item>
     
