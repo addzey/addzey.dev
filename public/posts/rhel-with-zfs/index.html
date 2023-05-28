@@ -113,6 +113,10 @@
         
       
         
+          <li><a href="/aws-saa">AWS SAA</a></li>
+        
+      
+        
           <li><a href="https://github.com/addzey">GitHub</a></li>
         
       
@@ -143,6 +147,10 @@
       
         
           <li><a href="/rhcsa" >RHCSA</a></li>
+        
+      
+        
+          <li><a href="/aws-saa" >AWS SAA</a></li>
         
       
         
@@ -202,12 +210,11 @@
 <h2 id="install-zfs-kernel-module">Install ZFS Kernel Module<a href="#install-zfs-kernel-module" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn&rsquo;t require re-compiling the module</p>
 <h3 id="add-the-openzfs-repo">Add the OpenZFS repo<a href="#add-the-openzfs-repo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<pre><code>sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &quot;%{dist}&quot;).noarch.rpm
-</code></pre>
+<p><code>sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &quot;%{dist}&quot;).noarch.rpm</code></p>
 <h3 id="set-and-install-zfs-kmod">Set and install ZFS kmod<a href="#set-and-install-zfs-kmod" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<pre><code>    sudo dnf config-manager --disable zfs
-    sudo dnf config-manager --enable zfs-kmod
-    sudo dnf install zfs
+<pre><code>sudo dnf config-manager --disable zfs 
+sudo dnf config-manager --enable zfs-kmod  
+sudo dnf install zfs
 </code></pre>
 <p>Once the above completes all OK we are ready to create our ZFS pool!</p>
 <h2 id="create-zfs-pool">Create ZFS pool<a href="#create-zfs-pool" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -219,16 +226,14 @@
 <li>/dev/sdd</li>
 </ul>
 <p>I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV&rsquo;s each with 2 of the 4 disks</p>
-<p>I will be naming the pool &lsquo;<strong>nas01-raid10</strong>&rsquo;</p>
-<pre><code>sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
-</code></pre>
+<p>I will be naming the pool &ldquo;<strong>nas01-raid10</strong>&rdquo;</p>
+<p><code>sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd</code></p>
 <p>Everything looking good!<br>
 <img src="../../ZFS-2023-04-25_202804.png" alt="ZPOOL"></p>
 <h2 id="enable-compression-at-the-top-level">Enable Compression at the top level<a href="#enable-compression-at-the-top-level" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Next we will enable compression at the top level so any sub-volumes and datasets will inherit this setting</p>
 <p>Zstandard is almost always going to be the optimal compression algorithm these days, for all use cases, you can read more about it <a href="https://en.wikipedia.org/wiki/Zstd">here</a></p>
-<pre><code>sudo zfs set compression=zstd nas01-raid10  
-</code></pre>
+<p><code>sudo zfs set compression=zstd nas01-raid10</code></p>
 <p>Compression is now enabled at the top level and will be inherited:
 <img src="../../ZFS-Compression-2023-05-04_182001.png" alt="ZFS Compression"></p>
 

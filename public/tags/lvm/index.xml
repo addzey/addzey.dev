@@ -35,23 +35,18 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is /dev/sdb[3]&lt;br&gt;
-&lt;strong&gt;DESTINATION&lt;/strong&gt; disk is /dev/sda&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is &lt;code&gt;/dev/sdb[3]&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;DESTINATION&lt;/strong&gt; disk is &lt;code&gt;/dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;extend-lvm-volume-group-to-include-the-destination-disk&#34;&gt;Extend LVM Volume Group to include the destination disk&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo vgextend rhel /dev/sda 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo vgextend rhel /dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;move-the-data-from-source-disk-to-destination-disk&#34;&gt;Move the data from source disk to destination disk&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo pvmove /dev/sdb3 /dev/sda  
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo pvmove /dev/sdb3 /dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;remove-the-source-disk-from-the-volume-group&#34;&gt;Remove the source disk from the Volume Group&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo vgreduce rhel /dev/sdb3
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo vgreduce rhel /dev/sdb3&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;remove-the-source-disk-from-physical-volumes&#34;&gt;Remove the source disk from Physical Volumes&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo pvremove /dev/sdb3
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo pvremove /dev/sdb3&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem&#34;&gt;Extend the volume to fill the destination disk and resize the filesystem&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo lvextend -r -l+100%FREE /dev/rhel/root
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo lvextend -r -l+100%FREE /dev/rhel/root&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;done&#34;&gt;Done!&lt;/h3&gt;
 &lt;p&gt;There should be no need to update &lt;em&gt;/etc/fstab&lt;/em&gt; as the existing entry will be pointing to the LVM volume eg. &lt;em&gt;/dev/mapper/rhel-root&lt;/em&gt; which on the physical level is now already pointing to our new disk with the migrated data&lt;/p&gt;
 </content>

@@ -23,12 +23,11 @@ Install ZFS Kernel Module We will use the kABI-tracking kmod rather than DKMS so
 &lt;h2 id=&#34;install-zfs-kernel-module&#34;&gt;Install ZFS Kernel Module&lt;/h2&gt;
 &lt;p&gt;We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn&amp;rsquo;t require re-compiling the module&lt;/p&gt;
 &lt;h3 id=&#34;add-the-openzfs-repo&#34;&gt;Add the OpenZFS repo&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &amp;quot;%{dist}&amp;quot;).noarch.rpm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval &amp;quot;%{dist}&amp;quot;).noarch.rpm&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;set-and-install-zfs-kmod&#34;&gt;Set and install ZFS kmod&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;    sudo dnf config-manager --disable zfs
-    sudo dnf config-manager --enable zfs-kmod
-    sudo dnf install zfs
+&lt;pre&gt;&lt;code&gt;sudo dnf config-manager --disable zfs 
+sudo dnf config-manager --enable zfs-kmod  
+sudo dnf install zfs
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Once the above completes all OK we are ready to create our ZFS pool!&lt;/p&gt;
 &lt;h2 id=&#34;create-zfs-pool&#34;&gt;Create ZFS pool&lt;/h2&gt;
@@ -40,16 +39,14 @@ Install ZFS Kernel Module We will use the kABI-tracking kmod rather than DKMS so
 &lt;li&gt;/dev/sdd&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV&amp;rsquo;s each with 2 of the 4 disks&lt;/p&gt;
-&lt;p&gt;I will be naming the pool &amp;lsquo;&lt;strong&gt;nas01-raid10&lt;/strong&gt;&amp;rsquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I will be naming the pool &amp;ldquo;&lt;strong&gt;nas01-raid10&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Everything looking good!&lt;br&gt;
 &lt;img src=&#34;../../ZFS-2023-04-25_202804.png&#34; alt=&#34;ZPOOL&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;enable-compression-at-the-top-level&#34;&gt;Enable Compression at the top level&lt;/h2&gt;
 &lt;p&gt;Next we will enable compression at the top level so any sub-volumes and datasets will inherit this setting&lt;/p&gt;
 &lt;p&gt;Zstandard is almost always going to be the optimal compression algorithm these days, for all use cases, you can read more about it &lt;a href=&#34;https://en.wikipedia.org/wiki/Zstd&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo zfs set compression=zstd nas01-raid10  
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo zfs set compression=zstd nas01-raid10&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Compression is now enabled at the top level and will be inherited:
 &lt;img src=&#34;../../ZFS-Compression-2023-05-04_182001.png&#34; alt=&#34;ZFS Compression&#34;&gt;&lt;/p&gt;
 </content>
@@ -82,23 +79,18 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I&amp;rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &amp;lsquo;rhel&amp;rsquo; to a new disk!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is /dev/sdb[3]&lt;br&gt;
-&lt;strong&gt;DESTINATION&lt;/strong&gt; disk is /dev/sda&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOURCE&lt;/strong&gt; disk is &lt;code&gt;/dev/sdb[3]&lt;/code&gt;&lt;br&gt;
+&lt;strong&gt;DESTINATION&lt;/strong&gt; disk is &lt;code&gt;/dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;extend-lvm-volume-group-to-include-the-destination-disk&#34;&gt;Extend LVM Volume Group to include the destination disk&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo vgextend rhel /dev/sda 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo vgextend rhel /dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;move-the-data-from-source-disk-to-destination-disk&#34;&gt;Move the data from source disk to destination disk&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo pvmove /dev/sdb3 /dev/sda  
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo pvmove /dev/sdb3 /dev/sda&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;remove-the-source-disk-from-the-volume-group&#34;&gt;Remove the source disk from the Volume Group&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo vgreduce rhel /dev/sdb3
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo vgreduce rhel /dev/sdb3&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;remove-the-source-disk-from-physical-volumes&#34;&gt;Remove the source disk from Physical Volumes&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo pvremove /dev/sdb3
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo pvremove /dev/sdb3&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem&#34;&gt;Extend the volume to fill the destination disk and resize the filesystem&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;sudo lvextend -r -l+100%FREE /dev/rhel/root
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sudo lvextend -r -l+100%FREE /dev/rhel/root&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;done&#34;&gt;Done!&lt;/h3&gt;
 &lt;p&gt;There should be no need to update &lt;em&gt;/etc/fstab&lt;/em&gt; as the existing entry will be pointing to the LVM volume eg. &lt;em&gt;/dev/mapper/rhel-root&lt;/em&gt; which on the physical level is now already pointing to our new disk with the migrated data&lt;/p&gt;
 </content>
@@ -113,7 +105,7 @@ By default RHEL 9.x installs to disk by creating 3 partitions:
       <description>First post Tech blog online using static site generator Hugo deployed via CI/CD pipeline!</description>
       <content>&lt;h1 id=&#34;first-post&#34;&gt;First post&lt;/h1&gt;
 &lt;p&gt;Tech blog online using static site generator Hugo deployed via CI/CD pipeline!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://addzey.dev/Blog-2023-04-15_235819.png&#34; alt=&#34;Blog&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../Blog-2023-04-15_235819.png&#34; alt=&#34;Blog&#34;&gt;&lt;/p&gt;
 </content>
     </item>
     

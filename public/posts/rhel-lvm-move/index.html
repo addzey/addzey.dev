@@ -113,6 +113,10 @@
         
       
         
+          <li><a href="/aws-saa">AWS SAA</a></li>
+        
+      
+        
           <li><a href="https://github.com/addzey">GitHub</a></li>
         
       
@@ -143,6 +147,10 @@
       
         
           <li><a href="/rhcsa" >RHCSA</a></li>
+        
+      
+        
+          <li><a href="/aws-saa" >AWS SAA</a></li>
         
       
         
@@ -214,23 +222,18 @@
 </li>
 </ul>
 <p>I&rsquo;m happy to leave the boot partitions as they are but I want to move the LVM VG &lsquo;rhel&rsquo; to a new disk!</p>
-<p><strong>SOURCE</strong> disk is /dev/sdb[3]<br>
-<strong>DESTINATION</strong> disk is /dev/sda</p>
+<p><strong>SOURCE</strong> disk is <code>/dev/sdb[3]</code><br>
+<strong>DESTINATION</strong> disk is <code>/dev/sda</code></p>
 <h2 id="extend-lvm-volume-group-to-include-the-destination-disk">Extend LVM Volume Group to include the destination disk<a href="#extend-lvm-volume-group-to-include-the-destination-disk" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<pre><code>sudo vgextend rhel /dev/sda 
-</code></pre>
+<p><code>sudo vgextend rhel /dev/sda</code></p>
 <h2 id="move-the-data-from-source-disk-to-destination-disk">Move the data from source disk to destination disk<a href="#move-the-data-from-source-disk-to-destination-disk" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<pre><code>sudo pvmove /dev/sdb3 /dev/sda  
-</code></pre>
+<p><code>sudo pvmove /dev/sdb3 /dev/sda</code></p>
 <h2 id="remove-the-source-disk-from-the-volume-group">Remove the source disk from the Volume Group<a href="#remove-the-source-disk-from-the-volume-group" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<pre><code>sudo vgreduce rhel /dev/sdb3
-</code></pre>
+<p><code>sudo vgreduce rhel /dev/sdb3</code></p>
 <h2 id="remove-the-source-disk-from-physical-volumes">Remove the source disk from Physical Volumes<a href="#remove-the-source-disk-from-physical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<pre><code>sudo pvremove /dev/sdb3
-</code></pre>
+<p><code>sudo pvremove /dev/sdb3</code></p>
 <h2 id="extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem">Extend the volume to fill the destination disk and resize the filesystem<a href="#extend-the-volume-to-fill-the-destination-disk-and-resize-the-filesystem" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<pre><code>sudo lvextend -r -l+100%FREE /dev/rhel/root
-</code></pre>
+<p><code>sudo lvextend -r -l+100%FREE /dev/rhel/root</code></p>
 <h3 id="done">Done!<a href="#done" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>There should be no need to update <em>/etc/fstab</em> as the existing entry will be pointing to the LVM volume eg. <em>/dev/mapper/rhel-root</em> which on the physical level is now already pointing to our new disk with the migrated data</p>
 

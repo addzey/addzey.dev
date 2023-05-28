@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solutions Architect Associate on ADDZEY.DEV</title>
+    <link>https://addzey.dev/tags/solutions-architect-associate/</link>
+    <description>Recent content in Solutions Architect Associate on ADDZEY.DEV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Adam Rogers</copyright>
+    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/solutions-architect-associate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS: SAA Study Notes</title>
+      <link>https://addzey.dev/aws-saa/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/aws-saa/</guid>
+      <description>Introduction I passed the exam before creating this blog so there is no content here but there is this cool badge! 😎</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I passed the exam before creating this blog so there is no content here but there is this cool badge! 😎&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.credly.com/badges/20e16957-53de-49bb-a4d3-59a9a5dfc7f3/public_url&#34;&gt;&lt;img src=&#34;../../aws-certified-solutions-architect-associate.png&#34; alt=&#34;AWS SAA&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

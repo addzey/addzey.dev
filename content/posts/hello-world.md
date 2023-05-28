@@ -14,4 +14,4 @@ hideComments = false
 # First post  
 Tech blog online using static site generator Hugo deployed via CI/CD pipeline!
   
-![Blog](https://addzey.dev/Blog-2023-04-15_235819.png)
+![Blog](../../Blog-2023-04-15_235819.png)

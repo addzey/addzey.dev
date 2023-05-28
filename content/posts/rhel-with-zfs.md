@@ -20,12 +20,13 @@ Official guide to getting ZFS running on various Linux distros [here](https://op
 We will use the kABI-tracking kmod rather than DKMS so installing newer kernel versions generally shouldn't require re-compiling the module
 
 ### Add the OpenZFS repo
-    sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm
+`sudo dnf install https://zfsonlinux.org/epel/zfs-release-2-2$(rpm --eval "%{dist}").noarch.rpm`
 
-### Set and install ZFS kmod
-        sudo dnf config-manager --disable zfs
-        sudo dnf config-manager --enable zfs-kmod
-        sudo dnf install zfs
+### Set and install ZFS kmod  
+
+    sudo dnf config-manager --disable zfs 
+    sudo dnf config-manager --enable zfs-kmod  
+    sudo dnf install zfs
 
 Once the above completes all OK we are ready to create our ZFS pool!
 
@@ -38,9 +39,9 @@ I have 4x 8TB SATA HDD's that will be used:
 
 I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV's each with 2 of the 4 disks  
 
-I will be naming the pool '**nas01-raid10**'
+I will be naming the pool "**nas01-raid10**"
 
-    sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd
+`sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd`
 
 Everything looking good!  
 ![ZPOOL](../../ZFS-2023-04-25_202804.png)
@@ -50,6 +51,7 @@ Next we will enable compression at the top level so any sub-volumes and datasets
 
 Zstandard is almost always going to be the optimal compression algorithm these days, for all use cases, you can read more about it [here](https://en.wikipedia.org/wiki/Zstd) 
 
-    sudo zfs set compression=zstd nas01-raid10  
+`sudo zfs set compression=zstd nas01-raid10`  
+
 Compression is now enabled at the top level and will be inherited:
 ![ZFS Compression](../../ZFS-Compression-2023-05-04_182001.png)

@@ -12,7 +12,7 @@ paginate = 5
   themeColor = "blue"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 6
+  showMenuItems = 8
 
   # show selector to switch language
   showLanguageSelector = false
@@ -84,6 +84,11 @@ paginate = 5
         identifier = "RHCSA"
         name = "RHCSA"
         url = "/rhcsa"
+      [[languages.en.menu.main]]
+        weight = 30
+        identifier = "AWS SAA"
+        name = "AWS SAA"
+        url = "/aws-saa"
       [[languages.en.menu.main]]
         weight = 100
         pre = '<i class="fa-brands fa-github-square"></i>'
