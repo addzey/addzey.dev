@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://addzey.dev/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/centos/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/fedora/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/posts/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/rhel/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/posts/rhel-disable-graphical-boot/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/troubleshooting/</loc>
+    <lastmod>2023-07-09T16:23:54+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/aws/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
@@ -23,20 +44,11 @@
     <loc>https://addzey.dev/rhcsa/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://addzey.dev/tags/rhel/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://addzey.dev/tags/solutions-architect-associate/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/study-notes/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/posts/</loc>
-    <lastmod>2023-04-23T17:31:12+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/posts/rhel-with-zfs/</loc>
     <lastmod>2023-04-23T17:31:12+09:30</lastmod>

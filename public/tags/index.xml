@@ -7,7 +7,47 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jul 2023 16:23:54 +0930</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS</title>
+      <link>https://addzey.dev/tags/centos/</link>
+      <pubDate>Sun, 09 Jul 2023 16:23:54 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/centos/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Fedora</title>
+      <link>https://addzey.dev/tags/fedora/</link>
+      <pubDate>Sun, 09 Jul 2023 16:23:54 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/fedora/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>rhel</title>
+      <link>https://addzey.dev/tags/rhel/</link>
+      <pubDate>Sun, 09 Jul 2023 16:23:54 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/rhel/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Troubleshooting</title>
+      <link>https://addzey.dev/tags/troubleshooting/</link>
+      <pubDate>Sun, 09 Jul 2023 16:23:54 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/troubleshooting/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>AWS</title>
       <link>https://addzey.dev/tags/aws/</link>
@@ -44,16 +84,6 @@
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/tags/rhcsa/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>rhel</title>
-      <link>https://addzey.dev/tags/rhel/</link>
-      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/rhel/</guid>
       <description></description>
       <content></content>
     </item>
