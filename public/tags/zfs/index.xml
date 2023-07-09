@@ -41,6 +41,9 @@ sudo dnf install zfs
 &lt;p&gt;I will be creating the ZFS equivalent of RAID10 by creating 2 mirrored VDEV&amp;rsquo;s each with 2 of the 4 disks&lt;/p&gt;
 &lt;p&gt;I will be naming the pool &amp;ldquo;&lt;strong&gt;nas01-raid10&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IMPORTANT: &lt;strong&gt;/dev/sda /dev/sdb /dev/sdc /dev/sdd&lt;/strong&gt; are used above for ease of reading and understanding, make sure to use the drives in a more specific way like by serial number from &lt;strong&gt;/dev/disk/by-id&lt;/strong&gt; as the disks wont always be initialized in the same order - for example the disk currently initialized first and assigned /dev/sda could become /dev/sdb on a subsequent reboot&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Everything looking good!&lt;br&gt;
 &lt;img src=&#34;../../ZFS-2023-04-25_202804.png&#34; alt=&#34;ZPOOL&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;enable-compression-at-the-top-level&#34;&gt;Enable Compression at the top level&lt;/h2&gt;
