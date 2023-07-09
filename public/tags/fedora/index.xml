@@ -29,6 +29,7 @@ We can see the options &amp;ldquo;quiet rhgb&amp;rdquo; listed in the arguments 
 &amp;ldquo;&lt;em&gt;rhgb&lt;/em&gt;&amp;rdquo; stands for RedHat Graphical Boot which puts a nice display while booting but no info as to what&amp;rsquo;s happening&lt;/p&gt;
 &lt;p&gt;To remove the options &amp;ldquo;quiet&amp;rdquo; and &amp;ldquo;rhgb&amp;rdquo; from all installed kernels:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;grubby --update-kernel=ALL --remove-args=&amp;quot;rhgb quiet&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After the above change, all subsequent boots will scroll dmesg and service startup text in the console&lt;/p&gt;
 </content>
     </item>
     

@@ -33,3 +33,5 @@ To remove the options "quiet" and "rhgb" from all installed kernels:
 
 ```grubby --update-kernel=ALL --remove-args="rhgb quiet"```
 
+After the above change, all subsequent boots will scroll dmesg and service startup text in the console
+

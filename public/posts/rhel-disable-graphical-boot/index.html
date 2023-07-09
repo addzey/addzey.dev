@@ -219,6 +219,7 @@
 &ldquo;<em>rhgb</em>&rdquo; stands for RedHat Graphical Boot which puts a nice display while booting but no info as to what&rsquo;s happening</p>
 <p>To remove the options &ldquo;quiet&rdquo; and &ldquo;rhgb&rdquo; from all installed kernels:</p>
 <p><code>grubby --update-kernel=ALL --remove-args=&quot;rhgb quiet&quot;</code></p>
+<p>After the above change, all subsequent boots will scroll dmesg and service startup text in the console</p>
 
       </div></div>
 
