@@ -14,15 +14,14 @@ color = "" #color from the theme settings
 +++
 
 # Logging and metrics
-### UPS
-![UPS](../UPS-2023-04-01_213311.png)
 ### Router
 ![Router](../Router-2023-04-01_212959.png)
 ### NAS
 ![NAS](../NAS-2023-04-01_213149.png)
-
 ### GPU
 ![GPU](../GPU-2023-07-24-120817.png)
+### UPS
+![UPS](../UPS-2023-04-01_213311.png)
 
 # Monitoring stack
 Prometheus/Grafana/Loki running as rootless containers using Podman
