@@ -9,13 +9,33 @@ toc = true
 +++
 
 # Introduction
- I'll be updating this as I go through practice tasks before my RHCSA exam!
+ I'll be updating this as I go through practice tasks before my RHCSA exam!  
+ Update: Exam is booked in for 05/09/23
 
 ## Understand and use essential tools
 
 ### Access a shell prompt and issue commands with correct syntax
+This is a pretty general "ability to use shell prompt and issue commands"
+I would say it's covered throughout the course so I wont add any explanations or examples here
 
 ### Use input-output redirection (>, >>, |, 2>, etc.)
+STDIN (user) **->** CMD **->** STDOUT (console/screen)  
+
+Read a file as standard input = "**<**" which changes the flow to 'CMD **->** FILE **->** STDOUT' with the file replacing STDIN  
+
+Send the standard output to a file = "**>**" which changes the flow to 'STDIN **->** CMD **->** file' with the file now replacing STDOUT  
+`ls > lsresult`
+
+Redirect STDERR (error messages) = "**2>**" which sends any error messages to the defined location  
+`ls jibberish 2> errors`
+
+Send the standard output to a file but this time append the file = "**>>**" which changes the flow to 'STDIN **->** CMD **->** file' with the file now replacing STDOUT and the STDOUT will append rather than write/overwrite  
+`ls /etc >> lsetcresultappend`
+`ls /etc >> lsetcresultappend`
+
+Piping = "**|**" will use the result of the previous command as the STDINPUT of another command  
+`ls -l /etc | wc`
+
 
 ### Use grep and regular expressions to analyze text
 

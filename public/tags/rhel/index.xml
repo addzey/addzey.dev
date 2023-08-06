@@ -40,12 +40,28 @@ We can see the options &amp;ldquo;quiet rhgb&amp;rdquo; listed in the arguments 
       
       <guid>https://addzey.dev/rhcsa/</guid>
       <description>Introduction I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!
-Understand and use essential tools Access a shell prompt and issue commands with correct syntax Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.) Use grep and regular expressions to analyze text Access remote systems using SSH Log in and switch users in multiuser targets Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2 Create and edit text files Create, delete, copy, and move files and directories Create hard and soft links List, set, and change standard ugo/rwx permissions Locate, read, and use system documentation including man, info, and files in /usr/share/doc Create simple shell scripts Conditionally execute code (use of: if, test, [], etc.</description>
+Update: Exam is booked in for 05/09/23
+Understand and use essential tools Access a shell prompt and issue commands with correct syntax This is a pretty general &amp;ldquo;ability to use shell prompt and issue commands&amp;rdquo; I would say it&amp;rsquo;s covered throughout the course so I wont add any explanations or examples here
+Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!&lt;br&gt;
+Update: Exam is booked in for 05/09/23&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
 &lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;
+&lt;p&gt;This is a pretty general &amp;ldquo;ability to use shell prompt and issue commands&amp;rdquo;
+I would say it&amp;rsquo;s covered throughout the course so I wont add any explanations or examples here&lt;/p&gt;
 &lt;h3 id=&#34;use-input-output-redirection----2-etc&#34;&gt;Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.)&lt;/h3&gt;
+&lt;p&gt;STDIN (user) &lt;strong&gt;-&amp;gt;&lt;/strong&gt; CMD &lt;strong&gt;-&amp;gt;&lt;/strong&gt; STDOUT (console/screen)&lt;/p&gt;
+&lt;p&gt;Read a file as standard input = &amp;ldquo;&lt;strong&gt;&amp;lt;&lt;/strong&gt;&amp;rdquo; which changes the flow to &amp;lsquo;CMD &lt;strong&gt;-&amp;gt;&lt;/strong&gt; FILE &lt;strong&gt;-&amp;gt;&lt;/strong&gt; STDOUT&amp;rsquo; with the file replacing STDIN&lt;/p&gt;
+&lt;p&gt;Send the standard output to a file = &amp;ldquo;&lt;strong&gt;&amp;gt;&lt;/strong&gt;&amp;rdquo; which changes the flow to &amp;lsquo;STDIN &lt;strong&gt;-&amp;gt;&lt;/strong&gt; CMD &lt;strong&gt;-&amp;gt;&lt;/strong&gt; file&amp;rsquo; with the file now replacing STDOUT&lt;br&gt;
+&lt;code&gt;ls &amp;gt; lsresult&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Redirect STDERR (error messages) = &amp;ldquo;&lt;strong&gt;2&amp;gt;&lt;/strong&gt;&amp;rdquo; which sends any error messages to the defined location&lt;br&gt;
+&lt;code&gt;ls jibberish 2&amp;gt; errors&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Send the standard output to a file but this time append the file = &amp;ldquo;&lt;strong&gt;&amp;raquo;&lt;/strong&gt;&amp;rdquo; which changes the flow to &amp;lsquo;STDIN &lt;strong&gt;-&amp;gt;&lt;/strong&gt; CMD &lt;strong&gt;-&amp;gt;&lt;/strong&gt; file&amp;rsquo; with the file now replacing STDOUT and the STDOUT will append rather than write/overwrite&lt;br&gt;
+&lt;code&gt;ls /etc &amp;gt;&amp;gt; lsetcresultappend&lt;/code&gt;
+&lt;code&gt;ls /etc &amp;gt;&amp;gt; lsetcresultappend&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Piping = &amp;ldquo;&lt;strong&gt;|&lt;/strong&gt;&amp;rdquo; will use the result of the previous command as the STDINPUT of another command&lt;br&gt;
+&lt;code&gt;ls -l /etc | wc&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;use-grep-and-regular-expressions-to-analyze-text&#34;&gt;Use grep and regular expressions to analyze text&lt;/h3&gt;
 &lt;h3 id=&#34;access-remote-systems-using-ssh&#34;&gt;Access remote systems using SSH&lt;/h3&gt;
 &lt;h3 id=&#34;log-in-and-switch-users-in-multiuser-targets&#34;&gt;Log in and switch users in multiuser targets&lt;/h3&gt;

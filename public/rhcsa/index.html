@@ -331,10 +331,24 @@
 
   <div class="post-content"><div>
         <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>I&rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!</p>
+<p>I&rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!<br>
+Update: Exam is booked in for 05/09/23</p>
 <h2 id="understand-and-use-essential-tools">Understand and use essential tools<a href="#understand-and-use-essential-tools" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax<a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>This is a pretty general &ldquo;ability to use shell prompt and issue commands&rdquo;
+I would say it&rsquo;s covered throughout the course so I wont add any explanations or examples here</p>
 <h3 id="use-input-output-redirection----2-etc">Use input-output redirection (&gt;, &raquo;, |, 2&gt;, etc.)<a href="#use-input-output-redirection----2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>STDIN (user) <strong>-&gt;</strong> CMD <strong>-&gt;</strong> STDOUT (console/screen)</p>
+<p>Read a file as standard input = &ldquo;<strong>&lt;</strong>&rdquo; which changes the flow to &lsquo;CMD <strong>-&gt;</strong> FILE <strong>-&gt;</strong> STDOUT&rsquo; with the file replacing STDIN</p>
+<p>Send the standard output to a file = &ldquo;<strong>&gt;</strong>&rdquo; which changes the flow to &lsquo;STDIN <strong>-&gt;</strong> CMD <strong>-&gt;</strong> file&rsquo; with the file now replacing STDOUT<br>
+<code>ls &gt; lsresult</code></p>
+<p>Redirect STDERR (error messages) = &ldquo;<strong>2&gt;</strong>&rdquo; which sends any error messages to the defined location<br>
+<code>ls jibberish 2&gt; errors</code></p>
+<p>Send the standard output to a file but this time append the file = &ldquo;<strong>&raquo;</strong>&rdquo; which changes the flow to &lsquo;STDIN <strong>-&gt;</strong> CMD <strong>-&gt;</strong> file&rsquo; with the file now replacing STDOUT and the STDOUT will append rather than write/overwrite<br>
+<code>ls /etc &gt;&gt; lsetcresultappend</code>
+<code>ls /etc &gt;&gt; lsetcresultappend</code></p>
+<p>Piping = &ldquo;<strong>|</strong>&rdquo; will use the result of the previous command as the STDINPUT of another command<br>
+<code>ls -l /etc | wc</code></p>
 <h3 id="use-grep-and-regular-expressions-to-analyze-text">Use grep and regular expressions to analyze text<a href="#use-grep-and-regular-expressions-to-analyze-text" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="access-remote-systems-using-ssh">Access remote systems using SSH<a href="#access-remote-systems-using-ssh" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets<a href="#log-in-and-switch-users-in-multiuser-targets" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
