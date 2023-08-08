@@ -9,14 +9,13 @@ toc = true
 +++
 
 # Introduction
- I'll be updating this as I go through practice tasks before my RHCSA exam!  
+ I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
  Update: Exam is booked in for 05/09/23
 
 ## Understand and use essential tools
 
 ### Access a shell prompt and issue commands with correct syntax
-This is a pretty general "ability to use shell prompt and issue commands"
-I would say it's covered throughout the course so I wont add any explanations or examples here
+I would say this objective is well covered throughout, so I wont add any explanations or examples here
 
 ### Use input-output redirection (>, >>, |, 2>, etc.)
 STDIN (user) **->** CMD **->** STDOUT (console/screen)  
@@ -27,7 +26,8 @@ Send the standard output to a file = "**>**" which changes the flow to 'STDIN **
 `ls > lsresult`
 
 Redirect STDERR (error messages) = "**2>**" which sends any error messages to the defined location  
-`ls jibberish 2> errors`
+`ls jibberish 2> errors`  
+`ls jibberish 2> /dev/null`  
 
 Send the standard output to a file but this time append the file = "**>>**" which changes the flow to 'STDIN **->** CMD **->** file' with the file now replacing STDOUT and the STDOUT will append rather than write/overwrite  
 `ls /etc >> lsetcresultappend`
@@ -38,22 +38,49 @@ Piping = "**|**" will use the result of the previous command as the STDINPUT of 
 
 
 ### Use grep and regular expressions to analyze text
+Find the text "ssh" in the output of 'ps aux': `ps aux | grep ssh`  
+Recursively search for the text "root" in /etc": `grep -R root /etc`  
+Find the text "adam" in /etc/shadow but case-insensitive: `grep -i Adam /etc/shadow`  
+
+
 
 ### Access remote systems using SSH
 
 ### Log in and switch users in multiuser targets
 
 ### Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
+Create an XZ compressed archive of the home folder: `tar cJvf homefolder.tar.xz /home`  
+Extract a compressed archive into a folder: `tar xvf homefolder.tar.xz -C /tmp/archive`
 
 ### Create and edit text files
+Replace all occurrences of a word in a text file: `sed -i s/originalword/replacementword/g /etc/service.conf`  
+Using vim is out of scope for these study notes, check out [https://www.linuxfoundation.org/blog/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim](https://www.linuxfoundation.org/blog/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim)
+
 
 ### Create, delete, copy, and move files and directories
+Create a directory: `mkdir directoryname`  
+Create a sub directory in directory that doesn't already exist: `mkdir -p /tmp/newdir/newdir2`  
+Copy all files starting with the letter 'a', 'b' or 'c' from /etc into /tmp/files: `cp /etc/[a-c]* /tmp/files`  
+Move all files starting with the letters 'a' or 'b' to a subfolder: `mv [a-b]* /tmp/files/folder1`  
+Move all files starting with the letter 'c' into a sub folder: `mv c* /tmp/files/folder2`  
+Copy all files smaller than 1KB into a sub folder: `find -size -1000c -exec cp {} /tmp/files/folder3 \;`  
 
 ### Create hard and soft links
+Consider hard links as similar to an additional copy of a file  
+Consider soft/symbolic links as similar to a shortcut to a file  
+
+Hard link `ln /etc/hosts /root/hardlinkhosts`  
+Soft link `ln -s /etc/hosts /root/symboliclinkhosts`
 
 ### List, set, and change standard ugo/rwx permissions
 
 ### Locate, read, and use system documentation including man, info, and files in /usr/share/doc
+Update mandb to be able to search for text: `mandb`  
+`man -k searchtext`  
+`man command`  
+
+`more /usr/share/doc/openssh/README`  
+`less /usr/share/doc/lvm2/README`  
 
 ## Create simple shell scripts
 

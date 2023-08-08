@@ -331,33 +331,55 @@
 
   <div class="post-content"><div>
         <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>I&rsquo;ll be updating this as I go through practice tasks before my RHCSA exam!<br>
+<p>I&rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!<br>
 Update: Exam is booked in for 05/09/23</p>
 <h2 id="understand-and-use-essential-tools">Understand and use essential tools<a href="#understand-and-use-essential-tools" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax<a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>This is a pretty general &ldquo;ability to use shell prompt and issue commands&rdquo;
-I would say it&rsquo;s covered throughout the course so I wont add any explanations or examples here</p>
+<p>I would say this objective is well covered throughout, so I wont add any explanations or examples here</p>
 <h3 id="use-input-output-redirection----2-etc">Use input-output redirection (&gt;, &raquo;, |, 2&gt;, etc.)<a href="#use-input-output-redirection----2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>STDIN (user) <strong>-&gt;</strong> CMD <strong>-&gt;</strong> STDOUT (console/screen)</p>
 <p>Read a file as standard input = &ldquo;<strong>&lt;</strong>&rdquo; which changes the flow to &lsquo;CMD <strong>-&gt;</strong> FILE <strong>-&gt;</strong> STDOUT&rsquo; with the file replacing STDIN</p>
 <p>Send the standard output to a file = &ldquo;<strong>&gt;</strong>&rdquo; which changes the flow to &lsquo;STDIN <strong>-&gt;</strong> CMD <strong>-&gt;</strong> file&rsquo; with the file now replacing STDOUT<br>
 <code>ls &gt; lsresult</code></p>
 <p>Redirect STDERR (error messages) = &ldquo;<strong>2&gt;</strong>&rdquo; which sends any error messages to the defined location<br>
-<code>ls jibberish 2&gt; errors</code></p>
+<code>ls jibberish 2&gt; errors</code><br>
+<code>ls jibberish 2&gt; /dev/null</code></p>
 <p>Send the standard output to a file but this time append the file = &ldquo;<strong>&raquo;</strong>&rdquo; which changes the flow to &lsquo;STDIN <strong>-&gt;</strong> CMD <strong>-&gt;</strong> file&rsquo; with the file now replacing STDOUT and the STDOUT will append rather than write/overwrite<br>
 <code>ls /etc &gt;&gt; lsetcresultappend</code>
 <code>ls /etc &gt;&gt; lsetcresultappend</code></p>
 <p>Piping = &ldquo;<strong>|</strong>&rdquo; will use the result of the previous command as the STDINPUT of another command<br>
 <code>ls -l /etc | wc</code></p>
 <h3 id="use-grep-and-regular-expressions-to-analyze-text">Use grep and regular expressions to analyze text<a href="#use-grep-and-regular-expressions-to-analyze-text" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Find the text &ldquo;ssh&rdquo; in the output of &lsquo;ps aux&rsquo;: <code>ps aux | grep ssh</code><br>
+Recursively search for the text &ldquo;root&rdquo; in /etc&quot;: <code>grep -R root /etc</code><br>
+Find the text &ldquo;adam&rdquo; in /etc/shadow but case-insensitive: <code>grep -i Adam /etc/shadow</code></p>
 <h3 id="access-remote-systems-using-ssh">Access remote systems using SSH<a href="#access-remote-systems-using-ssh" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets<a href="#log-in-and-switch-users-in-multiuser-targets" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2">Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2<a href="#archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create an XZ compressed archive of the home folder: <code>tar cJvf homefolder.tar.xz /home</code><br>
+Extract a compressed archive into a folder: <code>tar xvf homefolder.tar.xz -C /tmp/archive</code></p>
 <h3 id="create-and-edit-text-files">Create and edit text files<a href="#create-and-edit-text-files" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Replace all occurrences of a word in a text file: <code>sed -i s/originalword/replacementword/g /etc/service.conf</code><br>
+Using vim is out of scope for these study notes, check out <a href="https://www.linuxfoundation.org/blog/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim">https://www.linuxfoundation.org/blog/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim</a></p>
 <h3 id="create-delete-copy-and-move-files-and-directories">Create, delete, copy, and move files and directories<a href="#create-delete-copy-and-move-files-and-directories" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a directory: <code>mkdir directoryname</code><br>
+Create a sub directory in directory that doesn&rsquo;t already exist: <code>mkdir -p /tmp/newdir/newdir2</code><br>
+Copy all files starting with the letter &lsquo;a&rsquo;, &lsquo;b&rsquo; or &lsquo;c&rsquo; from /etc into /tmp/files: <code>cp /etc/[a-c]* /tmp/files</code><br>
+Move all files starting with the letters &lsquo;a&rsquo; or &lsquo;b&rsquo; to a subfolder: <code>mv [a-b]* /tmp/files/folder1</code><br>
+Move all files starting with the letter &lsquo;c&rsquo; into a sub folder: <code>mv c* /tmp/files/folder2</code><br>
+Copy all files smaller than 1KB into a sub folder: <code>find -size -1000c -exec cp {} /tmp/files/folder3 \;</code></p>
 <h3 id="create-hard-and-soft-links">Create hard and soft links<a href="#create-hard-and-soft-links" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Consider hard links as similar to an additional copy of a file<br>
+Consider soft/symbolic links as similar to a shortcut to a file</p>
+<p>Hard link <code>ln /etc/hosts /root/hardlinkhosts</code><br>
+Soft link <code>ln -s /etc/hosts /root/symboliclinkhosts</code></p>
 <h3 id="list-set-and-change-standard-ugorwx-permissions">List, set, and change standard ugo/rwx permissions<a href="#list-set-and-change-standard-ugorwx-permissions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc">Locate, read, and use system documentation including man, info, and files in /usr/share/doc<a href="#locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Update mandb to be able to search for text: <code>mandb</code><br>
+<code>man -k searchtext</code><br>
+<code>man command</code></p>
+<p><code>more /usr/share/doc/openssh/README</code><br>
+<code>less /usr/share/doc/lvm2/README</code></p>
 <h2 id="create-simple-shell-scripts">Create simple shell scripts<a href="#create-simple-shell-scripts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="conditionally-execute-code-use-of-if-test--etc">Conditionally execute code (use of: if, test, [], etc.)<a href="#conditionally-execute-code-use-of-if-test--etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input<a href="#use-looping-constructs-for-etc-to-process-file-command-line-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
