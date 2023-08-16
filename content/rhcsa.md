@@ -42,11 +42,16 @@ Find the text "ssh" in the output of 'ps aux': `ps aux | grep ssh`
 Recursively search for the text "root" in /etc": `grep -R root /etc`  
 Find the text "adam" in /etc/shadow but case-insensitive: `grep -i Adam /etc/shadow`  
 
-
-
 ### Access remote systems using SSH
+Connect to a remote system using SSH: `ssh username@10.0.0.1`  
+Things to keep in mind: `~/.ssh/known_hosts` which is a record of public keys for hosts you have connected to previously and `~/.ssh/id_rsa.pub` which is the public key for the host you're currently connected to  
+ 
 
 ### Log in and switch users in multiuser targets
+Change virtual terminal: `chvt 4` Can also be done with CTL+ALT+F[1-6] when using console or phsyical logins  
+Use "w" command to see all logged in users: `w`  
+Use "su" to change user to root: `su -`  
+Use "sudo" to run commands as root: `sudo command -options`  
 
 ### Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
 Create an XZ compressed archive of the home folder: `tar cJvf homefolder.tar.xz /home`  
