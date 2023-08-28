@@ -43,7 +43,7 @@ I will be naming the pool "**nas01-raid10**"
 
 `sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd`
 
->IMPORTANT: **/dev/sda /dev/sdb /dev/sdc /dev/sdd** are used above for ease of reading and understanding, make sure to use the drives in a more specific way like by serial number from **/dev/disk/by-id** as the disks wont always be initialized in the same order - for example the disk currently initialized first and assigned /dev/sda could become /dev/sdb on a subsequent reboot
+>IMPORTANT: When you are happy with things and before you start storing any data, make sure to use the drives in a more specific way like by serial number from **/dev/disk/by-id** as the disks wont always be initialized in the same order - for example the disk that's currently /dev/sd**a** could become /dev/sd**b** on a subsequent reboot
 
 Everything looking good!  
 ![ZPOOL](../../ZFS-2023-04-25_202804.png)

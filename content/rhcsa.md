@@ -10,7 +10,7 @@ toc = true
 
 # Introduction
  I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
- Update: Exam is booked in for 05/09/23
+ Exam is booked in for **26/09/23**
 
 ## Understand and use essential tools
 

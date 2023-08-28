@@ -229,7 +229,7 @@ sudo dnf install zfs
 <p>I will be naming the pool &ldquo;<strong>nas01-raid10</strong>&rdquo;</p>
 <p><code>sudo zpool create nas01-raid10 mirror /dev/sda /dev/sdb mirror /dev/sdc /dev/sdd</code></p>
 <blockquote>
-<p>IMPORTANT: <strong>/dev/sda /dev/sdb /dev/sdc /dev/sdd</strong> are used above for ease of reading and understanding, make sure to use the drives in a more specific way like by serial number from <strong>/dev/disk/by-id</strong> as the disks wont always be initialized in the same order - for example the disk currently initialized first and assigned /dev/sda could become /dev/sdb on a subsequent reboot</p>
+<p>IMPORTANT: When you are happy with things and before you start storing any data, make sure to use the drives in a more specific way like by serial number from <strong>/dev/disk/by-id</strong> as the disks wont always be initialized in the same order - for example the disk that&rsquo;s currently /dev/sd<strong>a</strong> could become /dev/sd<strong>b</strong> on a subsequent reboot</p>
 </blockquote>
 <p>Everything looking good!<br>
 <img src="../../ZFS-2023-04-25_202804.png" alt="ZPOOL"></p>

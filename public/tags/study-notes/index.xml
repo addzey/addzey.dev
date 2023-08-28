@@ -28,12 +28,12 @@
       
       <guid>https://addzey.dev/rhcsa/</guid>
       <description>Introduction I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!
-Update: Exam is booked in for 05/09/23
+Exam is booked in for 26/09/23
 Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here
 Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.) STDIN (user) -&amp;gt; CMD -&amp;gt; STDOUT (console/screen)</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!&lt;br&gt;
-Update: Exam is booked in for 05/09/23&lt;/p&gt;
+Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
 &lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;
 &lt;p&gt;I would say this objective is well covered throughout, so I wont add any explanations or examples here&lt;/p&gt;
