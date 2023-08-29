@@ -14,13 +14,13 @@
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/rhcsa/</guid>
-      <description>Introduction I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!
-Exam is booked in for 26/09/23
+      <description>Introduction Exam is booked in for 26/09/23
+I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!
 Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here
 Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.) STDIN (user) -&amp;gt; CMD -&amp;gt; STDOUT (console/screen)</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!&lt;br&gt;
-Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;br&gt;
+I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
 &lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;
 &lt;p&gt;I would say this objective is well covered throughout, so I wont add any explanations or examples here&lt;/p&gt;
@@ -118,8 +118,24 @@ Soft link &lt;code&gt;ln -s /etc/hosts /root/symboliclinkhosts&lt;/code&gt;&lt;/
 &lt;h3 id=&#34;restrict-network-access-using-firewall-cmdfirewall&#34;&gt;Restrict network access using firewall-cmd/firewall&lt;/h3&gt;
 &lt;h2 id=&#34;manage-users-and-groups&#34;&gt;Manage users and groups&lt;/h2&gt;
 &lt;h3 id=&#34;create-delete-and-modify-local-user-accounts&#34;&gt;Create, delete, and modify local user accounts&lt;/h3&gt;
+&lt;p&gt;Create a user with a comment associated with the account: &lt;code&gt;useradd -c &amp;quot;this is a new user&amp;quot; notadam&lt;/code&gt;&lt;br&gt;
+Create a new user without a comment: &lt;code&gt;useradd notadam2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Remove a user: &lt;code&gt;userdel notadam2&lt;/code&gt;&lt;br&gt;
+Remove a user and remove their home directory: &lt;code&gt;userdel -r notadam&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specify files to be created in users home directories by default: &lt;strong&gt;/etc/skel&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;change-passwords-and-adjust-password-aging-for-local-user-accounts&#34;&gt;Change passwords and adjust password aging for local user accounts&lt;/h3&gt;
+&lt;p&gt;Change the password for your currently logged in account: &lt;code&gt;passwd&lt;/code&gt;&lt;br&gt;
+Change the password for another account (requires root): &lt;code&gt;passwd username&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Set password aging in &lt;code&gt;/etc/login.defs&lt;/code&gt;&lt;br&gt;
+Find the variable named &lt;strong&gt;PASS_MAX_DAYS&lt;/strong&gt;&lt;br&gt;
+Setting password aging in /etc/login.defs will only apply to newly created accounts&lt;br&gt;
+Set the password age for an existing account: &lt;code&gt;chage username&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;create-delete-and-modify-local-groups-and-group-memberships&#34;&gt;Create, delete, and modify local groups and group memberships&lt;/h3&gt;
+&lt;p&gt;Add user to the group &amp;ldquo;wheel&amp;rdquo;: &lt;code&gt;usermod -aG wheel adam&lt;/code&gt;&lt;br&gt;
+Using the -a switch along with the -G switch means it will &lt;strong&gt;append&lt;/strong&gt; group memberships rather than replace&lt;/p&gt;
+&lt;p&gt;List members of a group: &lt;code&gt;lid -g groupname&lt;/code&gt;&lt;br&gt;
+Delete a group: &lt;code&gt;groupdel groupname&lt;/code&gt;&lt;br&gt;
+Change the name of a group: &lt;code&gt;groupmod -n newgroupname oldgroupname&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-superuser-access&#34;&gt;Configure superuser access&lt;/h3&gt;
 &lt;h2 id=&#34;manage-security&#34;&gt;Manage security&lt;/h2&gt;
 &lt;h3 id=&#34;configure-firewall-settings-using-firewall-cmdfirewalld&#34;&gt;Configure firewall settings using firewall-cmd/firewalld&lt;/h3&gt;

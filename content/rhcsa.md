@@ -9,8 +9,8 @@ toc = true
 +++
 
 # Introduction
- I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
- Exam is booked in for **26/09/23**
+Exam is booked in for **26/09/23**  
+I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
 
 ## Understand and use essential tools
 
@@ -177,10 +177,31 @@ Update mandb to be able to search for text: `mandb`
 ## Manage users and groups
 
 ### Create, delete, and modify local user accounts
+Create a user with a comment associated with the account: ``useradd -c "this is a new user" notadam``  
+Create a new user without a comment: ``useradd notadam2``  
+
+Remove a user: ``userdel notadam2``  
+Remove a user and remove their home directory: ``userdel -r notadam``  
+
+Specify files to be created in users home directories by default: **/etc/skel**
 
 ### Change passwords and adjust password aging for local user accounts
+Change the password for your currently logged in account: ``passwd``  
+Change the password for another account (requires root): ``passwd username``  
+
+Set password aging in ``/etc/login.defs``  
+Find the variable named **PASS_MAX_DAYS**  
+Setting password aging in /etc/login.defs will only apply to newly created accounts  
+Set the password age for an existing account: ``chage username``  
+
 
 ### Create, delete, and modify local groups and group memberships
+Add user to the group "wheel": ``usermod -aG wheel adam``  
+Using the -a switch along with the -G switch means it will **append** group memberships rather than replace  
+
+List members of a group: ``lid -g groupname``  
+Delete a group: ``groupdel groupname``  
+Change the name of a group: ``groupmod -n newgroupname oldgroupname``  
 
 ### Configure superuser access
 

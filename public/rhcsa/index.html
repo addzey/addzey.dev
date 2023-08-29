@@ -331,8 +331,8 @@
 
   <div class="post-content"><div>
         <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>I&rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!<br>
-Exam is booked in for <strong>26/09/23</strong></p>
+<p>Exam is booked in for <strong>26/09/23</strong><br>
+I&rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!</p>
 <h2 id="understand-and-use-essential-tools">Understand and use essential tools<a href="#understand-and-use-essential-tools" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax<a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>I would say this objective is well covered throughout, so I wont add any explanations or examples here</p>
@@ -430,8 +430,24 @@ Soft link <code>ln -s /etc/hosts /root/symboliclinkhosts</code></p>
 <h3 id="restrict-network-access-using-firewall-cmdfirewall">Restrict network access using firewall-cmd/firewall<a href="#restrict-network-access-using-firewall-cmdfirewall" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-users-and-groups">Manage users and groups<a href="#manage-users-and-groups" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="create-delete-and-modify-local-user-accounts">Create, delete, and modify local user accounts<a href="#create-delete-and-modify-local-user-accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a user with a comment associated with the account: <code>useradd -c &quot;this is a new user&quot; notadam</code><br>
+Create a new user without a comment: <code>useradd notadam2</code></p>
+<p>Remove a user: <code>userdel notadam2</code><br>
+Remove a user and remove their home directory: <code>userdel -r notadam</code></p>
+<p>Specify files to be created in users home directories by default: <strong>/etc/skel</strong></p>
 <h3 id="change-passwords-and-adjust-password-aging-for-local-user-accounts">Change passwords and adjust password aging for local user accounts<a href="#change-passwords-and-adjust-password-aging-for-local-user-accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Change the password for your currently logged in account: <code>passwd</code><br>
+Change the password for another account (requires root): <code>passwd username</code></p>
+<p>Set password aging in <code>/etc/login.defs</code><br>
+Find the variable named <strong>PASS_MAX_DAYS</strong><br>
+Setting password aging in /etc/login.defs will only apply to newly created accounts<br>
+Set the password age for an existing account: <code>chage username</code></p>
 <h3 id="create-delete-and-modify-local-groups-and-group-memberships">Create, delete, and modify local groups and group memberships<a href="#create-delete-and-modify-local-groups-and-group-memberships" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Add user to the group &ldquo;wheel&rdquo;: <code>usermod -aG wheel adam</code><br>
+Using the -a switch along with the -G switch means it will <strong>append</strong> group memberships rather than replace</p>
+<p>List members of a group: <code>lid -g groupname</code><br>
+Delete a group: <code>groupdel groupname</code><br>
+Change the name of a group: <code>groupmod -n newgroupname oldgroupname</code></p>
 <h3 id="configure-superuser-access">Configure superuser access<a href="#configure-superuser-access" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-security">Manage security<a href="#manage-security" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="configure-firewall-settings-using-firewall-cmdfirewalld">Configure firewall settings using firewall-cmd/firewalld<a href="#configure-firewall-settings-using-firewall-cmdfirewalld" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
