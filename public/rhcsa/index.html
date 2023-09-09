@@ -194,7 +194,7 @@
       
       #<a href="https://addzey.dev/tags/rhcsa/">RHCSA</a>&nbsp;
       
-      #<a href="https://addzey.dev/tags/red-hat/">Red Hat</a>&nbsp;
+      #<a href="https://addzey.dev/tags/redhat/">RedHat</a>&nbsp;
       
       #<a href="https://addzey.dev/tags/rhel/">rhel</a>&nbsp;
       
@@ -380,6 +380,13 @@ Consider soft/symbolic links as similar to a shortcut to a file</p>
 <p>Hard link <code>ln /etc/hosts /root/hardlinkhosts</code><br>
 Soft link <code>ln -s /etc/hosts /root/symboliclinkhosts</code></p>
 <h3 id="list-set-and-change-standard-ugorwx-permissions">List, set, and change standard ugo/rwx permissions<a href="#list-set-and-change-standard-ugorwx-permissions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>List the contents of a folder including the permissions: <code>ls -la</code> or <code>ls -la /folder/path</code></p>
+<p>Change the permissions of a folder or file: <code>chmod 770 file</code> or <code>chmod u+wr file</code> or <code>chmod g-w folder</code><br>
+Set the permissions of a folder or file while removing any existing permissions: <code>chmod u=rw,g=r file</code></p>
+<p>Set user owner and group owner of a file: <code>chown user:group file</code><br>
+Set user owner and group owner of a folder and apply recursively: <code>chown -R user:group folder</code></p>
+<p>Set a default filesystem ACL for a group to always have read access to a folder: <code>setfacl -m d:g:groupname:rx /folder/path</code><br>
+List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</code></p>
 <h3 id="locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc">Locate, read, and use system documentation including man, info, and files in /usr/share/doc<a href="#locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Update mandb to be able to search for text: <code>mandb</code><br>
 <code>man -k searchtext</code><br>
@@ -441,7 +448,8 @@ Change the password for another account (requires root): <code>passwd username</
 <p>Set password aging in <code>/etc/login.defs</code><br>
 Find the variable named <strong>PASS_MAX_DAYS</strong><br>
 Setting password aging in /etc/login.defs will only apply to newly created accounts<br>
-Set the password age for an existing account: <code>chage username</code></p>
+Set the minimum password age for an existing account: <code>chage -m 3 username</code><br>
+Set the maximum password age for an existing account: <code>chage -M 90 username</code></p>
 <h3 id="create-delete-and-modify-local-groups-and-group-memberships">Create, delete, and modify local groups and group memberships<a href="#create-delete-and-modify-local-groups-and-group-memberships" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Add user to the group &ldquo;wheel&rdquo;: <code>usermod -aG wheel adam</code><br>
 Using the -a switch along with the -G switch means it will <strong>append</strong> group memberships rather than replace</p>

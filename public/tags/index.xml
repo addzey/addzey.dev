@@ -69,11 +69,11 @@
     </item>
     
     <item>
-      <title>Red Hat</title>
-      <link>https://addzey.dev/tags/red-hat/</link>
+      <title>RedHat</title>
+      <link>https://addzey.dev/tags/redhat/</link>
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://addzey.dev/tags/red-hat/</guid>
+      <guid>https://addzey.dev/tags/redhat/</guid>
       <description></description>
       <content></content>
     </item>
@@ -184,6 +184,16 @@
       <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
       
       <guid>https://addzey.dev/tags/prometheus/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Red Hat</title>
+      <link>https://addzey.dev/tags/red-hat/</link>
+      <pubDate>Sat, 15 Apr 2023 20:42:06 +0930</pubDate>
+      
+      <guid>https://addzey.dev/tags/red-hat/</guid>
       <description></description>
       <content></content>
     </item>

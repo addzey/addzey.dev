@@ -35,7 +35,7 @@
     <loc>https://addzey.dev/aws-saa/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://addzey.dev/tags/red-hat/</loc>
+    <loc>https://addzey.dev/tags/redhat/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/rhcsa/</loc>
@@ -84,6 +84,9 @@
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/prometheus/</loc>
+    <lastmod>2023-04-15T20:42:06+09:30</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/red-hat/</loc>
     <lastmod>2023-04-15T20:42:06+09:30</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/testing/</loc>

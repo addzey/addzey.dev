@@ -2,7 +2,7 @@
 title = "RHCSA Study Notes"
 date = "2023-05-28"
 author = "Adam"
-tags = ["RHCSA", "Red Hat","rhel", "Study Notes"]
+tags = ["RHCSA", "RedHat","rhel", "Study Notes"]
 keywords = ["RHCSA"]
 description = "My study notes for RHCSA certification"
 toc = true
@@ -78,6 +78,16 @@ Hard link `ln /etc/hosts /root/hardlinkhosts`
 Soft link `ln -s /etc/hosts /root/symboliclinkhosts`
 
 ### List, set, and change standard ugo/rwx permissions
+List the contents of a folder including the permissions: `ls -la` or `ls -la /folder/path` 
+
+Change the permissions of a folder or file: `chmod 770 file` or `chmod u+wr file` or `chmod g-w folder`  
+Set the permissions of a folder or file while removing any existing permissions: `chmod u=rw,g=r file`  
+
+Set user owner and group owner of a file: `chown user:group file`  
+Set user owner and group owner of a folder and apply recursively: `chown -R user:group folder`  
+
+Set a default filesystem ACL for a group to always have read access to a folder: `setfacl -m d:g:groupname:rx /folder/path`  
+List existing filesystem ACL's for a folder: `getfacl /folder/path`  
 
 ### Locate, read, and use system documentation including man, info, and files in /usr/share/doc
 Update mandb to be able to search for text: `mandb`  
@@ -192,7 +202,8 @@ Change the password for another account (requires root): ``passwd username``
 Set password aging in ``/etc/login.defs``  
 Find the variable named **PASS_MAX_DAYS**  
 Setting password aging in /etc/login.defs will only apply to newly created accounts  
-Set the password age for an existing account: ``chage username``  
+Set the minimum password age for an existing account: ``chage -m 3 username``  
+Set the maximum password age for an existing account: ``chage -M 90 username``  
 
 
 ### Create, delete, and modify local groups and group memberships
