@@ -200,6 +200,25 @@ Check the status of a service: `systemctl status servicename`
 Set a service to start on boot: `systemctl enable servicename`  
 Stop a service from starting on boot: `systemctl disable servicename`  
 
+List systemd unit types: `systemctl -t help`  
+List running units: `systemctl list-units`  
+
+Reload systemd units after making changes: `systemctl daemon-reload`  
+
+Edit a systemd service and have it always restart after a 1 minute delay:
+`systemctl edit httpd`  
+In the text editor that opens, add in
+~~~
+[Service]
+Restart=always
+RestartSec=60s
+~~~
+Reload systemd units: `systemctl daemon-reload`  
+Set the service to start at boot and start it now: `systemctl enable --now httpd`
+Kill the service: `killall httpd`  
+Check that the service has stopped and it's Active status is "Activating" - this should show that it will auto-restart in 60 seconds  
+`systemctl status httpd`  
+
 ### Configure systems to boot into a specific target automatically
 
 ### Configure time service clients
@@ -216,9 +235,13 @@ Show all available packages: `yum list` and show installed packages: `yum list i
 Install a package: `yum install packagename`  
 Remove a package: `yum remove packagename`  
 
+Check for newer versions of installed packages: `yum update`  
+Check for a newer version of a specific package: `yum update packagename`  
 
-Check for newer versions of packages: `yum update`  
+Download the rpm of an available package: `yumdownloader httpd` or `dnf download httpd`  
+Check an rpm file for any scripts: `rpm -qp --scripts httpd-2.4.57-5.el9.x86_64.rpm`  
 
+**$$ need to add something for "yum groups" and "yum modules" $$**
 
 Create a **local** repo for installing packages:  
     Create an ISO from the dvd drive: `dd if=/dev/sr0 of=/rhel92.iso bs=1M`  

@@ -166,6 +166,20 @@ Stop a service: &lt;code&gt;systemctl stop servicename&lt;/code&gt;&lt;br&gt;
 Check the status of a service: &lt;code&gt;systemctl status servicename&lt;/code&gt;&lt;br&gt;
 Set a service to start on boot: &lt;code&gt;systemctl enable servicename&lt;/code&gt;&lt;br&gt;
 Stop a service from starting on boot: &lt;code&gt;systemctl disable servicename&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;List systemd unit types: &lt;code&gt;systemctl -t help&lt;/code&gt;&lt;br&gt;
+List running units: &lt;code&gt;systemctl list-units&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Reload systemd units after making changes: &lt;code&gt;systemctl daemon-reload&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Edit a systemd service and have it always restart after a 1 minute delay:
+&lt;code&gt;systemctl edit httpd&lt;/code&gt;&lt;br&gt;
+In the text editor that opens, add in&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Service]
+Restart=always
+RestartSec=60s
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Reload systemd units: &lt;code&gt;systemctl daemon-reload&lt;/code&gt;&lt;br&gt;
+Set the service to start at boot and start it now: &lt;code&gt;systemctl enable --now httpd&lt;/code&gt;
+Kill the service: &lt;code&gt;killall httpd&lt;/code&gt;&lt;br&gt;
+Check that the service has stopped and it&amp;rsquo;s Active status is &amp;ldquo;Activating&amp;rdquo; - this should show that it will auto-restart in 60 seconds&lt;br&gt;
+&lt;code&gt;systemctl status httpd&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-systems-to-boot-into-a-specific-target-automatically&#34;&gt;Configure systems to boot into a specific target automatically&lt;/h3&gt;
 &lt;h3 id=&#34;configure-time-service-clients&#34;&gt;Configure time service clients&lt;/h3&gt;
 &lt;h3 id=&#34;install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system&#34;&gt;Install and update software packages from Red Hat Network, a remote repository, or from the local file system&lt;/h3&gt;
@@ -178,7 +192,11 @@ Show info/description of a package: &lt;code&gt;yum info packagename&lt;/code&gt
 Show all available packages: &lt;code&gt;yum list&lt;/code&gt; and show installed packages: &lt;code&gt;yum list installed&lt;/code&gt;&lt;br&gt;
 Install a package: &lt;code&gt;yum install packagename&lt;/code&gt;&lt;br&gt;
 Remove a package: &lt;code&gt;yum remove packagename&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Check for newer versions of packages: &lt;code&gt;yum update&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Check for newer versions of installed packages: &lt;code&gt;yum update&lt;/code&gt;&lt;br&gt;
+Check for a newer version of a specific package: &lt;code&gt;yum update packagename&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Download the rpm of an available package: &lt;code&gt;yumdownloader httpd&lt;/code&gt; or &lt;code&gt;dnf download httpd&lt;/code&gt;&lt;br&gt;
+Check an rpm file for any scripts: &lt;code&gt;rpm -qp --scripts httpd-2.4.57-5.el9.x86_64.rpm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;$$ need to add something for &amp;ldquo;yum groups&amp;rdquo; and &amp;ldquo;yum modules&amp;rdquo; $$&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Create a &lt;strong&gt;local&lt;/strong&gt; repo for installing packages:&lt;br&gt;
 Create an ISO from the dvd drive: &lt;code&gt;dd if=/dev/sr0 of=/rhel92.iso bs=1M&lt;/code&gt;&lt;br&gt;
 Create a mount point: &lt;code&gt;mkdir /repo&lt;/code&gt;&lt;br&gt;

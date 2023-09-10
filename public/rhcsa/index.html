@@ -453,6 +453,20 @@ Stop a service: <code>systemctl stop servicename</code><br>
 Check the status of a service: <code>systemctl status servicename</code><br>
 Set a service to start on boot: <code>systemctl enable servicename</code><br>
 Stop a service from starting on boot: <code>systemctl disable servicename</code></p>
+<p>List systemd unit types: <code>systemctl -t help</code><br>
+List running units: <code>systemctl list-units</code></p>
+<p>Reload systemd units after making changes: <code>systemctl daemon-reload</code></p>
+<p>Edit a systemd service and have it always restart after a 1 minute delay:
+<code>systemctl edit httpd</code><br>
+In the text editor that opens, add in</p>
+<pre tabindex="0"><code>[Service]
+Restart=always
+RestartSec=60s
+</code></pre><p>Reload systemd units: <code>systemctl daemon-reload</code><br>
+Set the service to start at boot and start it now: <code>systemctl enable --now httpd</code>
+Kill the service: <code>killall httpd</code><br>
+Check that the service has stopped and it&rsquo;s Active status is &ldquo;Activating&rdquo; - this should show that it will auto-restart in 60 seconds<br>
+<code>systemctl status httpd</code></p>
 <h3 id="configure-systems-to-boot-into-a-specific-target-automatically">Configure systems to boot into a specific target automatically<a href="#configure-systems-to-boot-into-a-specific-target-automatically" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="configure-time-service-clients">Configure time service clients<a href="#configure-time-service-clients" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system">Install and update software packages from Red Hat Network, a remote repository, or from the local file system<a href="#install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
@@ -465,7 +479,11 @@ Show info/description of a package: <code>yum info packagename</code><br>
 Show all available packages: <code>yum list</code> and show installed packages: <code>yum list installed</code><br>
 Install a package: <code>yum install packagename</code><br>
 Remove a package: <code>yum remove packagename</code></p>
-<p>Check for newer versions of packages: <code>yum update</code></p>
+<p>Check for newer versions of installed packages: <code>yum update</code><br>
+Check for a newer version of a specific package: <code>yum update packagename</code></p>
+<p>Download the rpm of an available package: <code>yumdownloader httpd</code> or <code>dnf download httpd</code><br>
+Check an rpm file for any scripts: <code>rpm -qp --scripts httpd-2.4.57-5.el9.x86_64.rpm</code></p>
+<p><strong>$$ need to add something for &ldquo;yum groups&rdquo; and &ldquo;yum modules&rdquo; $$</strong></p>
 <p>Create a <strong>local</strong> repo for installing packages:<br>
 Create an ISO from the dvd drive: <code>dd if=/dev/sr0 of=/rhel92.iso bs=1M</code><br>
 Create a mount point: <code>mkdir /repo</code><br>
