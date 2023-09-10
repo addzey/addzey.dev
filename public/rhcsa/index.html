@@ -331,8 +331,9 @@
 
   <div class="post-content"><div>
         <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<p>Exam is booked in for <strong>26/09/23</strong><br>
-I&rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!</p>
+<p>You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: <a href="https://developers.redhat.com/">https://developers.redhat.com/</a></p>
+<p>I&rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!<br>
+Exam is booked in for <strong>26/09/23</strong></p>
 <h2 id="understand-and-use-essential-tools">Understand and use essential tools<a href="#understand-and-use-essential-tools" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax<a href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>I would say this objective is well covered throughout, so I wont add any explanations or examples here</p>
@@ -447,9 +448,17 @@ Set a specific tuned profile: <code>tuned-adm profile profilename</code></p>
 <h2 id="deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems<a href="#deploy-configure-and-maintain-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="schedule-tasks-using-at-and-cron">Schedule tasks using at and cron<a href="#schedule-tasks-using-at-and-cron" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="start-and-stop-services-and-configure-services-to-start-automatically-at-boot">Start and stop services and configure services to start automatically at boot<a href="#start-and-stop-services-and-configure-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Start a service: <code>systemctl start servicename</code><br>
+Stop a service: <code>systemctl stop servicename</code><br>
+Check the status of a service: <code>systemctl status servicename</code><br>
+Set a service to start on boot: <code>systemctl enable servicename</code><br>
+Stop a service from starting on boot: <code>systemctl disable servicename</code></p>
 <h3 id="configure-systems-to-boot-into-a-specific-target-automatically">Configure systems to boot into a specific target automatically<a href="#configure-systems-to-boot-into-a-specific-target-automatically" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="configure-time-service-clients">Configure time service clients<a href="#configure-time-service-clients" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system">Install and update software packages from Red Hat Network, a remote repository, or from the local file system<a href="#install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Installing packages from Red Hat network requires registering a subscription which can be done with Subscription Manager<br>
+Register subscription: <code>subscription-manager register</code> (provide username and password)<br>
+Connect the subscription: <code>subscription-manager attach --auto</code></p>
 <p>Search for a package: <code>yum search packagename</code><br>
 Find a package that contains a wanted tool: <code>yum provides setools</code><br>
 Show info/description of a package: <code>yum info packagename</code><br>
@@ -460,7 +469,7 @@ Remove a package: <code>yum remove packagename</code></p>
 <p>Create a <strong>local</strong> repo for installing packages:<br>
 Create an ISO from the dvd drive: <code>dd if=/dev/sr0 of=/rhel92.iso bs=1M</code><br>
 Create a mount point: <code>mkdir /repo</code><br>
-Mount the ISO as /repo by editing fstab and adding to the end <code>/rhel92.iso /repo iso9660 defaults 0 0</code> followed by <code>systemctl daemon-reload</code> and <code>mount -a</code></p>
+Mount the ISO as <strong>/repo</strong> by editing <strong>/etc/fstab</strong> and adding <code>/rhel92.iso /repo iso9660 defaults 0 0</code> followed by <code>systemctl daemon-reload</code> and <code>mount -a</code></p>
 <p>Create a yum repo with an entry for the above starting with BaseOS and then AppStream:</p>
 <p><code>vim /etc/yum.repos.d/baseos.repo</code><br>
 Enter the contents:</p>

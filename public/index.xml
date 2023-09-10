@@ -52,13 +52,14 @@ We can see the options &amp;ldquo;quiet rhgb&amp;rdquo; listed in the arguments 
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/rhcsa/</guid>
-      <description>Introduction Exam is booked in for 26/09/23
+      <description>Introduction You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
 I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!
-Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here
-Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.) STDIN (user) -&amp;gt; CMD -&amp;gt; STDOUT (console/screen)</description>
+Exam is booked in for 26/09/23
+Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;br&gt;
-I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!&lt;/p&gt;
+&lt;p&gt;You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: &lt;a href=&#34;https://developers.redhat.com/&#34;&gt;https://developers.redhat.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be updating this as I go through practice tasks before taking the RHCSA exam!&lt;br&gt;
+Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
 &lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;
 &lt;p&gt;I would say this objective is well covered throughout, so I wont add any explanations or examples here&lt;/p&gt;
@@ -173,9 +174,17 @@ Set a specific tuned profile: &lt;code&gt;tuned-adm profile profilename&lt;/code
 &lt;h2 id=&#34;deploy-configure-and-maintain-systems&#34;&gt;Deploy, configure, and maintain systems&lt;/h2&gt;
 &lt;h3 id=&#34;schedule-tasks-using-at-and-cron&#34;&gt;Schedule tasks using at and cron&lt;/h3&gt;
 &lt;h3 id=&#34;start-and-stop-services-and-configure-services-to-start-automatically-at-boot&#34;&gt;Start and stop services and configure services to start automatically at boot&lt;/h3&gt;
+&lt;p&gt;Start a service: &lt;code&gt;systemctl start servicename&lt;/code&gt;&lt;br&gt;
+Stop a service: &lt;code&gt;systemctl stop servicename&lt;/code&gt;&lt;br&gt;
+Check the status of a service: &lt;code&gt;systemctl status servicename&lt;/code&gt;&lt;br&gt;
+Set a service to start on boot: &lt;code&gt;systemctl enable servicename&lt;/code&gt;&lt;br&gt;
+Stop a service from starting on boot: &lt;code&gt;systemctl disable servicename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-systems-to-boot-into-a-specific-target-automatically&#34;&gt;Configure systems to boot into a specific target automatically&lt;/h3&gt;
 &lt;h3 id=&#34;configure-time-service-clients&#34;&gt;Configure time service clients&lt;/h3&gt;
 &lt;h3 id=&#34;install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system&#34;&gt;Install and update software packages from Red Hat Network, a remote repository, or from the local file system&lt;/h3&gt;
+&lt;p&gt;Installing packages from Red Hat network requires registering a subscription which can be done with Subscription Manager&lt;br&gt;
+Register subscription: &lt;code&gt;subscription-manager register&lt;/code&gt; (provide username and password)&lt;br&gt;
+Connect the subscription: &lt;code&gt;subscription-manager attach --auto&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Search for a package: &lt;code&gt;yum search packagename&lt;/code&gt;&lt;br&gt;
 Find a package that contains a wanted tool: &lt;code&gt;yum provides setools&lt;/code&gt;&lt;br&gt;
 Show info/description of a package: &lt;code&gt;yum info packagename&lt;/code&gt;&lt;br&gt;
@@ -186,7 +195,7 @@ Remove a package: &lt;code&gt;yum remove packagename&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Create a &lt;strong&gt;local&lt;/strong&gt; repo for installing packages:&lt;br&gt;
 Create an ISO from the dvd drive: &lt;code&gt;dd if=/dev/sr0 of=/rhel92.iso bs=1M&lt;/code&gt;&lt;br&gt;
 Create a mount point: &lt;code&gt;mkdir /repo&lt;/code&gt;&lt;br&gt;
-Mount the ISO as /repo by editing fstab and adding to the end &lt;code&gt;/rhel92.iso /repo iso9660 defaults 0 0&lt;/code&gt; followed by &lt;code&gt;systemctl daemon-reload&lt;/code&gt; and &lt;code&gt;mount -a&lt;/code&gt;&lt;/p&gt;
+Mount the ISO as &lt;strong&gt;/repo&lt;/strong&gt; by editing &lt;strong&gt;/etc/fstab&lt;/strong&gt; and adding &lt;code&gt;/rhel92.iso /repo iso9660 defaults 0 0&lt;/code&gt; followed by &lt;code&gt;systemctl daemon-reload&lt;/code&gt; and &lt;code&gt;mount -a&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Create a yum repo with an entry for the above starting with BaseOS and then AppStream:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;vim /etc/yum.repos.d/baseos.repo&lt;/code&gt;&lt;br&gt;
 Enter the contents:&lt;/p&gt;

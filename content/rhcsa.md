@@ -9,8 +9,10 @@ toc = true
 +++
 
 # Introduction
-Exam is booked in for **26/09/23**  
+You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
+ 
 I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
+Exam is booked in for **26/09/23** 
 
 ## Understand and use essential tools
 
@@ -192,12 +194,21 @@ Set a specific tuned profile: `tuned-adm profile profilename`
 ### Schedule tasks using at and cron
 
 ### Start and stop services and configure services to start automatically at boot
+Start a service: `systemctl start servicename`  
+Stop a service: `systemctl stop servicename`  
+Check the status of a service: `systemctl status servicename`  
+Set a service to start on boot: `systemctl enable servicename`  
+Stop a service from starting on boot: `systemctl disable servicename`  
 
 ### Configure systems to boot into a specific target automatically
 
 ### Configure time service clients
 
 ### Install and update software packages from Red Hat Network, a remote repository, or from the local file system
+Installing packages from Red Hat network requires registering a subscription which can be done with Subscription Manager  
+Register subscription: `subscription-manager register` (provide username and password)  
+Connect the subscription: `subscription-manager attach --auto`  
+
 Search for a package: `yum search packagename`  
 Find a package that contains a wanted tool: `yum provides setools`  
 Show info/description of a package: `yum info packagename`  
@@ -212,7 +223,7 @@ Check for newer versions of packages: `yum update`
 Create a **local** repo for installing packages:  
     Create an ISO from the dvd drive: `dd if=/dev/sr0 of=/rhel92.iso bs=1M`  
     Create a mount point: `mkdir /repo`  
-    Mount the ISO as /repo by editing fstab and adding to the end `/rhel92.iso /repo iso9660 defaults 0 0` followed by `systemctl daemon-reload` and `mount -a`  
+    Mount the ISO as **/repo** by editing **/etc/fstab** and adding `/rhel92.iso /repo iso9660 defaults 0 0` followed by `systemctl daemon-reload` and `mount -a`  
 
 Create a yum repo with an entry for the above starting with BaseOS and then AppStream:   
 
@@ -233,9 +244,6 @@ Create a yum repo with an entry for the above starting with BaseOS and then AppS
     baseurl=file:///repo/AppStream  
     gpgcheck=0  
 ~~~
-
-
-
 
 ### Modify the system bootloader
 
