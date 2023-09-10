@@ -111,6 +111,7 @@ Update mandb to be able to search for text: `mandb`
 ## Operate running systems
 Display memory usage: `free -m`  
 Display uptime and load average: `uptime`  
+Nice levels for processes: **-20** is highest priority and **19** is lowest priority
 
 ### Boot, reboot, and shut down a system normally
 
@@ -127,11 +128,26 @@ List of processes for a specific user: `ps fU adam`
 
 Display system resource usage: `top`  
     For **CPU%** - **us** = user | **sy** = system | **ni** = nice | **wa** = wait time (IO) | **hi** = hardware interrupts | **si** = software interrupts  
+    Press `f` to change display settings and sorting  
+    Press `k` to send the kill signal to the top process with "<enter>" or "<PID>" to send the kill signal to a specific process based on PID  
+    Press `r` to renice (change the nice value) of a process  
+
+Kill a process: `kill PID` (polite method, process gets the opportunity to shutdown cleanly)  
+Kill a process: `kill -9 PID` (forced, can cause data loss for the process that's force killed)  
+Kill all instances of a specific processes: `killall processname`  
 
 
 ### Adjust process scheduling
+Run a process with lower priority: `nice 15 command`  
+Change the priority of a running process: `renice -n -10 PID`  
 
 ### Manage tuning profiles
+Ensure the **tuned** service is running: `systemctl status tuned`  
+Show current tuned profile: `tuned-adm active`  
+Show list of all tuned profiles available: `tuned-adm list`  
+Set a specific tuned profile: `tuned-adm profile profilename`  
+
+
 
 ### Locate and interpret system log files and journals
 
@@ -182,6 +198,44 @@ Display system resource usage: `top`
 ### Configure time service clients
 
 ### Install and update software packages from Red Hat Network, a remote repository, or from the local file system
+Search for a package: `yum search packagename`  
+Find a package that contains a wanted tool: `yum provides setools`  
+Show info/description of a package: `yum info packagename`  
+Show all available packages: `yum list` and show installed packages: `yum list installed`  
+Install a package: `yum install packagename`  
+Remove a package: `yum remove packagename`  
+
+
+Check for newer versions of packages: `yum update`  
+
+
+Create a **local** repo for installing packages:  
+    Create an ISO from the dvd drive: `dd if=/dev/sr0 of=/rhel92.iso bs=1M`  
+    Create a mount point: `mkdir /repo`  
+    Mount the ISO as /repo by editing fstab and adding to the end `/rhel92.iso /repo iso9660 defaults 0 0` followed by `systemctl daemon-reload` and `mount -a`  
+
+Create a yum repo with an entry for the above starting with BaseOS and then AppStream:   
+
+`vim /etc/yum.repos.d/baseos.repo`  
+    Enter the contents: 
+~~~ 
+    [BaseOS]  
+    name=BaseOS  
+    baseurl=file:///repo/BaseOS 
+    gpgcheck=0  
+~~~
+
+`vim /etc/yum.repos.d/appstream.repo`  
+    Enter the contents: 
+~~~ 
+    [AppStream]  
+    name=AppStream  
+    baseurl=file:///repo/AppStream  
+    gpgcheck=0  
+~~~
+
+
+
 
 ### Modify the system bootloader
 
@@ -273,5 +327,3 @@ Change the name of a group: ``groupmod -n newgroupname oldgroupname``
 ### Configure a container to start automatically as a systemd service
 
 ### Attach persistent storage to a container
-
-
