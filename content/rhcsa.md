@@ -109,6 +109,8 @@ Update mandb to be able to search for text: `mandb`
   
 
 ## Operate running systems
+Display memory usage: `free -m`  
+Display uptime and load average: `uptime`  
 
 ### Boot, reboot, and shut down a system normally
 
@@ -117,6 +119,15 @@ Update mandb to be able to search for text: `mandb`
 ### Interrupt the boot process in order to gain access to a system
 
 ### Identify CPU/memory intensive processes and kill processes
+Detailed overview of running processes: `ps aux`  
+    This will output a lot of text so it's good to use less and step through the output with spacebar: `ps aux | less`  
+
+Overview of running processes and their hierarchical relation: `ps fax`  
+List of processes for a specific user: `ps fU adam`  
+
+Display system resource usage: `top`  
+    For **CPU%** - **us** = user | **sy** = system | **ni** = nice | **wa** = wait time (IO) | **hi** = hardware interrupts | **si** = software interrupts  
+
 
 ### Adjust process scheduling
 

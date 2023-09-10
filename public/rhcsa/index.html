@@ -399,10 +399,18 @@ List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</c
 <h3 id="process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)<a href="#process-script-inputs-1-2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script<a href="#processing-output-of-shell-commands-within-a-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="operate-running-systems">Operate running systems<a href="#operate-running-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Display memory usage: <code>free -m</code><br>
+Display uptime and load average: <code>uptime</code></p>
 <h3 id="boot-reboot-and-shut-down-a-system-normally">Boot, reboot, and shut down a system normally<a href="#boot-reboot-and-shut-down-a-system-normally" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="boot-systems-into-different-targets-manually">Boot systems into different targets manually<a href="#boot-systems-into-different-targets-manually" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="interrupt-the-boot-process-in-order-to-gain-access-to-a-system">Interrupt the boot process in order to gain access to a system<a href="#interrupt-the-boot-process-in-order-to-gain-access-to-a-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="identify-cpumemory-intensive-processes-and-kill-processes">Identify CPU/memory intensive processes and kill processes<a href="#identify-cpumemory-intensive-processes-and-kill-processes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Detailed overview of running processes: <code>ps aux</code><br>
+This will output a lot of text so it&rsquo;s good to use less and step through the output with spacebar: <code>ps aux | less</code></p>
+<p>Overview of running processes and their hierarchical relation: <code>ps fax</code><br>
+List of processes for a specific user: <code>ps fU adam</code></p>
+<p>Display system resource usage: <code>top</code><br>
+For <strong>CPU%</strong> - <strong>us</strong> = user | <strong>sy</strong> = system | <strong>ni</strong> = nice | <strong>wa</strong> = wait time (IO) | <strong>hi</strong> = hardware interrupts | <strong>si</strong> = software interrupts</p>
 <h3 id="adjust-process-scheduling">Adjust process scheduling<a href="#adjust-process-scheduling" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="manage-tuning-profiles">Manage tuning profiles<a href="#manage-tuning-profiles" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="locate-and-interpret-system-log-files-and-journals">Locate and interpret system log files and journals<a href="#locate-and-interpret-system-log-files-and-journals" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>

@@ -112,10 +112,18 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 &lt;h3 id=&#34;process-script-inputs-1-2-etc&#34;&gt;Process script inputs ($1, $2, etc.)&lt;/h3&gt;
 &lt;h3 id=&#34;processing-output-of-shell-commands-within-a-script&#34;&gt;Processing output of shell commands within a script&lt;/h3&gt;
 &lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
+&lt;p&gt;Display memory usage: &lt;code&gt;free -m&lt;/code&gt;&lt;br&gt;
+Display uptime and load average: &lt;code&gt;uptime&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;boot-reboot-and-shut-down-a-system-normally&#34;&gt;Boot, reboot, and shut down a system normally&lt;/h3&gt;
 &lt;h3 id=&#34;boot-systems-into-different-targets-manually&#34;&gt;Boot systems into different targets manually&lt;/h3&gt;
 &lt;h3 id=&#34;interrupt-the-boot-process-in-order-to-gain-access-to-a-system&#34;&gt;Interrupt the boot process in order to gain access to a system&lt;/h3&gt;
 &lt;h3 id=&#34;identify-cpumemory-intensive-processes-and-kill-processes&#34;&gt;Identify CPU/memory intensive processes and kill processes&lt;/h3&gt;
+&lt;p&gt;Detailed overview of running processes: &lt;code&gt;ps aux&lt;/code&gt;&lt;br&gt;
+This will output a lot of text so it&amp;rsquo;s good to use less and step through the output with spacebar: &lt;code&gt;ps aux | less&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Overview of running processes and their hierarchical relation: &lt;code&gt;ps fax&lt;/code&gt;&lt;br&gt;
+List of processes for a specific user: &lt;code&gt;ps fU adam&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Display system resource usage: &lt;code&gt;top&lt;/code&gt;&lt;br&gt;
+For &lt;strong&gt;CPU%&lt;/strong&gt; - &lt;strong&gt;us&lt;/strong&gt; = user | &lt;strong&gt;sy&lt;/strong&gt; = system | &lt;strong&gt;ni&lt;/strong&gt; = nice | &lt;strong&gt;wa&lt;/strong&gt; = wait time (IO) | &lt;strong&gt;hi&lt;/strong&gt; = hardware interrupts | &lt;strong&gt;si&lt;/strong&gt; = software interrupts&lt;/p&gt;
 &lt;h3 id=&#34;adjust-process-scheduling&#34;&gt;Adjust process scheduling&lt;/h3&gt;
 &lt;h3 id=&#34;manage-tuning-profiles&#34;&gt;Manage tuning profiles&lt;/h3&gt;
 &lt;h3 id=&#34;locate-and-interpret-system-log-files-and-journals&#34;&gt;Locate and interpret system log files and journals&lt;/h3&gt;
