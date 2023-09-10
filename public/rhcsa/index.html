@@ -432,6 +432,12 @@ List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</c
 <h3 id="modify-the-system-bootloader">Modify the system bootloader<a href="#modify-the-system-bootloader" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="manage-basic-networking">Manage basic networking<a href="#manage-basic-networking" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses<a href="#configure-ipv4-and-ipv6-addresses" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>General tools for network info: <code>ip addr</code> and <code>ip -s link</code> and <code>ip route</code></p>
+<p>Use <strong>NetworkManager CLI</strong> to configure networking:<br>
+Create static connection with the name &ldquo;example-static&rdquo;: <code>nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1</code><br>
+Add DNS to the connection &ldquo;example-static&rdquo;: <code>nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”</code></p>
+<p>Use <strong>NetworkManager console GUI</strong> to configure networking: <code>nmtui</code><br>
+Use <code>arrow keys, tab, spacebar and enter</code> to navigate menu options for configuring network settings</p>
 <h3 id="configure-hostname-resolution">Configure hostname resolution<a href="#configure-hostname-resolution" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="configure-network-services-to-start-automatically-at-boot">Configure network services to start automatically at boot<a href="#configure-network-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="restrict-network-access-using-firewall-cmdfirewall">Restrict network access using firewall-cmd/firewall<a href="#restrict-network-access-using-firewall-cmdfirewall" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>

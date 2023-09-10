@@ -145,6 +145,12 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 &lt;h3 id=&#34;modify-the-system-bootloader&#34;&gt;Modify the system bootloader&lt;/h3&gt;
 &lt;h2 id=&#34;manage-basic-networking&#34;&gt;Manage basic networking&lt;/h2&gt;
 &lt;h3 id=&#34;configure-ipv4-and-ipv6-addresses&#34;&gt;Configure IPv4 and IPv6 addresses&lt;/h3&gt;
+&lt;p&gt;General tools for network info: &lt;code&gt;ip addr&lt;/code&gt; and &lt;code&gt;ip -s link&lt;/code&gt; and &lt;code&gt;ip route&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;strong&gt;NetworkManager CLI&lt;/strong&gt; to configure networking:&lt;br&gt;
+Create static connection with the name &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1&lt;/code&gt;&lt;br&gt;
+Add DNS to the connection &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;strong&gt;NetworkManager console GUI&lt;/strong&gt; to configure networking: &lt;code&gt;nmtui&lt;/code&gt;&lt;br&gt;
+Use &lt;code&gt;arrow keys, tab, spacebar and enter&lt;/code&gt; to navigate menu options for configuring network settings&lt;/p&gt;
 &lt;h3 id=&#34;configure-hostname-resolution&#34;&gt;Configure hostname resolution&lt;/h3&gt;
 &lt;h3 id=&#34;configure-network-services-to-start-automatically-at-boot&#34;&gt;Configure network services to start automatically at boot&lt;/h3&gt;
 &lt;h3 id=&#34;restrict-network-access-using-firewall-cmdfirewall&#34;&gt;Restrict network access using firewall-cmd/firewall&lt;/h3&gt;

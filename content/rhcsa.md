@@ -177,6 +177,14 @@ Update mandb to be able to search for text: `mandb`
 ## Manage basic networking
 
 ### Configure IPv4 and IPv6 addresses
+General tools for network info: `ip addr` and `ip -s link` and `ip route`  
+
+Use **NetworkManager CLI** to configure networking:  
+    Create static connection with the name "example-static": `nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1`  
+    Add DNS to the connection "example-static": `nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”`  
+
+Use **NetworkManager console GUI** to configure networking: `nmtui`  
+    Use `arrow keys, tab, spacebar and enter` to navigate menu options for configuring network settings    
 
 ### Configure hostname resolution
 
