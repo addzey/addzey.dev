@@ -129,7 +129,16 @@ Show current tuned profile: &lt;code&gt;tuned-adm active&lt;/code&gt;&lt;br&gt;
 Show list of all tuned profiles available: &lt;code&gt;tuned-adm list&lt;/code&gt;&lt;br&gt;
 Set a specific tuned profile: &lt;code&gt;tuned-adm profile profilename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;locate-and-interpret-system-log-files-and-journals&#34;&gt;Locate and interpret system log files and journals&lt;/h3&gt;
-&lt;h3 id=&#34;preserve-system-journals&#34;&gt;Preserve system journals&lt;/h3&gt;
+&lt;p&gt;Logs are now handled by &lt;strong&gt;systemd-journald&lt;/strong&gt; in binary format but still get passed to &lt;strong&gt;rslogd&lt;/strong&gt; which stores the logs in text format in &lt;code&gt;/var/log&lt;/code&gt;&lt;br&gt;
+Make the systemd-journald logs persistent: &lt;code&gt;mkdir -p /var/log/journal&lt;/code&gt;&lt;br&gt;
+View the journal for a specific service: &lt;code&gt;systemctl status httpd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Send specific logs or severity of logs to it&amp;rsquo;s own log file: &lt;code&gt;vim /etc/rsyslog.conf&lt;/code&gt;&lt;br&gt;
+Create a custom logrotate entry to rotate these logs: &lt;code&gt;vim /etc/logrotate.d/example&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/var/log/example {
+    monthly
+    rotate 12
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;preserve-system-journals&#34;&gt;Preserve system journals&lt;/h3&gt;
 &lt;h3 id=&#34;start-stop-and-check-the-status-of-network-services&#34;&gt;Start, stop, and check the status of network services&lt;/h3&gt;
 &lt;h3 id=&#34;securely-transfer-files-between-systems&#34;&gt;Securely transfer files between systems&lt;/h3&gt;
 &lt;h2 id=&#34;configure-local-storage&#34;&gt;Configure local storage&lt;/h2&gt;

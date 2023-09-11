@@ -150,7 +150,18 @@ Show list of all tuned profiles available: `tuned-adm list`
 Set a specific tuned profile: `tuned-adm profile profilename`  
 
 ### Locate and interpret system log files and journals
+Logs are now handled by **systemd-journald** in binary format but still get passed to **rslogd** which stores the logs in text format in `/var/log`  
+Make the systemd-journald logs persistent: `mkdir -p /var/log/journal`  
+View the journal for a specific service: `systemctl status httpd`  
 
+Send specific logs or severity of logs to it's own log file: `vim /etc/rsyslog.conf`  
+Create a custom logrotate entry to rotate these logs: `vim /etc/logrotate.d/example`  
+~~~
+/var/log/example {
+    monthly
+    rotate 12
+}
+~~~
 
 ### Preserve system journals
 
