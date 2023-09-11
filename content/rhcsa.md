@@ -149,9 +149,8 @@ Show current tuned profile: `tuned-adm active`
 Show list of all tuned profiles available: `tuned-adm list`  
 Set a specific tuned profile: `tuned-adm profile profilename`  
 
-
-
 ### Locate and interpret system log files and journals
+
 
 ### Preserve system journals
 
@@ -192,6 +191,22 @@ Set a specific tuned profile: `tuned-adm profile profilename`
 ## Deploy, configure, and maintain systems
 
 ### Schedule tasks using at and cron
+Create a user-specific cron job with: `contrab -e` 
+
+Cron file format needs to be as follows:
+|---|---|---|---|---|---|
+|minute|hour|day of month|month|day of week|command to run|
+|0-59|0-23|1-31|1-12|0-7 (0 or 7 is Sunday)|
+
+Hourly, Daily, Weekly and Monthly cron jobs that are generally installed by packages can be found in `/etc/cron.d`  
+
+You can use at to schedule a job to run at a specific time
+`at 19:17` followed by entering the command to run in the prompt: `logger send a message to the log` followed by `ctrl+d`  
+List jobs in the "at" queue: `atq`  
+Remove a job from the "at" queue: `atrm jobnumber`  
+
+Another option is systemd timers which don't look to be an exam objective, you can find some that come preconfigured in `/usr/lib/systemd/system`  
+These can be enabled and started like any other systemd unit: `systemctl enable example.timer` and `systemd start example.timer`  
 
 ### Start and stop services and configure services to start automatically at boot
 Start a service: `systemctl start servicename`  

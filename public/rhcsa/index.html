@@ -447,6 +447,44 @@ Set a specific tuned profile: <code>tuned-adm profile profilename</code></p>
 <h3 id="diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems<a href="#diagnose-and-correct-file-permission-problems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems<a href="#deploy-configure-and-maintain-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="schedule-tasks-using-at-and-cron">Schedule tasks using at and cron<a href="#schedule-tasks-using-at-and-cron" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a user-specific cron job with: <code>contrab -e</code></p>
+<table>
+<thead>
+<tr>
+<th>Cron file format needs to be as follows:</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minute</td>
+<td>hour</td>
+<td>day of month</td>
+<td>month</td>
+<td>day of week</td>
+<td>command to run</td>
+</tr>
+<tr>
+<td>0-59</td>
+<td>0-23</td>
+<td>1-31</td>
+<td>1-12</td>
+<td>0-7 (0 or 7 is Sunday)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Hourly, Daily, Weekly and Monthly cron jobs that are generally installed by packages can be found in <code>/etc/cron.d</code></p>
+<p>You can use at to schedule a job to run at a specific time
+<code>at 19:17</code> followed by entering the command to run in the prompt: <code>logger send a message to the log</code> followed by <code>ctrl+d</code><br>
+List jobs in the &ldquo;at&rdquo; queue: <code>atq</code><br>
+Remove a job from the &ldquo;at&rdquo; queue: <code>atrm jobnumber</code></p>
+<p>Another option is systemd timers which don&rsquo;t look to be an exam objective, you can find some that come preconfigured in <code>/usr/lib/systemd/system</code><br>
+These can be enabled and started like any other systemd unit: <code>systemctl enable example.timer</code> and <code>systemd start example.timer</code></p>
 <h3 id="start-and-stop-services-and-configure-services-to-start-automatically-at-boot">Start and stop services and configure services to start automatically at boot<a href="#start-and-stop-services-and-configure-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Start a service: <code>systemctl start servicename</code><br>
 Stop a service: <code>systemctl stop servicename</code><br>
