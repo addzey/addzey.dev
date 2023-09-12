@@ -150,8 +150,7 @@ Show list of all tuned profiles available: `tuned-adm list`
 Set a specific tuned profile: `tuned-adm profile profilename`  
 
 ### Locate and interpret system log files and journals
-Logs are now handled by **systemd-journald** in binary format but still get passed to **rslogd** which stores the logs in text format in `/var/log`  
-Make the systemd-journald logs persistent: `mkdir -p /var/log/journal`  
+Logs are now handled by **systemd-journald** in binary format but still get passed to **rslogd** which stores the logs in text format in `/var/log`   
 View the journal for a specific service: `systemctl status httpd`  
 
 Send specific logs or severity of logs to it's own log file: `vim /etc/rsyslog.conf`  
@@ -164,6 +163,8 @@ Create a custom logrotate entry to rotate these logs: `vim /etc/logrotate.d/exam
 ~~~
 
 ### Preserve system journals
+Value inside `/etc/systemd/journald.conf` the default will be "Storage=Auto" which will then persist logs if the folder `/var/log/journal` exists  
+Make the systemd-journald logs persistent: `mkdir -p /var/log/journal` 
 
 ### Start, stop, and check the status of network services
 
@@ -248,6 +249,9 @@ Check that the service has stopped and it's Active status is "Activating" - this
 ### Configure systems to boot into a specific target automatically
 
 ### Configure time service clients
+See current time status: `timedatectl status`  
+Set the timezone: `timedatectl set-timezone Country/State`  
+Time should be synchronized from NTP by default, NTP servers can be set in `/etc/chrony.conf`  
 
 ### Install and update software packages from Red Hat Network, a remote repository, or from the local file system
 Installing packages from Red Hat network requires registering a subscription which can be done with Subscription Manager  
