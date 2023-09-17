@@ -170,10 +170,23 @@ Make the systemd-journald logs persistent: `mkdir -p /var/log/journal`
 
 ### Securely transfer files between systems
 
-
 ## Configure local storage
+List block devices: `lsblk`  
+Get UUID and labels of block devices: `blkid`  
+The block devices can be found in `/dev/devicename`  
 
 ### List, create, delete partitions on MBR and GPT disks
+Use parted for EFI/GPT: `parted /dev/sdX`  
+List partitions with parted: `print`  
+Create a GPT partition table with parted: `mklabel`  
+Create a new GPT partition with parted: `mkpart`   
+Delete a partition with parted:  `rm`  
+
+Use fdisk for BIOS/MBR: `fdisk /dev/sdX`  
+List partitions with fdisk: `print`  
+Create a MBR partition table with fdisk: `o`  
+Create a new partition with fdisk: `n`  
+Delete a partition with fdisk: `d`  
 
 ### Create and remove physical volumes
 
@@ -182,13 +195,23 @@ Make the systemd-journald logs persistent: `mkdir -p /var/log/journal`
 ### Create and delete logical volumes
 
 ### Configure systems to mount file systems at boot by universally unique ID (UUID) or label
+To mount by label when editing /etc/fstab use: `LABEL=labelofpartition`  to specify the device  
+To mount by UUID when editing /etc/fstab use: `UUID="000000011-0001-ab00-ba0000001234"`  to specify the device  
+
+** You can also use systemd-mount which I'll not cover for now **
 
 ### Add new partitions and logical volumes, and swap to a system non-destructively
-
+Format a swap partition: `mkswap /dev/sdX`  
+Mount a swap partition: `swapon -a` or `swapon /dev/sdX`  
 
 ## Create and configure file systems  
 
 ### Create, mount, unmount, and use vfat, ext4, and xfs file systems
+Format a partition with XFS: `mkfs.xfs /dev/sdX`  
+Format a partition with EXT4: `mkfs.ext4 /dev/sdX`  
+Format a partition with VFAT: `mkfs.vfat /dev/sdX` 
+
+Mount a filesystem: `mount /dev/sdX /mount/location`  
 
 ### Mount and unmount network file systems using NFS
 
