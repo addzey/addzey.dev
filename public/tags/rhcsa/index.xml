@@ -304,8 +304,19 @@ Add DNS to the connection &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcl
 &lt;p&gt;Use &lt;strong&gt;NetworkManager console GUI&lt;/strong&gt; to configure networking: &lt;code&gt;nmtui&lt;/code&gt;&lt;br&gt;
 Use &lt;code&gt;arrow keys, tab, spacebar and enter&lt;/code&gt; to navigate menu options for configuring network settings&lt;/p&gt;
 &lt;h3 id=&#34;configure-hostname-resolution&#34;&gt;Configure hostname resolution&lt;/h3&gt;
+&lt;p&gt;This would be done above by setting DNS servers
+If there&amp;rsquo;s any issues with hostname resolution you can check &lt;code&gt;/etc/resolv.conf&lt;/code&gt;  which should say this file is managed by NetworkManager
+Set DNS for a connection named &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”&lt;/code&gt;
+Confirm hostname resolution is working using &lt;code&gt;dig&lt;/code&gt; or &lt;code&gt;ping hostname.com&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-network-services-to-start-automatically-at-boot&#34;&gt;Configure network services to start automatically at boot&lt;/h3&gt;
+&lt;p&gt;Start a network service: &lt;code&gt;systemctl start httpd&lt;/code&gt;&lt;br&gt;
+Set the network service to start automatically at boot: &lt;code&gt;systemctl enable httpd&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;restrict-network-access-using-firewall-cmdfirewall&#34;&gt;Restrict network access using firewall-cmd/firewall&lt;/h3&gt;
+&lt;p&gt;Show current config: &lt;code&gt;firewall-cmd --list-all&lt;/code&gt;&lt;br&gt;
+List pre-defined services that can be allowed through the firewall: &lt;code&gt;firewall-cmd --list-services&lt;/code&gt;&lt;br&gt;
+Allow HTTPS traffic for runtime: &lt;code&gt;firewall-cmd --add-service https&lt;/code&gt;&lt;br&gt;
+Allow HTTPS traffic and make it persistent: &lt;code&gt;firewall-cmd --add-service https --permanent&lt;/code&gt;&lt;br&gt;
+Reload firewall: &lt;code&gt;firewall-cmd --reload&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-users-and-groups&#34;&gt;Manage users and groups&lt;/h2&gt;
 &lt;h3 id=&#34;create-delete-and-modify-local-user-accounts&#34;&gt;Create, delete, and modify local user accounts&lt;/h3&gt;
 &lt;p&gt;Create a user with a comment associated with the account: &lt;code&gt;useradd -c &amp;quot;this is a new user&amp;quot; notadam&lt;/code&gt;&lt;br&gt;

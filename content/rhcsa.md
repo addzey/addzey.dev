@@ -370,10 +370,21 @@ Use **NetworkManager console GUI** to configure networking: `nmtui`
     Use `arrow keys, tab, spacebar and enter` to navigate menu options for configuring network settings    
 
 ### Configure hostname resolution
+This would be done above by setting DNS servers
+If there's any issues with hostname resolution you can check `/etc/resolv.conf`  which should say this file is managed by NetworkManager
+Set DNS for a connection named "example-static": `nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”` 
+Confirm hostname resolution is working using `dig` or `ping hostname.com`  
 
 ### Configure network services to start automatically at boot
+Start a network service: `systemctl start httpd`  
+Set the network service to start automatically at boot: `systemctl enable httpd`  
 
 ### Restrict network access using firewall-cmd/firewall
+Show current config: `firewall-cmd --list-all`  
+List pre-defined services that can be allowed through the firewall: `firewall-cmd --list-services`  
+Allow HTTPS traffic for runtime: `firewall-cmd --add-service https`  
+Allow HTTPS traffic and make it persistent: `firewall-cmd --add-service https --permanent`  
+Reload firewall: `firewall-cmd --reload`  
 
 ## Manage users and groups
 
