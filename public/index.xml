@@ -154,9 +154,6 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 Display uptime and load average: &lt;code&gt;uptime&lt;/code&gt;&lt;br&gt;
 Nice levels for processes: &lt;strong&gt;-20&lt;/strong&gt; is highest priority and &lt;strong&gt;19&lt;/strong&gt; is lowest priority&lt;/p&gt;
 &lt;h3 id=&#34;boot-reboot-and-shut-down-a-system-normally&#34;&gt;Boot, reboot, and shut down a system normally&lt;/h3&gt;
-&lt;p&gt;Edit grub config to have a more verbose boot: &lt;code&gt;vim /etc/default/grub&lt;/code&gt;  and find &amp;ldquo;GRUB_CMDLINE_LINUX&amp;rdquo; then remove &amp;lsquo;rhgb quiet&amp;rsquo; from the options&lt;br&gt;
-Write out a new grub config [BIOS]: &lt;code&gt;grub2-mkconfig -o /boot/grub2/grubg.cg&lt;/code&gt;&lt;br&gt;
-Write out a new grub config [UEFI]: &lt;code&gt;grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Reboot a system: &lt;code&gt;reboot&lt;/code&gt;&lt;br&gt;
 Shutdown a system: &lt;code&gt;shutdown -h now&lt;/code&gt;  (Can specify a time delay in the -h switch)
 Power off a system: &lt;code&gt;poweroff&lt;/code&gt;&lt;/p&gt;
@@ -210,6 +207,9 @@ Create a custom logrotate entry to rotate these logs: &lt;code&gt;vim /etc/logro
 &lt;p&gt;Value inside &lt;code&gt;/etc/systemd/journald.conf&lt;/code&gt; the default will be &amp;ldquo;Storage=Auto&amp;rdquo; which will then persist logs if the folder &lt;code&gt;/var/log/journal&lt;/code&gt; exists&lt;br&gt;
 Make the systemd-journald logs persistent: &lt;code&gt;mkdir -p /var/log/journal&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;start-stop-and-check-the-status-of-network-services&#34;&gt;Start, stop, and check the status of network services&lt;/h3&gt;
+&lt;p&gt;Check the status of a network service: &lt;code&gt;systemctl status servicename&lt;/code&gt;&lt;br&gt;
+Start a network service: &lt;code&gt;systemctl start servicename&lt;/code&gt;&lt;br&gt;
+Stop a network service: &lt;code&gt;systemctl stop servicename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;securely-transfer-files-between-systems&#34;&gt;Securely transfer files between systems&lt;/h3&gt;
 &lt;h2 id=&#34;configure-local-storage&#34;&gt;Configure local storage&lt;/h2&gt;
 &lt;p&gt;List block devices: &lt;code&gt;lsblk&lt;/code&gt;&lt;br&gt;
@@ -357,6 +357,9 @@ Enter the contents:&lt;/p&gt;
     baseurl=file:///repo/AppStream  
     gpgcheck=0  
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;modify-the-system-bootloader&#34;&gt;Modify the system bootloader&lt;/h3&gt;
+&lt;p&gt;Edit grub config to have a more verbose boot: &lt;code&gt;vim /etc/default/grub&lt;/code&gt;  and find &amp;ldquo;GRUB_CMDLINE_LINUX&amp;rdquo; then remove &amp;lsquo;rhgb quiet&amp;rsquo; from the options&lt;br&gt;
+Write out a new grub config [BIOS]: &lt;code&gt;grub2-mkconfig -o /boot/grub2/grubg.cg&lt;/code&gt;&lt;br&gt;
+Write out a new grub config [UEFI]: &lt;code&gt;grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-basic-networking&#34;&gt;Manage basic networking&lt;/h2&gt;
 &lt;h3 id=&#34;configure-ipv4-and-ipv6-addresses&#34;&gt;Configure IPv4 and IPv6 addresses&lt;/h3&gt;
 &lt;p&gt;General tools for network info: &lt;code&gt;ip addr&lt;/code&gt; and &lt;code&gt;ip -s link&lt;/code&gt; and &lt;code&gt;ip route&lt;/code&gt;&lt;/p&gt;
@@ -374,10 +377,9 @@ Confirm hostname resolution is working using &lt;code&gt;dig&lt;/code&gt; or &lt
 &lt;p&gt;Start a network service: &lt;code&gt;systemctl start httpd&lt;/code&gt;&lt;br&gt;
 Set the network service to start automatically at boot: &lt;code&gt;systemctl enable httpd&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;restrict-network-access-using-firewall-cmdfirewall&#34;&gt;Restrict network access using firewall-cmd/firewall&lt;/h3&gt;
-&lt;p&gt;Show current config: &lt;code&gt;firewall-cmd --list-all&lt;/code&gt;&lt;br&gt;
-List pre-defined services that can be allowed through the firewall: &lt;code&gt;firewall-cmd --list-services&lt;/code&gt;&lt;br&gt;
-Allow HTTPS traffic for runtime: &lt;code&gt;firewall-cmd --add-service https&lt;/code&gt;&lt;br&gt;
-Allow HTTPS traffic and make it persistent: &lt;code&gt;firewall-cmd --add-service https --permanent&lt;/code&gt;&lt;br&gt;
+&lt;p&gt;Show current config: &lt;code&gt;firewall-cmd --list-all&lt;/code&gt; &lt;br&gt;
+Block HTTPS traffic for runtime: &lt;code&gt;firewall-cmd --remove-service https&lt;/code&gt;&lt;br&gt;
+Block HTTPS traffic and make it persistent: &lt;code&gt;firewall-cmd --remove-service https --permanent&lt;/code&gt;&lt;br&gt;
 Reload firewall: &lt;code&gt;firewall-cmd --reload&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-users-and-groups&#34;&gt;Manage users and groups&lt;/h2&gt;
 &lt;h3 id=&#34;create-delete-and-modify-local-user-accounts&#34;&gt;Create, delete, and modify local user accounts&lt;/h3&gt;
@@ -401,8 +403,20 @@ Using the -a switch along with the -G switch means it will &lt;strong&gt;append&
 Delete a group: &lt;code&gt;groupdel groupname&lt;/code&gt;&lt;br&gt;
 Change the name of a group: &lt;code&gt;groupmod -n newgroupname oldgroupname&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-superuser-access&#34;&gt;Configure superuser access&lt;/h3&gt;
+&lt;p&gt;View current config of sudo/superuser access: &lt;code&gt;visduo /etc/sudoers&lt;/code&gt;&lt;br&gt;
+Members of the group &amp;ldquo;wheel&amp;rdquo; should be allowed sudo/superuser access
+Add a user to group &amp;ldquo;wheel&amp;rdquo;: &lt;code&gt;usermod -aG wheel username&lt;/code&gt;&lt;br&gt;
+You can now run things as superuser/root by using &amp;ldquo;sudo&amp;rdquo; in front of the commands: &lt;code&gt;sudo reboot&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Grant superuser access only for specific commands: &lt;code&gt;visduo /etc/sudoers&lt;/code&gt;&lt;br&gt;
+Add the following line to the sudoers file: &lt;code&gt;username ALL=(root) /bin/ping&lt;/code&gt;&lt;br&gt;
+The above will allow the user to execute &amp;ldquo;/bin/ping&amp;rdquo; as root&lt;/p&gt;
 &lt;h2 id=&#34;manage-security&#34;&gt;Manage security&lt;/h2&gt;
 &lt;h3 id=&#34;configure-firewall-settings-using-firewall-cmdfirewalld&#34;&gt;Configure firewall settings using firewall-cmd/firewalld&lt;/h3&gt;
+&lt;p&gt;Show current config: &lt;code&gt;firewall-cmd --list-all&lt;/code&gt;&lt;br&gt;
+List pre-defined services that can be allowed through the firewall: &lt;code&gt;firewall-cmd --list-services&lt;/code&gt;&lt;br&gt;
+Allow HTTPS traffic for runtime: &lt;code&gt;firewall-cmd --add-service https&lt;/code&gt;&lt;br&gt;
+Allow HTTPS traffic and make it persistent: &lt;code&gt;firewall-cmd --add-service https --permanent&lt;/code&gt;&lt;br&gt;
+Reload firewall: &lt;code&gt;firewall-cmd --reload&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;manage-default-file-permissions&#34;&gt;Manage default file permissions&lt;/h3&gt;
 &lt;h3 id=&#34;configure-key-based-authentication-for-ssh&#34;&gt;Configure key-based authentication for SSH&lt;/h3&gt;
 &lt;h3 id=&#34;set-enforcing-and-permissive-modes-for-selinux&#34;&gt;Set enforcing and permissive modes for SELinux&lt;/h3&gt;

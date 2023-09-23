@@ -115,10 +115,6 @@ Display uptime and load average: `uptime`
 Nice levels for processes: **-20** is highest priority and **19** is lowest priority
 
 ### Boot, reboot, and shut down a system normally
-Edit grub config to have a more verbose boot: `vim /etc/default/grub`  and find "GRUB_CMDLINE_LINUX" then remove 'rhgb quiet' from the options  
-Write out a new grub config [BIOS]: `grub2-mkconfig -o /boot/grub2/grubg.cg`  
-Write out a new grub config [UEFI]: `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`  
-
 Reboot a system: `reboot`  
 Shutdown a system: `shutdown -h now`  (Can specify a time delay in the -h switch)
 Power off a system: `poweroff`  
@@ -187,6 +183,9 @@ Value inside `/etc/systemd/journald.conf` the default will be "Storage=Auto" whi
 Make the systemd-journald logs persistent: `mkdir -p /var/log/journal` 
 
 ### Start, stop, and check the status of network services
+Check the status of a network service: `systemctl status servicename`  
+Start a network service: `systemctl start servicename`  
+Stop a network service: `systemctl stop servicename`  
 
 ### Securely transfer files between systems
 
@@ -356,6 +355,9 @@ Create a yum repo with an entry for the above starting with BaseOS and then AppS
 ~~~
 
 ### Modify the system bootloader
+Edit grub config to have a more verbose boot: `vim /etc/default/grub`  and find "GRUB_CMDLINE_LINUX" then remove 'rhgb quiet' from the options  
+Write out a new grub config [BIOS]: `grub2-mkconfig -o /boot/grub2/grubg.cg`  
+Write out a new grub config [UEFI]: `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`  
 
 ## Manage basic networking
 
@@ -380,10 +382,9 @@ Start a network service: `systemctl start httpd`
 Set the network service to start automatically at boot: `systemctl enable httpd`  
 
 ### Restrict network access using firewall-cmd/firewall
-Show current config: `firewall-cmd --list-all`  
-List pre-defined services that can be allowed through the firewall: `firewall-cmd --list-services`  
-Allow HTTPS traffic for runtime: `firewall-cmd --add-service https`  
-Allow HTTPS traffic and make it persistent: `firewall-cmd --add-service https --permanent`  
+Show current config: `firewall-cmd --list-all`    
+Block HTTPS traffic for runtime: `firewall-cmd --remove-service https`  
+Block HTTPS traffic and make it persistent: `firewall-cmd --remove-service https --permanent`  
 Reload firewall: `firewall-cmd --reload`  
 
 ## Manage users and groups
@@ -417,10 +418,23 @@ Delete a group: ``groupdel groupname``
 Change the name of a group: ``groupmod -n newgroupname oldgroupname``  
 
 ### Configure superuser access
+View current config of sudo/superuser access: `visduo /etc/sudoers`  
+Members of the group "wheel" should be allowed sudo/superuser access
+Add a user to group "wheel": `usermod -aG wheel username`  
+You can now run things as superuser/root by using "sudo" in front of the commands: `sudo reboot`  
+
+Grant superuser access only for specific commands: `visduo /etc/sudoers`  
+Add the following line to the sudoers file: `username ALL=(root) /bin/ping`  
+The above will allow the user to execute "/bin/ping" as root
 
 ## Manage security
 
 ### Configure firewall settings using firewall-cmd/firewalld
+Show current config: `firewall-cmd --list-all`  
+List pre-defined services that can be allowed through the firewall: `firewall-cmd --list-services`  
+Allow HTTPS traffic for runtime: `firewall-cmd --add-service https`  
+Allow HTTPS traffic and make it persistent: `firewall-cmd --add-service https --permanent`  
+Reload firewall: `firewall-cmd --reload`  
 
 ### Manage default file permissions
 
