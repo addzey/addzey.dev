@@ -107,8 +107,7 @@ Update mandb to be able to search for text: `mandb`
 
 ### Process script inputs ($1, $2, etc.)
 
-### Processing output of shell commands within a script
-  
+### Processing output of shell commands within a script  
 
 ## Operate running systems
 Display memory usage: `free -m`  
@@ -116,10 +115,31 @@ Display uptime and load average: `uptime`
 Nice levels for processes: **-20** is highest priority and **19** is lowest priority
 
 ### Boot, reboot, and shut down a system normally
+Edit grub config to have a more verbose boot: `vim /etc/default/grub`  and find "GRUB_CMDLINE_LINUX" then remove 'rhgb quiet' from the options  
+Write out a new grub config [BIOS]: `grub2-mkconfig -o /boot/grub2/grubg.cg`  
+Write out a new grub config [UEFI]: `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`  
+
+Reboot a system: `reboot`  
+Shutdown a system: `shutdown -h now`  (Can specify a time delay in the -h switch)
+Power off a system: `poweroff`  
 
 ### Boot systems into different targets manually
+Show the current boot target: `systemctl get-default`  
+Switch into a new target manually: `systemctl isolate multi-user.target`  
+Set a new default boot target: `systemctl set-default multi-user.target`  
 
 ### Interrupt the boot process in order to gain access to a system
+Hit the arrow keys during the grub menu to prevent the timeout from ticking down and proceeding with the boot process  
+Hit the `e` key to edit the grub boot options  
+Find the line specifying the Linux kernel options and append `rd.break`  
+Hit `ctrl+x` to continue the boot process with your customizations  
+You will be booted into emergency mode working from initramfs (actual system has not booted at all)  
+Mount the root volume so we can make our changes: `mount -o remount,rw /sysroot`  
+Change the shell environment to use the actual system root: `chroot /sysroot`  
+Change the root password: `passwd root`  
+Reset/Fix the selinux labels so it's possible to boot cleanly with the new root password: `touch /.autorelabel`  
+Hit `ctrl+d` to exit the chroot environment  
+Hit `ctrl+d` again to continue the boot process    
 
 ### Identify CPU/memory intensive processes and kill processes
 Detailed overview of running processes: `ps aux`  

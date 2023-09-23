@@ -154,8 +154,28 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 Display uptime and load average: &lt;code&gt;uptime&lt;/code&gt;&lt;br&gt;
 Nice levels for processes: &lt;strong&gt;-20&lt;/strong&gt; is highest priority and &lt;strong&gt;19&lt;/strong&gt; is lowest priority&lt;/p&gt;
 &lt;h3 id=&#34;boot-reboot-and-shut-down-a-system-normally&#34;&gt;Boot, reboot, and shut down a system normally&lt;/h3&gt;
+&lt;p&gt;Edit grub config to have a more verbose boot: &lt;code&gt;vim /etc/default/grub&lt;/code&gt;  and find &amp;ldquo;GRUB_CMDLINE_LINUX&amp;rdquo; then remove &amp;lsquo;rhgb quiet&amp;rsquo; from the options&lt;br&gt;
+Write out a new grub config [BIOS]: &lt;code&gt;grub2-mkconfig -o /boot/grub2/grubg.cg&lt;/code&gt;&lt;br&gt;
+Write out a new grub config [UEFI]: &lt;code&gt;grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Reboot a system: &lt;code&gt;reboot&lt;/code&gt;&lt;br&gt;
+Shutdown a system: &lt;code&gt;shutdown -h now&lt;/code&gt;  (Can specify a time delay in the -h switch)
+Power off a system: &lt;code&gt;poweroff&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;boot-systems-into-different-targets-manually&#34;&gt;Boot systems into different targets manually&lt;/h3&gt;
+&lt;p&gt;Show the current boot target: &lt;code&gt;systemctl get-default&lt;/code&gt;&lt;br&gt;
+Switch into a new target manually: &lt;code&gt;systemctl isolate multi-user.target&lt;/code&gt;&lt;br&gt;
+Set a new default boot target: &lt;code&gt;systemctl set-default multi-user.target&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;interrupt-the-boot-process-in-order-to-gain-access-to-a-system&#34;&gt;Interrupt the boot process in order to gain access to a system&lt;/h3&gt;
+&lt;p&gt;Hit the arrow keys during the grub menu to prevent the timeout from ticking down and proceeding with the boot process&lt;br&gt;
+Hit the &lt;code&gt;e&lt;/code&gt; key to edit the grub boot options&lt;br&gt;
+Find the line specifying the Linux kernel options and append &lt;code&gt;rd.break&lt;/code&gt;&lt;br&gt;
+Hit &lt;code&gt;ctrl+x&lt;/code&gt; to continue the boot process with your customizations&lt;br&gt;
+You will be booted into emergency mode working from initramfs (actual system has not booted at all)&lt;br&gt;
+Mount the root volume so we can make our changes: &lt;code&gt;mount -o remount,rw /sysroot&lt;/code&gt;&lt;br&gt;
+Change the shell environment to use the actual system root: &lt;code&gt;chroot /sysroot&lt;/code&gt;&lt;br&gt;
+Change the root password: &lt;code&gt;passwd root&lt;/code&gt;&lt;br&gt;
+Reset/Fix the selinux labels so it&amp;rsquo;s possible to boot cleanly with the new root password: &lt;code&gt;touch /.autorelabel&lt;/code&gt;&lt;br&gt;
+Hit &lt;code&gt;ctrl+d&lt;/code&gt; to exit the chroot environment&lt;br&gt;
+Hit &lt;code&gt;ctrl+d&lt;/code&gt; again to continue the boot process&lt;/p&gt;
 &lt;h3 id=&#34;identify-cpumemory-intensive-processes-and-kill-processes&#34;&gt;Identify CPU/memory intensive processes and kill processes&lt;/h3&gt;
 &lt;p&gt;Detailed overview of running processes: &lt;code&gt;ps aux&lt;/code&gt;&lt;br&gt;
 This will output a lot of text so it&amp;rsquo;s good to use less and step through the output with spacebar: &lt;code&gt;ps aux | less&lt;/code&gt;&lt;/p&gt;

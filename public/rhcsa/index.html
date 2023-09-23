@@ -420,8 +420,28 @@ List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</c
 Display uptime and load average: <code>uptime</code><br>
 Nice levels for processes: <strong>-20</strong> is highest priority and <strong>19</strong> is lowest priority</p>
 <h3 id="boot-reboot-and-shut-down-a-system-normally">Boot, reboot, and shut down a system normally<a href="#boot-reboot-and-shut-down-a-system-normally" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Edit grub config to have a more verbose boot: <code>vim /etc/default/grub</code>  and find &ldquo;GRUB_CMDLINE_LINUX&rdquo; then remove &lsquo;rhgb quiet&rsquo; from the options<br>
+Write out a new grub config [BIOS]: <code>grub2-mkconfig -o /boot/grub2/grubg.cg</code><br>
+Write out a new grub config [UEFI]: <code>grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg</code></p>
+<p>Reboot a system: <code>reboot</code><br>
+Shutdown a system: <code>shutdown -h now</code>  (Can specify a time delay in the -h switch)
+Power off a system: <code>poweroff</code></p>
 <h3 id="boot-systems-into-different-targets-manually">Boot systems into different targets manually<a href="#boot-systems-into-different-targets-manually" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Show the current boot target: <code>systemctl get-default</code><br>
+Switch into a new target manually: <code>systemctl isolate multi-user.target</code><br>
+Set a new default boot target: <code>systemctl set-default multi-user.target</code></p>
 <h3 id="interrupt-the-boot-process-in-order-to-gain-access-to-a-system">Interrupt the boot process in order to gain access to a system<a href="#interrupt-the-boot-process-in-order-to-gain-access-to-a-system" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Hit the arrow keys during the grub menu to prevent the timeout from ticking down and proceeding with the boot process<br>
+Hit the <code>e</code> key to edit the grub boot options<br>
+Find the line specifying the Linux kernel options and append <code>rd.break</code><br>
+Hit <code>ctrl+x</code> to continue the boot process with your customizations<br>
+You will be booted into emergency mode working from initramfs (actual system has not booted at all)<br>
+Mount the root volume so we can make our changes: <code>mount -o remount,rw /sysroot</code><br>
+Change the shell environment to use the actual system root: <code>chroot /sysroot</code><br>
+Change the root password: <code>passwd root</code><br>
+Reset/Fix the selinux labels so it&rsquo;s possible to boot cleanly with the new root password: <code>touch /.autorelabel</code><br>
+Hit <code>ctrl+d</code> to exit the chroot environment<br>
+Hit <code>ctrl+d</code> again to continue the boot process</p>
 <h3 id="identify-cpumemory-intensive-processes-and-kill-processes">Identify CPU/memory intensive processes and kill processes<a href="#identify-cpumemory-intensive-processes-and-kill-processes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Detailed overview of running processes: <code>ps aux</code><br>
 This will output a lot of text so it&rsquo;s good to use less and step through the output with spacebar: <code>ps aux | less</code></p>
