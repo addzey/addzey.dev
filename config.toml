@@ -86,9 +86,19 @@ paginate = 5
         url = "/rhcsa"
       [[languages.en.menu.main]]
         weight = 30
+        identifier = "RHCE"
+        name = "RHCE"
+        url = "/rhce"
+      [[languages.en.menu.main]]
+        weight = 40
         identifier = "AWS SAA"
         name = "AWS SAA"
         url = "/aws-saa"
+      [[languages.en.menu.main]]
+        weight = 50
+        identifier = "AWS DOP"
+        name = "AWS DOP"
+        url = "/aws-dop"
       [[languages.en.menu.main]]
         weight = 100
         pre = '<i class="fa-brands fa-github-square"></i>'

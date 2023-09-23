@@ -7,7 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/study-notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/study-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS: DOP Study Notes</title>
+      <link>https://addzey.dev/aws-dop/</link>
+      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/aws-dop/</guid>
+      <description>Introduction Placeholder, expect to sit this exam early/mid 2024</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Placeholder, expect to sit this exam early/mid 2024&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>RHCE Study Notes</title>
+      <link>https://addzey.dev/rhce/</link>
+      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/rhce/</guid>
+      <description>Introduction Placeholder, expect to sit this exam late 2023 or early 2024</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Placeholder, expect to sit this exam late 2023 or early 2024&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>AWS: SAA Study Notes</title>
       <link>https://addzey.dev/aws-saa/</link>
@@ -147,19 +171,29 @@ Make the systemd-journald logs persistent: &lt;code&gt;mkdir -p /var/log/journal
 Get UUID and labels of block devices: &lt;code&gt;blkid&lt;/code&gt;&lt;br&gt;
 The block devices can be found in &lt;code&gt;/dev/devicename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;list-create-delete-partitions-on-mbr-and-gpt-disks&#34;&gt;List, create, delete partitions on MBR and GPT disks&lt;/h3&gt;
-&lt;p&gt;Use parted for EFI/GPT: &lt;code&gt;parted /dev/sdX&lt;/code&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Use parted for EFI/GPT&lt;/strong&gt;: &lt;code&gt;parted /dev/sdX&lt;/code&gt;&lt;br&gt;
 List partitions with parted: &lt;code&gt;print&lt;/code&gt;&lt;br&gt;
 Create a GPT partition table with parted: &lt;code&gt;mklabel&lt;/code&gt;&lt;br&gt;
 Create a new GPT partition with parted: &lt;code&gt;mkpart&lt;/code&gt;&lt;br&gt;
-Delete a partition with parted:  &lt;code&gt;rm&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Use fdisk for BIOS/MBR: &lt;code&gt;fdisk /dev/sdX&lt;/code&gt;&lt;br&gt;
+Delete a partition with parted:  &lt;code&gt;rm&lt;/code&gt;&lt;br&gt;
+Set a partition for use by LVM: &lt;code&gt;set N lvm on&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Use fdisk for BIOS/MBR&lt;/strong&gt;: &lt;code&gt;fdisk /dev/sdX&lt;/code&gt;&lt;br&gt;
 List partitions with fdisk: &lt;code&gt;print&lt;/code&gt;&lt;br&gt;
 Create a MBR partition table with fdisk: &lt;code&gt;o&lt;/code&gt;&lt;br&gt;
 Create a new partition with fdisk: &lt;code&gt;n&lt;/code&gt;&lt;br&gt;
 Delete a partition with fdisk: &lt;code&gt;d&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;create-and-remove-physical-volumes&#34;&gt;Create and remove physical volumes&lt;/h3&gt;
+&lt;p&gt;Initialize a partition for use with LVM: &lt;code&gt;pvcreate /dev/sdb4&lt;/code&gt;&lt;br&gt;
+Initialize another partition for use with LVM: &lt;code&gt;pvcreate /dev/sdb5&lt;/code&gt;&lt;br&gt;
+Initialize a disk for use with LVM: &lt;code&gt;pvcreate /dev/sdc&lt;/code&gt;&lt;br&gt;
+Remove a physical volume: &lt;code&gt;pvremove /dev/sdb4&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;assign-physical-volumes-to-volume-groups&#34;&gt;Assign physical volumes to volume groups&lt;/h3&gt;
+&lt;p&gt;Create a volume group from two physical volumes: &lt;code&gt;vgcreate volumegroup01 /dev/sdb4 /dev/sdb5&lt;/code&gt;&lt;br&gt;
+This will automatically initialize/create the physical volumes if they hadn&amp;rsquo;t already been done like in the step above&lt;/p&gt;
 &lt;h3 id=&#34;create-and-delete-logical-volumes&#34;&gt;Create and delete logical volumes&lt;/h3&gt;
+&lt;p&gt;Create a logical volume using 100% of the available space in a volume group: &lt;code&gt;lvcreate -l100%FREE volumegroup01 -n logicalvolume01&lt;/code&gt;&lt;br&gt;
+Delete a logical volume: &lt;code&gt;lvremove volumegroup01/logicalvolume01&lt;/code&gt;&lt;br&gt;
+Create a logical volume of a specific size: &lt;code&gt;lvcreate -L 1.5G volumegroup01 -n logicalvolume02&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label&#34;&gt;Configure systems to mount file systems at boot by universally unique ID (UUID) or label&lt;/h3&gt;
 &lt;p&gt;To mount by label when editing /etc/fstab use: &lt;code&gt;LABEL=labelofpartition&lt;/code&gt;  to specify the device&lt;br&gt;
 To mount by UUID when editing /etc/fstab use: &lt;code&gt;UUID=&amp;quot;000000011-0001-ab00-ba0000001234&amp;quot;&lt;/code&gt;  to specify the device&lt;/p&gt;
@@ -172,7 +206,9 @@ Mount a swap partition: &lt;code&gt;swapon -a&lt;/code&gt; or &lt;code&gt;swapon
 &lt;p&gt;Format a partition with XFS: &lt;code&gt;mkfs.xfs /dev/sdX&lt;/code&gt;&lt;br&gt;
 Format a partition with EXT4: &lt;code&gt;mkfs.ext4 /dev/sdX&lt;/code&gt;&lt;br&gt;
 Format a partition with VFAT: &lt;code&gt;mkfs.vfat /dev/sdX&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Format a LVM logical volume with XFS: &lt;code&gt;mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Mount a filesystem: &lt;code&gt;mount /dev/sdX /mount/location&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Show existing mounts: &lt;code&gt;mount&lt;/code&gt; or &lt;code&gt;findmnt&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;mount-and-unmount-network-file-systems-using-nfs&#34;&gt;Mount and unmount network file systems using NFS&lt;/h3&gt;
 &lt;h3 id=&#34;configure-autofs&#34;&gt;Configure autofs&lt;/h3&gt;
 &lt;h3 id=&#34;extend-existing-logical-volumes&#34;&gt;Extend existing logical volumes&lt;/h3&gt;

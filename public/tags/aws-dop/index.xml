@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS DOP on ADDZEY.DEV</title>
+    <link>https://addzey.dev/tags/aws-dop/</link>
+    <description>Recent content in AWS DOP on ADDZEY.DEV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Adam Rogers</copyright>
+    <lastBuildDate>Sat, 23 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/aws-dop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS: DOP Study Notes</title>
+      <link>https://addzey.dev/aws-dop/</link>
+      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/aws-dop/</guid>
+      <description>Introduction Placeholder, expect to sit this exam early/mid 2024</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Placeholder, expect to sit this exam early/mid 2024&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

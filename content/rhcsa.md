@@ -176,23 +176,33 @@ Get UUID and labels of block devices: `blkid`
 The block devices can be found in `/dev/devicename`  
 
 ### List, create, delete partitions on MBR and GPT disks
-Use parted for EFI/GPT: `parted /dev/sdX`  
+**Use parted for EFI/GPT**: `parted /dev/sdX`  
 List partitions with parted: `print`  
 Create a GPT partition table with parted: `mklabel`  
 Create a new GPT partition with parted: `mkpart`   
 Delete a partition with parted:  `rm`  
+Set a partition for use by LVM: `set N lvm on`  
 
-Use fdisk for BIOS/MBR: `fdisk /dev/sdX`  
+**Use fdisk for BIOS/MBR**: `fdisk /dev/sdX`  
 List partitions with fdisk: `print`  
 Create a MBR partition table with fdisk: `o`  
 Create a new partition with fdisk: `n`  
 Delete a partition with fdisk: `d`  
 
 ### Create and remove physical volumes
+Initialize a partition for use with LVM: `pvcreate /dev/sdb4`  
+Initialize another partition for use with LVM: `pvcreate /dev/sdb5`  
+Initialize a disk for use with LVM: `pvcreate /dev/sdc`  
+Remove a physical volume: `pvremove /dev/sdb4`  
 
 ### Assign physical volumes to volume groups
+Create a volume group from two physical volumes: `vgcreate volumegroup01 /dev/sdb4 /dev/sdb5`  
+This will automatically initialize/create the physical volumes if they hadn't already been done like in the step above  
 
 ### Create and delete logical volumes
+Create a logical volume using 100% of the available space in a volume group: `lvcreate -l100%FREE volumegroup01 -n logicalvolume01`  
+Delete a logical volume: `lvremove volumegroup01/logicalvolume01`  
+Create a logical volume of a specific size: `lvcreate -L 1.5G volumegroup01 -n logicalvolume02`  
 
 ### Configure systems to mount file systems at boot by universally unique ID (UUID) or label
 To mount by label when editing /etc/fstab use: `LABEL=labelofpartition`  to specify the device  
@@ -211,7 +221,11 @@ Format a partition with XFS: `mkfs.xfs /dev/sdX`
 Format a partition with EXT4: `mkfs.ext4 /dev/sdX`  
 Format a partition with VFAT: `mkfs.vfat /dev/sdX` 
 
+Format a LVM logical volume with XFS: `mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02`  
+
 Mount a filesystem: `mount /dev/sdX /mount/location`  
+
+Show existing mounts: `mount` or `findmnt`  
 
 ### Mount and unmount network file systems using NFS
 

@@ -113,7 +113,15 @@
         
       
         
+          <li><a href="/rhce">RHCE</a></li>
+        
+      
+        
           <li><a href="/aws-saa">AWS SAA</a></li>
+        
+      
+        
+          <li><a href="/aws-dop">AWS DOP</a></li>
         
       
         
@@ -150,7 +158,15 @@
         
       
         
+          <li><a href="/rhce" >RHCE</a></li>
+        
+      
+        
           <li><a href="/aws-saa" >AWS SAA</a></li>
+        
+      
+        
+          <li><a href="/aws-dop" >AWS DOP</a></li>
         
       
         
@@ -446,19 +462,29 @@ Make the systemd-journald logs persistent: <code>mkdir -p /var/log/journal</code
 Get UUID and labels of block devices: <code>blkid</code><br>
 The block devices can be found in <code>/dev/devicename</code></p>
 <h3 id="list-create-delete-partitions-on-mbr-and-gpt-disks">List, create, delete partitions on MBR and GPT disks<a href="#list-create-delete-partitions-on-mbr-and-gpt-disks" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Use parted for EFI/GPT: <code>parted /dev/sdX</code><br>
+<p><strong>Use parted for EFI/GPT</strong>: <code>parted /dev/sdX</code><br>
 List partitions with parted: <code>print</code><br>
 Create a GPT partition table with parted: <code>mklabel</code><br>
 Create a new GPT partition with parted: <code>mkpart</code><br>
-Delete a partition with parted:  <code>rm</code></p>
-<p>Use fdisk for BIOS/MBR: <code>fdisk /dev/sdX</code><br>
+Delete a partition with parted:  <code>rm</code><br>
+Set a partition for use by LVM: <code>set N lvm on</code></p>
+<p><strong>Use fdisk for BIOS/MBR</strong>: <code>fdisk /dev/sdX</code><br>
 List partitions with fdisk: <code>print</code><br>
 Create a MBR partition table with fdisk: <code>o</code><br>
 Create a new partition with fdisk: <code>n</code><br>
 Delete a partition with fdisk: <code>d</code></p>
 <h3 id="create-and-remove-physical-volumes">Create and remove physical volumes<a href="#create-and-remove-physical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Initialize a partition for use with LVM: <code>pvcreate /dev/sdb4</code><br>
+Initialize another partition for use with LVM: <code>pvcreate /dev/sdb5</code><br>
+Initialize a disk for use with LVM: <code>pvcreate /dev/sdc</code><br>
+Remove a physical volume: <code>pvremove /dev/sdb4</code></p>
 <h3 id="assign-physical-volumes-to-volume-groups">Assign physical volumes to volume groups<a href="#assign-physical-volumes-to-volume-groups" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a volume group from two physical volumes: <code>vgcreate volumegroup01 /dev/sdb4 /dev/sdb5</code><br>
+This will automatically initialize/create the physical volumes if they hadn&rsquo;t already been done like in the step above</p>
 <h3 id="create-and-delete-logical-volumes">Create and delete logical volumes<a href="#create-and-delete-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a logical volume using 100% of the available space in a volume group: <code>lvcreate -l100%FREE volumegroup01 -n logicalvolume01</code><br>
+Delete a logical volume: <code>lvremove volumegroup01/logicalvolume01</code><br>
+Create a logical volume of a specific size: <code>lvcreate -L 1.5G volumegroup01 -n logicalvolume02</code></p>
 <h3 id="configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label<a href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>To mount by label when editing /etc/fstab use: <code>LABEL=labelofpartition</code>  to specify the device<br>
 To mount by UUID when editing /etc/fstab use: <code>UUID=&quot;000000011-0001-ab00-ba0000001234&quot;</code>  to specify the device</p>
@@ -471,7 +497,9 @@ Mount a swap partition: <code>swapon -a</code> or <code>swapon /dev/sdX</code></
 <p>Format a partition with XFS: <code>mkfs.xfs /dev/sdX</code><br>
 Format a partition with EXT4: <code>mkfs.ext4 /dev/sdX</code><br>
 Format a partition with VFAT: <code>mkfs.vfat /dev/sdX</code></p>
+<p>Format a LVM logical volume with XFS: <code>mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02</code></p>
 <p>Mount a filesystem: <code>mount /dev/sdX /mount/location</code></p>
+<p>Show existing mounts: <code>mount</code> or <code>findmnt</code></p>
 <h3 id="mount-and-unmount-network-file-systems-using-nfs">Mount and unmount network file systems using NFS<a href="#mount-and-unmount-network-file-systems-using-nfs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="configure-autofs">Configure autofs<a href="#configure-autofs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="extend-existing-logical-volumes">Extend existing logical volumes<a href="#extend-existing-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
