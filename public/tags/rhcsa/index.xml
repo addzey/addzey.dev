@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/rhcsa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/rhcsa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RHCSA Study Notes</title>
       <link>https://addzey.dev/rhcsa/</link>
-      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/rhcsa/</guid>
       <description>Introduction You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
@@ -43,8 +43,11 @@ Exam is booked in for &lt;strong&gt;26/09/23&lt;/strong&gt;&lt;/p&gt;
 Recursively search for the text &amp;ldquo;root&amp;rdquo; in /etc&amp;quot;: &lt;code&gt;grep -R root /etc&lt;/code&gt;&lt;br&gt;
 Find the text &amp;ldquo;adam&amp;rdquo; in /etc/shadow but case-insensitive: &lt;code&gt;grep -i Adam /etc/shadow&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;access-remote-systems-using-ssh&#34;&gt;Access remote systems using SSH&lt;/h3&gt;
-&lt;p&gt;Connect to a remote system using SSH: &lt;code&gt;ssh username@10.0.0.1&lt;/code&gt;&lt;br&gt;
-Things to keep in mind: &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt; which is a record of public keys for hosts you have connected to previously and &lt;code&gt;~/.ssh/id_rsa.pub&lt;/code&gt; which is the public key for the host you&amp;rsquo;re currently connected to&lt;/p&gt;
+&lt;p&gt;Create a public/private key pair for current user: &lt;code&gt;ssh-keygen&lt;/code&gt;&lt;br&gt;
+Note: The public key can be shared&lt;br&gt;
+Note: The private key must not be shared and must be stored securely&lt;br&gt;
+Connect to a remote system using SSH: &lt;code&gt;ssh username@10.0.0.1&lt;/code&gt;&lt;br&gt;
+Things to keep in mind: &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt; which is a record of public keys for hosts you have connected to previously&lt;/p&gt;
 &lt;h3 id=&#34;log-in-and-switch-users-in-multiuser-targets&#34;&gt;Log in and switch users in multiuser targets&lt;/h3&gt;
 &lt;p&gt;Change virtual terminal: &lt;code&gt;chvt 4&lt;/code&gt; Can also be done with CTL+ALT+F[1-6] when using console or phsyical logins&lt;br&gt;
 Use &amp;ldquo;w&amp;rdquo; command to see all logged in users: &lt;code&gt;w&lt;/code&gt;&lt;br&gt;
@@ -84,7 +87,16 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 &lt;code&gt;less /usr/share/doc/lvm2/README&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;create-simple-shell-scripts&#34;&gt;Create simple shell scripts&lt;/h2&gt;
 &lt;h3 id=&#34;conditionally-execute-code-use-of-if-test--etc&#34;&gt;Conditionally execute code (use of: if, test, [], etc.)&lt;/h3&gt;
-&lt;h3 id=&#34;use-looping-constructs-for-etc-to-process-file-command-line-input&#34;&gt;Use Looping constructs (for, etc.) to process file, command line input&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script to check for an input
+
+if [ -z $1 ]
+then
+	echo &amp;quot;an input is required&amp;quot;
+else
+	echo &amp;quot;you have provided the input $1&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;use-looping-constructs-for-etc-to-process-file-command-line-input&#34;&gt;Use Looping constructs (for, etc.) to process file, command line input&lt;/h3&gt;
 &lt;h3 id=&#34;process-script-inputs-1-2-etc&#34;&gt;Process script inputs ($1, $2, etc.)&lt;/h3&gt;
 &lt;h3 id=&#34;processing-output-of-shell-commands-within-a-script&#34;&gt;Processing output of shell commands within a script&lt;/h3&gt;
 &lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
@@ -363,15 +375,37 @@ Reload firewall: &lt;code&gt;firewall-cmd --reload&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;manage-selinux-port-labels&#34;&gt;Manage SELinux port labels&lt;/h3&gt;
 &lt;h3 id=&#34;use-boolean-settings-to-modify-system-selinux-settings&#34;&gt;Use boolean settings to modify system SELinux settings&lt;/h3&gt;
 &lt;h3 id=&#34;diagnose-and-address-routine-selinux-policy-violations&#34;&gt;Diagnose and address routine SELinux policy violations&lt;/h3&gt;
+&lt;p&gt;Search &amp;ldquo;/var/log/audit.log&amp;rdquo; for messages with AVC: &lt;code&gt;grep AVC /var/log/audit/audit.log&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-containers&#34;&gt;Manage containers&lt;/h2&gt;
 &lt;h3 id=&#34;find-and-retrieve-container-images-from-a-remote-registry&#34;&gt;Find and retrieve container images from a remote registry&lt;/h3&gt;
+&lt;p&gt;Red Hat container registry requires a login (which you can get for free with a Developer account)
+Provide login details: &lt;code&gt;podman login&lt;/code&gt;&lt;br&gt;
+Search for containers: &lt;code&gt;podman search nginx&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;inspect-container-images&#34;&gt;Inspect container images&lt;/h3&gt;
+&lt;p&gt;List local images: &lt;code&gt;podman images&lt;/code&gt;&lt;br&gt;
+Inspect a remote image: &lt;code&gt;skopeo inspect docker://registry.fedoraproject.org/fedora:latest&lt;/code&gt;&lt;br&gt;
+Inspect an image that exists locally: &lt;code&gt;podman inspect imagename&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;perform-container-management-using-commands-such-as-podman-and-skopeo&#34;&gt;Perform container management using commands such as podman and skopeo&lt;/h3&gt;
+&lt;p&gt;Remove a container: &lt;code&gt;podman rm containername&lt;/code&gt;&lt;br&gt;
+Remove a container image: &lt;code&gt;podman rmi imagename&lt;/code&gt;&lt;br&gt;
+View logs from a container: &lt;code&gt;podman logs containername&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;build-a-container-from-a-containerfile&#34;&gt;Build a container from a Containerfile&lt;/h3&gt;
 &lt;h3 id=&#34;perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers&#34;&gt;Perform basic container management such as running, starting, stopping, and listing running containers&lt;/h3&gt;
+&lt;p&gt;Start a container in the background: &lt;code&gt;podman run -d nginx&lt;/code&gt;&lt;br&gt;
+Start a container with an interactive shell: &lt;code&gt;podman run -it fedora&lt;/code&gt;&lt;br&gt;
+Stop a container: &lt;code&gt;podman stop containername&lt;/code&gt;&lt;br&gt;
+Restart a container: &lt;code&gt;podman restart containername&lt;/code&gt;&lt;br&gt;
+List running containers: &lt;code&gt;podman ps&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;run-a-service-inside-a-container&#34;&gt;Run a service inside a container&lt;/h3&gt;
+&lt;p&gt;Run nginx with port forwards from the host: &lt;code&gt;podman run -d -p 8080:80 nginx&lt;/code&gt;&lt;br&gt;
+Allow the port through the host firewall: &lt;code&gt;firewall-cmd --add-port=8080/tcp&lt;/code&gt;&lt;br&gt;
+Allow the port through the host firewall again to survive reboot: &lt;code&gt;firewall-cmd --add-port=8080/tcp --permanent&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-a-container-to-start-automatically-as-a-systemd-service&#34;&gt;Configure a container to start automatically as a systemd service&lt;/h3&gt;
+&lt;p&gt;This will first require enabling regular user accounts to stay logged in/start services on boot: &lt;code&gt;loginctl enable-linger username&lt;/code&gt;&lt;br&gt;
+Create the local folder to storing the systemd user units: &lt;code&gt;mkdir -p .config/systemd/user&lt;/code&gt;&lt;br&gt;
+Create a systemd unit for a container: &lt;code&gt;podman generate systemd --name nginx --files&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;attach-persistent-storage-to-a-container&#34;&gt;Attach persistent storage to a container&lt;/h3&gt;
+&lt;p&gt;Store web public html persistently outside the container: &lt;code&gt;podman run -d -p 8080:80 -v /home/adam/public_html:public_html:Z nginx&lt;/code&gt;&lt;/p&gt;
 </content>
     </item>
     

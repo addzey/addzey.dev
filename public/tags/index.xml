@@ -7,7 +7,47 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sat, 23 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RedHat</title>
+      <link>https://addzey.dev/tags/redhat/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/redhat/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>RHCSA</title>
+      <link>https://addzey.dev/tags/rhcsa/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/rhcsa/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>rhel</title>
+      <link>https://addzey.dev/tags/rhel/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/rhel/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Study Notes</title>
+      <link>https://addzey.dev/tags/study-notes/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/study-notes/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>AWS</title>
       <link>https://addzey.dev/tags/aws/</link>
@@ -39,41 +79,11 @@
     </item>
     
     <item>
-      <title>RedHat</title>
-      <link>https://addzey.dev/tags/redhat/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/redhat/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>RHCE</title>
       <link>https://addzey.dev/tags/rhce/</link>
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/tags/rhce/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>rhel</title>
-      <link>https://addzey.dev/tags/rhel/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/rhel/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>Study Notes</title>
-      <link>https://addzey.dev/tags/study-notes/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/study-notes/</guid>
       <description></description>
       <content></content>
     </item>
@@ -114,16 +124,6 @@
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/tags/aws-saa/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>RHCSA</title>
-      <link>https://addzey.dev/tags/rhcsa/</link>
-      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/rhcsa/</guid>
       <description></description>
       <content></content>
     </item>

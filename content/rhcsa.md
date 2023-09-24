@@ -1,6 +1,6 @@
 +++
 title = "RHCSA Study Notes"
-date = "2023-05-28"
+date = "2023-09-24"
 author = "Adam"
 tags = ["RHCSA", "RedHat","rhel", "Study Notes"]
 keywords = ["RHCSA"]
@@ -45,8 +45,11 @@ Recursively search for the text "root" in /etc": `grep -R root /etc`
 Find the text "adam" in /etc/shadow but case-insensitive: `grep -i Adam /etc/shadow`  
 
 ### Access remote systems using SSH
+Create a public/private key pair for current user: `ssh-keygen`  
+Note: The public key can be shared  
+Note: The private key must not be shared and must be stored securely  
 Connect to a remote system using SSH: `ssh username@10.0.0.1`  
-Things to keep in mind: `~/.ssh/known_hosts` which is a record of public keys for hosts you have connected to previously and `~/.ssh/id_rsa.pub` which is the public key for the host you're currently connected to  
+Things to keep in mind: `~/.ssh/known_hosts` which is a record of public keys for hosts you have connected to previously
  
 
 ### Log in and switch users in multiuser targets
@@ -102,6 +105,17 @@ Update mandb to be able to search for text: `mandb`
 ## Create simple shell scripts
 
 ### Conditionally execute code (use of: if, test, [], etc.)
+~~~
+#!/bin/bash
+# Example bash script to check for an input
+
+if [ -z $1 ]
+then
+	echo "an input is required"
+else
+	echo "you have provided the input $1"
+fi
+~~~
 
 ### Use Looping constructs (for, etc.) to process file, command line input
 
@@ -451,22 +465,46 @@ Reload firewall: `firewall-cmd --reload`
 ### Use boolean settings to modify system SELinux settings
 
 ### Diagnose and address routine SELinux policy violations
+Search "/var/log/audit.log" for messages with AVC: `grep AVC /var/log/audit/audit.log`  
 
 
 ## Manage containers
 
 ### Find and retrieve container images from a remote registry
+Red Hat container registry requires a login (which you can get for free with a Developer account)
+Provide login details: `podman login`  
+Search for containers: `podman search nginx`  
 
 ### Inspect container images
+List local images: `podman images`  
+Inspect a remote image: `skopeo inspect docker://registry.fedoraproject.org/fedora:latest`  
+Inspect an image that exists locally: `podman inspect imagename`  
 
 ### Perform container management using commands such as podman and skopeo
+Remove a container: `podman rm containername`  
+Remove a container image: `podman rmi imagename`  
+View logs from a container: `podman logs containername`  
 
 ### Build a container from a Containerfile
 
 ### Perform basic container management such as running, starting, stopping, and listing running containers
+Start a container in the background: `podman run -d nginx`  
+Start a container with an interactive shell: `podman run -it fedora`  
+Stop a container: `podman stop containername`  
+Restart a container: `podman restart containername`  
+List running containers: `podman ps`  
+
 
 ### Run a service inside a container
+Run nginx with port forwards from the host: `podman run -d -p 8080:80 nginx`  
+Allow the port through the host firewall: `firewall-cmd --add-port=8080/tcp`  
+Allow the port through the host firewall again to survive reboot: `firewall-cmd --add-port=8080/tcp --permanent`  
 
 ### Configure a container to start automatically as a systemd service
+This will first require enabling regular user accounts to stay logged in/start services on boot: `loginctl enable-linger username`  
+Create the local folder to storing the systemd user units: `mkdir -p .config/systemd/user`  
+Create a systemd unit for a container: `podman generate systemd --name nginx --files`  
+
 
 ### Attach persistent storage to a container
+Store web public html persistently outside the container: `podman run -d -p 8080:80 -v /home/adam/public_html:public_html:Z nginx`  

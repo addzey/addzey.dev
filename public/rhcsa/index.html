@@ -65,7 +65,7 @@
 <meta property="og:image:height" content="627">
 
 
-  <meta property="article:published_time" content="2023-05-28 00:00:00 &#43;0000 UTC" />
+  <meta property="article:published_time" content="2023-09-24 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -187,7 +187,7 @@
   <div class="post-meta">
     
       <time class="post-date">
-        2023-05-28 ::
+        2023-09-24 ::
         
       </time>
     
@@ -363,8 +363,11 @@ Exam is booked in for <strong>26/09/23</strong></p>
 Recursively search for the text &ldquo;root&rdquo; in /etc&quot;: <code>grep -R root /etc</code><br>
 Find the text &ldquo;adam&rdquo; in /etc/shadow but case-insensitive: <code>grep -i Adam /etc/shadow</code></p>
 <h3 id="access-remote-systems-using-ssh">Access remote systems using SSH<a href="#access-remote-systems-using-ssh" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Connect to a remote system using SSH: <code>ssh username@10.0.0.1</code><br>
-Things to keep in mind: <code>~/.ssh/known_hosts</code> which is a record of public keys for hosts you have connected to previously and <code>~/.ssh/id_rsa.pub</code> which is the public key for the host you&rsquo;re currently connected to</p>
+<p>Create a public/private key pair for current user: <code>ssh-keygen</code><br>
+Note: The public key can be shared<br>
+Note: The private key must not be shared and must be stored securely<br>
+Connect to a remote system using SSH: <code>ssh username@10.0.0.1</code><br>
+Things to keep in mind: <code>~/.ssh/known_hosts</code> which is a record of public keys for hosts you have connected to previously</p>
 <h3 id="log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets<a href="#log-in-and-switch-users-in-multiuser-targets" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Change virtual terminal: <code>chvt 4</code> Can also be done with CTL+ALT+F[1-6] when using console or phsyical logins<br>
 Use &ldquo;w&rdquo; command to see all logged in users: <code>w</code><br>
@@ -404,7 +407,16 @@ List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</c
 <code>less /usr/share/doc/lvm2/README</code></p>
 <h2 id="create-simple-shell-scripts">Create simple shell scripts<a href="#create-simple-shell-scripts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="conditionally-execute-code-use-of-if-test--etc">Conditionally execute code (use of: if, test, [], etc.)<a href="#conditionally-execute-code-use-of-if-test--etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h3 id="use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input<a href="#use-looping-constructs-for-etc-to-process-file-command-line-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre tabindex="0"><code>#!/bin/bash
+# Example bash script to check for an input
+
+if [ -z $1 ]
+then
+	echo &quot;an input is required&quot;
+else
+	echo &quot;you have provided the input $1&quot;
+fi
+</code></pre><h3 id="use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input<a href="#use-looping-constructs-for-etc-to-process-file-command-line-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)<a href="#process-script-inputs-1-2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script<a href="#processing-output-of-shell-commands-within-a-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="operate-running-systems">Operate running systems<a href="#operate-running-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -683,15 +695,37 @@ Reload firewall: <code>firewall-cmd --reload</code></p>
 <h3 id="manage-selinux-port-labels">Manage SELinux port labels<a href="#manage-selinux-port-labels" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="use-boolean-settings-to-modify-system-selinux-settings">Use boolean settings to modify system SELinux settings<a href="#use-boolean-settings-to-modify-system-selinux-settings" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations<a href="#diagnose-and-address-routine-selinux-policy-violations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Search &ldquo;/var/log/audit.log&rdquo; for messages with AVC: <code>grep AVC /var/log/audit/audit.log</code></p>
 <h2 id="manage-containers">Manage containers<a href="#manage-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry<a href="#find-and-retrieve-container-images-from-a-remote-registry" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Red Hat container registry requires a login (which you can get for free with a Developer account)
+Provide login details: <code>podman login</code><br>
+Search for containers: <code>podman search nginx</code></p>
 <h3 id="inspect-container-images">Inspect container images<a href="#inspect-container-images" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>List local images: <code>podman images</code><br>
+Inspect a remote image: <code>skopeo inspect docker://registry.fedoraproject.org/fedora:latest</code><br>
+Inspect an image that exists locally: <code>podman inspect imagename</code></p>
 <h3 id="perform-container-management-using-commands-such-as-podman-and-skopeo">Perform container management using commands such as podman and skopeo<a href="#perform-container-management-using-commands-such-as-podman-and-skopeo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Remove a container: <code>podman rm containername</code><br>
+Remove a container image: <code>podman rmi imagename</code><br>
+View logs from a container: <code>podman logs containername</code></p>
 <h3 id="build-a-container-from-a-containerfile">Build a container from a Containerfile<a href="#build-a-container-from-a-containerfile" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers">Perform basic container management such as running, starting, stopping, and listing running containers<a href="#perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Start a container in the background: <code>podman run -d nginx</code><br>
+Start a container with an interactive shell: <code>podman run -it fedora</code><br>
+Stop a container: <code>podman stop containername</code><br>
+Restart a container: <code>podman restart containername</code><br>
+List running containers: <code>podman ps</code></p>
 <h3 id="run-a-service-inside-a-container">Run a service inside a container<a href="#run-a-service-inside-a-container" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Run nginx with port forwards from the host: <code>podman run -d -p 8080:80 nginx</code><br>
+Allow the port through the host firewall: <code>firewall-cmd --add-port=8080/tcp</code><br>
+Allow the port through the host firewall again to survive reboot: <code>firewall-cmd --add-port=8080/tcp --permanent</code></p>
 <h3 id="configure-a-container-to-start-automatically-as-a-systemd-service">Configure a container to start automatically as a systemd service<a href="#configure-a-container-to-start-automatically-as-a-systemd-service" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>This will first require enabling regular user accounts to stay logged in/start services on boot: <code>loginctl enable-linger username</code><br>
+Create the local folder to storing the systemd user units: <code>mkdir -p .config/systemd/user</code><br>
+Create a systemd unit for a container: <code>podman generate systemd --name nginx --files</code></p>
 <h3 id="attach-persistent-storage-to-a-container">Attach persistent storage to a container<a href="#attach-persistent-storage-to-a-container" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Store web public html persistently outside the container: <code>podman run -d -p 8080:80 -v /home/adam/public_html:public_html:Z nginx</code></p>
 
       </div></div>
 

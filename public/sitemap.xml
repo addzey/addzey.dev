@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://addzey.dev/</loc>
-    <lastmod>2023-09-23T00:00:00+00:00</lastmod>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/redhat/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/rhcsa/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/rhcsa/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/rhel/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/study-notes/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://addzey.dev/tags/</loc>
+    <lastmod>2023-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/aws/</loc>
     <lastmod>2023-09-23T00:00:00+00:00</lastmod>
@@ -17,22 +35,10 @@
     <loc>https://addzey.dev/tags/devops-engineer-professional/</loc>
     <lastmod>2023-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://addzey.dev/tags/redhat/</loc>
-    <lastmod>2023-09-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://addzey.dev/tags/rhce/</loc>
     <lastmod>2023-09-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/rhce/</loc>
-    <lastmod>2023-09-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/rhel/</loc>
-    <lastmod>2023-09-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/study-notes/</loc>
-    <lastmod>2023-09-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/</loc>
     <lastmod>2023-09-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/centos/</loc>
@@ -54,12 +60,6 @@
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/aws-saa/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/tags/rhcsa/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://addzey.dev/rhcsa/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://addzey.dev/tags/solutions-architect-associate/</loc>

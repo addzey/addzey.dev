@@ -5,7 +5,7 @@ author = "Adam"
 +++
 
 # About
-I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, also as a way to improve my technical documentation skills
+I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, along the way I hope to improve my technical documentation skills
 
 Like what you see and think I might be a good fit for your technical team? You can contact me on [LinkedIn](https://www.linkedin.com/in/adam-rogers-098466258/)
 
