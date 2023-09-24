@@ -10,4 +10,4 @@ safeHTML = true
 +++
 
 # Introduction
-Placeholder, expect to sit this exam early/mid 2024
+Placeholder, expect to sit this exam early 2024

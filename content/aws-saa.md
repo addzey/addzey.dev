@@ -10,6 +10,6 @@ safeHTML = true
 +++
 
 # Introduction
- I passed the exam before creating this blog so there is no content here but there is this cool badge! 😎
+ I passed the exam before creating this blog so there are no study notes here, but there is this cool badge! 😎
 
 [![AWS SAA](../../aws-certified-solutions-architect-associate.png)](https://www.credly.com/badges/20e16957-53de-49bb-a4d3-59a9a5dfc7f3/public_url)

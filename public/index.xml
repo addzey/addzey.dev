@@ -14,9 +14,9 @@
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/aws-dop/</guid>
-      <description>Introduction Placeholder, expect to sit this exam early/mid 2024</description>
+      <description>Introduction Placeholder, expect to sit this exam early 2024</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, expect to sit this exam early/mid 2024&lt;/p&gt;
+&lt;p&gt;Placeholder, expect to sit this exam early 2024&lt;/p&gt;
 </content>
     </item>
     
@@ -26,9 +26,9 @@
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/rhce/</guid>
-      <description>Introduction Placeholder, expect to sit this exam late 2023 or early 2024</description>
+      <description>Introduction Placeholder, considering this one</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, expect to sit this exam late 2023 or early 2024&lt;/p&gt;
+&lt;p&gt;Placeholder, considering this one&lt;/p&gt;
 </content>
     </item>
     
@@ -63,9 +63,9 @@ We can see the options &amp;ldquo;quiet rhgb&amp;rdquo; listed in the arguments 
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/aws-saa/</guid>
-      <description>Introduction I passed the exam before creating this blog so there is no content here but there is this cool badge! 😎</description>
+      <description>Introduction I passed the exam before creating this blog so there are no study notes here, but there is this cool badge! 😎</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;I passed the exam before creating this blog so there is no content here but there is this cool badge! 😎&lt;/p&gt;
+&lt;p&gt;I passed the exam before creating this blog so there are no study notes here, but there is this cool badge! 😎&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.credly.com/badges/20e16957-53de-49bb-a4d3-59a9a5dfc7f3/public_url&#34;&gt;&lt;img src=&#34;../../aws-certified-solutions-architect-associate.png&#34; alt=&#34;AWS SAA&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     </item>
@@ -573,11 +573,11 @@ Pod </description>
       <guid>https://addzey.dev/about/</guid>
       <description>About I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, also as a way to improve my technical documentation skills
 Like what you see and think I might be a good fit for your technical team? You can contact me on LinkedIn
-How was it created?  Static site generated with Hugo Deployed with a CI/CD pipeline via GitHub, site source code is available here Using a fork of Terminal theme with some customizations I&amp;rsquo;ve made like integrating FontAwesome, which is available here  </description>
+How was this blog created?  Static site generated with Hugo Deployed with a CI/CD pipeline via GitHub, site source code is available here Using a fork of Terminal theme with some customizations I&amp;rsquo;ve made like integrating FontAwesome, which is available here  </description>
       <content>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
 &lt;p&gt;I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, also as a way to improve my technical documentation skills&lt;/p&gt;
 &lt;p&gt;Like what you see and think I might be a good fit for your technical team? You can contact me on &lt;a href=&#34;https://www.linkedin.com/in/adam-rogers-098466258/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;how-was-it-created&#34;&gt;How was it created?&lt;/h2&gt;
+&lt;h2 id=&#34;how-was-this-blog-created&#34;&gt;How was this blog created?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Static site generated with &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Deployed with a CI/CD pipeline via GitHub, site source code is available &lt;a href=&#34;https://github.com/addzey/addzey.dev&#34;&gt;here&lt;/a&gt;&lt;/li&gt;

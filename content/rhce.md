@@ -9,4 +9,4 @@ toc = true
 +++
 
 # Introduction
-Placeholder, expect to sit this exam late 2023 or early 2024
+Placeholder, considering this one

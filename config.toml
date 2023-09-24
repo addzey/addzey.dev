@@ -85,11 +85,6 @@ paginate = 5
         name = "RHCSA"
         url = "/rhcsa"
       [[languages.en.menu.main]]
-        weight = 30
-        identifier = "RHCE"
-        name = "RHCE"
-        url = "/rhce"
-      [[languages.en.menu.main]]
         weight = 40
         identifier = "AWS SAA"
         name = "AWS SAA"
