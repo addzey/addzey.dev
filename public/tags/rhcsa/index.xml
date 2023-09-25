@@ -208,11 +208,29 @@ Mount a swap partition: &lt;code&gt;swapon -a&lt;/code&gt; or &lt;code&gt;swapon
 Format a partition with EXT4: &lt;code&gt;mkfs.ext4 /dev/sdX&lt;/code&gt;&lt;br&gt;
 Format a partition with VFAT: &lt;code&gt;mkfs.vfat /dev/sdX&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Format a LVM logical volume with XFS: &lt;code&gt;mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Mount a filesystem: &lt;code&gt;mount /dev/sdX /mount/location&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Mount a filesystem: &lt;code&gt;mount /dev/sdX /mount/location&lt;/code&gt;&lt;br&gt;
+Unmount a filesystem: &lt;code&gt;umount /mount/location&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Show existing mounts: &lt;code&gt;mount&lt;/code&gt; or &lt;code&gt;findmnt&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;mount-and-unmount-network-file-systems-using-nfs&#34;&gt;Mount and unmount network file systems using NFS&lt;/h3&gt;
+&lt;p&gt;Show available exports: &lt;code&gt;showmount -e 192.168.10.2&lt;/code&gt;&lt;br&gt;
+Mount the available share: &lt;code&gt;mount 192.168.10.2:/data /mnt/nfs&lt;/code&gt;&lt;br&gt;
+Make the mount persistent by adding it to fstab by adding the below entry:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;192.168.10.2:/data  /mnt/nfs    nfs _netdev 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I have tested that using &amp;ldquo;defaults&amp;rdquo; like other mounts instead of &amp;ldquo;_netdev&amp;rdquo; also works&lt;/p&gt;
 &lt;h3 id=&#34;configure-autofs&#34;&gt;Configure autofs&lt;/h3&gt;
-&lt;h3 id=&#34;extend-existing-logical-volumes&#34;&gt;Extend existing logical volumes&lt;/h3&gt;
+&lt;p&gt;Install required packages: &lt;code&gt;yum install autofs&lt;/code&gt;&lt;br&gt;
+This will create the files &lt;code&gt;/etc/auto.master&lt;/code&gt; and other auto.* files&lt;/p&gt;
+&lt;p&gt;Auto mount the /data export on /files: &lt;code&gt;vim /etc/auto.master&lt;/code&gt;&lt;br&gt;
+Add the line:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/files   /etc/auto.files
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create the file /etc/auto.files to define the NFS share for auto mounting: &lt;code&gt;vim /etc/auto.files&lt;/code&gt;&lt;br&gt;
+Add the line:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;data    -rw 192.168.10.2:/data
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Wildcard mounting for example home user directories, inside auto.ldap:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;*   -rw servername:/users/&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;extend-existing-logical-volumes&#34;&gt;Extend existing logical volumes&lt;/h3&gt;
+&lt;p&gt;Extend a logical volume by 2GB and resize the filesystem: &lt;code&gt;lvextend -L +2GB volumegroup01/logicalvolume02 -r&lt;/code&gt;&lt;br&gt;
+Extend a logical volume to use all available free space: &lt;code&gt;lvextend -l +100%FREE volumegroup01/logicalvolume02&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;create-and-configure-set-gid-directories-for-collaboration&#34;&gt;Create and configure set-GID directories for collaboration&lt;/h3&gt;
 &lt;h3 id=&#34;diagnose-and-correct-file-permission-problems&#34;&gt;Diagnose and correct file permission problems&lt;/h3&gt;
 &lt;h2 id=&#34;deploy-configure-and-maintain-systems&#34;&gt;Deploy, configure, and maintain systems&lt;/h2&gt;
@@ -317,16 +335,18 @@ Enter the contents:&lt;/p&gt;
 Write out a new grub config [BIOS]: &lt;code&gt;grub2-mkconfig -o /boot/grub2/grubg.cg&lt;/code&gt;&lt;br&gt;
 Write out a new grub config [UEFI]: &lt;code&gt;grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-basic-networking&#34;&gt;Manage basic networking&lt;/h2&gt;
-&lt;h3 id=&#34;configure-ipv4-and-ipv6-addresses&#34;&gt;Configure IPv4 and IPv6 addresses&lt;/h3&gt;
 &lt;p&gt;General tools for network info: &lt;code&gt;ip addr&lt;/code&gt; and &lt;code&gt;ip -s link&lt;/code&gt; and &lt;code&gt;ip route&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;configure-ipv4-and-ipv6-addresses&#34;&gt;Configure IPv4 and IPv6 addresses&lt;/h3&gt;
 &lt;p&gt;Use &lt;strong&gt;NetworkManager CLI&lt;/strong&gt; to configure networking:&lt;br&gt;
 Create static connection with the name &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1&lt;/code&gt;&lt;br&gt;
 Add DNS to the connection &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Use &lt;strong&gt;NetworkManager console GUI&lt;/strong&gt; to configure networking: &lt;code&gt;nmtui&lt;/code&gt;&lt;br&gt;
 Use &lt;code&gt;arrow keys, tab, spacebar and enter&lt;/code&gt; to navigate menu options for configuring network settings&lt;/p&gt;
 &lt;h3 id=&#34;configure-hostname-resolution&#34;&gt;Configure hostname resolution&lt;/h3&gt;
-&lt;p&gt;This would be done above by setting DNS servers
-If there&amp;rsquo;s any issues with hostname resolution you can check &lt;code&gt;/etc/resolv.conf&lt;/code&gt;  which should say this file is managed by NetworkManager
+&lt;p&gt;Check current configuration: &lt;code&gt;hostnamectl&lt;/code&gt;&lt;br&gt;
+Set a hostname for the server: &lt;code&gt;hostnamectl hostname rchsa01&lt;/code&gt;&lt;br&gt;
+Set the FQDN for the server: &lt;code&gt;hostnamectl hostname rhcsa02.example.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If there&amp;rsquo;s any issues with hostname resolution you can check &lt;code&gt;/etc/resolv.conf&lt;/code&gt;  which should say this file is managed by NetworkManager
 Set DNS for a connection named &amp;ldquo;example-static&amp;rdquo;: &lt;code&gt;nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”&lt;/code&gt;
 Confirm hostname resolution is working using &lt;code&gt;dig&lt;/code&gt; or &lt;code&gt;ping hostname.com&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-network-services-to-start-automatically-at-boot&#34;&gt;Configure network services to start automatically at boot&lt;/h3&gt;
@@ -405,10 +425,12 @@ Restore contexts per policy for a specific folder: &lt;code&gt;restorecon -R -v 
 Set a SELinux boolean value persistently: &lt;code&gt;setsebool -P &amp;lt;option&amp;gt; [on/off]&lt;/code&gt;&lt;br&gt;
 For example, allow httpd access to user home directories: &lt;code&gt;setsebool -P httpd_enable_homedirs on&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;diagnose-and-address-routine-selinux-policy-violations&#34;&gt;Diagnose and address routine SELinux policy violations&lt;/h3&gt;
-&lt;p&gt;Search &amp;ldquo;/var/log/audit.log&amp;rdquo; for messages with AVC: &lt;code&gt;grep AVC /var/log/audit/audit.log&lt;/code&gt;&lt;br&gt;
+&lt;p&gt;Check for sealerts in /var/log/messages: &lt;code&gt;grep sealert /var/log/messages&lt;/code&gt;&lt;br&gt;
 Do the same with journalctl: &lt;code&gt;journalctl | grep sealert&lt;/code&gt;&lt;br&gt;
 Analyze the audit log and provide a human readable output with suggestions: &lt;code&gt;sealert -a /var/log/audit/audit.log&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Search &amp;ldquo;/var/log/audit.log&amp;rdquo; for messages with AVC: &lt;code&gt;grep AVC /var/log/audit/audit.log&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;manage-containers&#34;&gt;Manage containers&lt;/h2&gt;
+&lt;p&gt;Install required tools: &lt;code&gt;yum install container-tools&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;find-and-retrieve-container-images-from-a-remote-registry&#34;&gt;Find and retrieve container images from a remote registry&lt;/h3&gt;
 &lt;p&gt;Red Hat container registry requires a login (which you can get for free with a Developer account)
 Provide login details: &lt;code&gt;podman login&lt;/code&gt;&lt;br&gt;

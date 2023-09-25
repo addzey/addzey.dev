@@ -267,14 +267,43 @@ Format a partition with VFAT: `mkfs.vfat /dev/sdX`
 Format a LVM logical volume with XFS: `mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02`  
 
 Mount a filesystem: `mount /dev/sdX /mount/location`  
+Unmount a filesystem: `umount /mount/location`  
 
 Show existing mounts: `mount` or `findmnt`  
 
 ### Mount and unmount network file systems using NFS
+Show available exports: `showmount -e 192.168.10.2`  
+Mount the available share: `mount 192.168.10.2:/data /mnt/nfs`  
+Make the mount persistent by adding it to fstab by adding the below entry:
+~~~
+192.168.10.2:/data  /mnt/nfs    nfs _netdev 0 0
+~~~
+I have tested that using "defaults" like other mounts instead of "_netdev" also works  
 
 ### Configure autofs
+Install required packages: `yum install autofs`  
+This will create the files `/etc/auto.master` and other auto.* files  
+
+Auto mount the /data export on /files: `vim /etc/auto.master`  
+Add the line:
+~~~
+/files   /etc/auto.files
+~~~
+
+Create the file /etc/auto.files to define the NFS share for auto mounting: `vim /etc/auto.files`  
+Add the line:
+~~~
+data    -rw 192.168.10.2:/data
+~~~
+
+Wildcard mounting for example home user directories, inside auto.ldap:
+~~~
+*   -rw servername:/users/&
+~~~
 
 ### Extend existing logical volumes
+Extend a logical volume by 2GB and resize the filesystem: `lvextend -L +2GB volumegroup01/logicalvolume02 -r`  
+Extend a logical volume to use all available free space: `lvextend -l +100%FREE volumegroup01/logicalvolume02`  
 
 ### Create and configure set-GID directories for collaboration
 
@@ -385,9 +414,9 @@ Write out a new grub config [UEFI]: `grub2-mkconfig -o /boot/efi/EFI/redhat/grub
 
 ## Manage basic networking
 
-### Configure IPv4 and IPv6 addresses
 General tools for network info: `ip addr` and `ip -s link` and `ip route`  
 
+### Configure IPv4 and IPv6 addresses
 Use **NetworkManager CLI** to configure networking:  
     Create static connection with the name "example-static": `nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1`  
     Add DNS to the connection "example-static": `nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”`  
@@ -396,7 +425,10 @@ Use **NetworkManager console GUI** to configure networking: `nmtui`
     Use `arrow keys, tab, spacebar and enter` to navigate menu options for configuring network settings    
 
 ### Configure hostname resolution
-This would be done above by setting DNS servers
+Check current configuration: `hostnamectl`  
+Set a hostname for the server: `hostnamectl hostname rchsa01`  
+Set the FQDN for the server: `hostnamectl hostname rhcsa02.example.com`  
+
 If there's any issues with hostname resolution you can check `/etc/resolv.conf`  which should say this file is managed by NetworkManager
 Set DNS for a connection named "example-static": `nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”` 
 Confirm hostname resolution is working using `dig` or `ping hostname.com`  
@@ -505,11 +537,14 @@ Set a SELinux boolean value persistently: `setsebool -P <option> [on/off]`
 For example, allow httpd access to user home directories: `setsebool -P httpd_enable_homedirs on`  
 
 ### Diagnose and address routine SELinux policy violations
-Search "/var/log/audit.log" for messages with AVC: `grep AVC /var/log/audit/audit.log`  
+Check for sealerts in /var/log/messages: `grep sealert /var/log/messages`   
 Do the same with journalctl: `journalctl | grep sealert`  
 Analyze the audit log and provide a human readable output with suggestions: `sealert -a /var/log/audit/audit.log`  
 
+Search "/var/log/audit.log" for messages with AVC: `grep AVC /var/log/audit/audit.log`  
+
 ## Manage containers
+Install required tools: `yum install container-tools`  
 
 ### Find and retrieve container images from a remote registry
 Red Hat container registry requires a login (which you can get for free with a Developer account)

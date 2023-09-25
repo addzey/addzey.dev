@@ -528,11 +528,29 @@ Mount a swap partition: <code>swapon -a</code> or <code>swapon /dev/sdX</code></
 Format a partition with EXT4: <code>mkfs.ext4 /dev/sdX</code><br>
 Format a partition with VFAT: <code>mkfs.vfat /dev/sdX</code></p>
 <p>Format a LVM logical volume with XFS: <code>mkfs.xfs /dev/mapper/volumegroup01-logicalvolume02</code></p>
-<p>Mount a filesystem: <code>mount /dev/sdX /mount/location</code></p>
+<p>Mount a filesystem: <code>mount /dev/sdX /mount/location</code><br>
+Unmount a filesystem: <code>umount /mount/location</code></p>
 <p>Show existing mounts: <code>mount</code> or <code>findmnt</code></p>
 <h3 id="mount-and-unmount-network-file-systems-using-nfs">Mount and unmount network file systems using NFS<a href="#mount-and-unmount-network-file-systems-using-nfs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Show available exports: <code>showmount -e 192.168.10.2</code><br>
+Mount the available share: <code>mount 192.168.10.2:/data /mnt/nfs</code><br>
+Make the mount persistent by adding it to fstab by adding the below entry:</p>
+<pre tabindex="0"><code>192.168.10.2:/data  /mnt/nfs    nfs _netdev 0 0
+</code></pre><p>I have tested that using &ldquo;defaults&rdquo; like other mounts instead of &ldquo;_netdev&rdquo; also works</p>
 <h3 id="configure-autofs">Configure autofs<a href="#configure-autofs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h3 id="extend-existing-logical-volumes">Extend existing logical volumes<a href="#extend-existing-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Install required packages: <code>yum install autofs</code><br>
+This will create the files <code>/etc/auto.master</code> and other auto.* files</p>
+<p>Auto mount the /data export on /files: <code>vim /etc/auto.master</code><br>
+Add the line:</p>
+<pre tabindex="0"><code>/files   /etc/auto.files
+</code></pre><p>Create the file /etc/auto.files to define the NFS share for auto mounting: <code>vim /etc/auto.files</code><br>
+Add the line:</p>
+<pre tabindex="0"><code>data    -rw 192.168.10.2:/data
+</code></pre><p>Wildcard mounting for example home user directories, inside auto.ldap:</p>
+<pre tabindex="0"><code>*   -rw servername:/users/&amp;
+</code></pre><h3 id="extend-existing-logical-volumes">Extend existing logical volumes<a href="#extend-existing-logical-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Extend a logical volume by 2GB and resize the filesystem: <code>lvextend -L +2GB volumegroup01/logicalvolume02 -r</code><br>
+Extend a logical volume to use all available free space: <code>lvextend -l +100%FREE volumegroup01/logicalvolume02</code></p>
 <h3 id="create-and-configure-set-gid-directories-for-collaboration">Create and configure set-GID directories for collaboration<a href="#create-and-configure-set-gid-directories-for-collaboration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems<a href="#diagnose-and-correct-file-permission-problems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h2 id="deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems<a href="#deploy-configure-and-maintain-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -637,16 +655,18 @@ Enter the contents:</p>
 Write out a new grub config [BIOS]: <code>grub2-mkconfig -o /boot/grub2/grubg.cg</code><br>
 Write out a new grub config [UEFI]: <code>grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg</code></p>
 <h2 id="manage-basic-networking">Manage basic networking<a href="#manage-basic-networking" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<h3 id="configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses<a href="#configure-ipv4-and-ipv6-addresses" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>General tools for network info: <code>ip addr</code> and <code>ip -s link</code> and <code>ip route</code></p>
+<h3 id="configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses<a href="#configure-ipv4-and-ipv6-addresses" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Use <strong>NetworkManager CLI</strong> to configure networking:<br>
 Create static connection with the name &ldquo;example-static&rdquo;: <code>nmcli con add type ethernet con-name example-static ifname enp2s0 ip4 192.168.1.100/24 gw4 192.168.1.1</code><br>
 Add DNS to the connection &ldquo;example-static&rdquo;: <code>nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”</code></p>
 <p>Use <strong>NetworkManager console GUI</strong> to configure networking: <code>nmtui</code><br>
 Use <code>arrow keys, tab, spacebar and enter</code> to navigate menu options for configuring network settings</p>
 <h3 id="configure-hostname-resolution">Configure hostname resolution<a href="#configure-hostname-resolution" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>This would be done above by setting DNS servers
-If there&rsquo;s any issues with hostname resolution you can check <code>/etc/resolv.conf</code>  which should say this file is managed by NetworkManager
+<p>Check current configuration: <code>hostnamectl</code><br>
+Set a hostname for the server: <code>hostnamectl hostname rchsa01</code><br>
+Set the FQDN for the server: <code>hostnamectl hostname rhcsa02.example.com</code></p>
+<p>If there&rsquo;s any issues with hostname resolution you can check <code>/etc/resolv.conf</code>  which should say this file is managed by NetworkManager
 Set DNS for a connection named &ldquo;example-static&rdquo;: <code>nmcli con mod example-static ipv4.dns “8.8.8.8 8.8.4.4”</code>
 Confirm hostname resolution is working using <code>dig</code> or <code>ping hostname.com</code></p>
 <h3 id="configure-network-services-to-start-automatically-at-boot">Configure network services to start automatically at boot<a href="#configure-network-services-to-start-automatically-at-boot" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
@@ -725,10 +745,12 @@ Restore contexts per policy for a specific folder: <code>restorecon -R -v /web</
 Set a SELinux boolean value persistently: <code>setsebool -P &lt;option&gt; [on/off]</code><br>
 For example, allow httpd access to user home directories: <code>setsebool -P httpd_enable_homedirs on</code></p>
 <h3 id="diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations<a href="#diagnose-and-address-routine-selinux-policy-violations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Search &ldquo;/var/log/audit.log&rdquo; for messages with AVC: <code>grep AVC /var/log/audit/audit.log</code><br>
+<p>Check for sealerts in /var/log/messages: <code>grep sealert /var/log/messages</code><br>
 Do the same with journalctl: <code>journalctl | grep sealert</code><br>
 Analyze the audit log and provide a human readable output with suggestions: <code>sealert -a /var/log/audit/audit.log</code></p>
+<p>Search &ldquo;/var/log/audit.log&rdquo; for messages with AVC: <code>grep AVC /var/log/audit/audit.log</code></p>
 <h2 id="manage-containers">Manage containers<a href="#manage-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Install required tools: <code>yum install container-tools</code></p>
 <h3 id="find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry<a href="#find-and-retrieve-container-images-from-a-remote-registry" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Red Hat container registry requires a login (which you can get for free with a Developer account)
 Provide login details: <code>podman login</code><br>
