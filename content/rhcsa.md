@@ -200,9 +200,18 @@ Stop a network service: `systemctl stop servicename`
 
 ### Securely transfer files between systems
 There are 3 options all made possible by SSH: `scp` and `sftp` and `rsync`  
+
 **scp** is the most compatible option  
 **sftp** creates a regular FTP session using SSH  
 **rsync** will now also by default use SSH (no need for the `-e ssh` option)  
+
+Use SCP to transfer some local files to a remote destination: `scp localfile01 localfile02 username@192.168.10.2:/remote/directory`  
+
+Use SFTP to securely transfer files: `sftp username@192.168.10.2`  
+Download a file via SFTP: `get filename`  
+Upload a file via SFTP: `put filename`  
+
+Download a directory and it's contents using rsync: `rsync -ar username@192.168.10.2:/etc /home/adam/rsyncdemo`  in format ":/remote/directory /local/directory"  
 
 ## Configure local storage
 List block devices: `lsblk`  
@@ -466,18 +475,39 @@ To review current ssh server configuration check: `vim /etc/ssh/sshd_config`  Yo
 
 Some settings that you might like to change in there would be `PasswordAuthentication` and `PermitRootLogin`  disabling both of these is generally a good option for improved security  
 
+To restrict SSH login to specific users, the users can be defined with `AllowUsers username1 username2`  
+
 ### Set enforcing and permissive modes for SELinux
+Check the current SELinux status: `getenforce`  
+Change the SELinux mode to permissive: `setenforce permissive`  
+Change the SELinux mode to enforcing: `setenforce enforcing`  
 
 ### List and identify SELinux file and process context
+SELinux contexts follow the below standard:
+**user** specific context (you will see this as _u)  
+**role** specific context (you will see this as _r)  
+**type** which defines allowed operations (you will see this as _t)  
+
+List directory contents including SELinux file contexts: `ls -laZ`  
+List processes including SELinux process contexts: `ps auxZ`  
+Find the SELinux process context for httpd: `ps auxZ | grep httpd`  
 
 ### Restore default file contexts
+Restore defaults as per policy for the entire filesystem: `touch /.autorelabel` followed by rebooting  
+Change the SELinux context on folder /web: `semanage-fcontext -a -t httpd_sys_content_t "/web(/.*)?"`  
+Restore contexts per policy for a specific folder: `restorecon -R -v /web`  
 
 ### Manage SELinux port labels
 
 ### Use boolean settings to modify system SELinux settings
+List all SELinux boolean options: `getsebool -a`  
+Set a SELinux boolean value persistently: `setsebool -P <option> [on/off]`  
+For example, allow httpd access to user home directories: `setsebool -P httpd_enable_homedirs on`  
 
 ### Diagnose and address routine SELinux policy violations
 Search "/var/log/audit.log" for messages with AVC: `grep AVC /var/log/audit/audit.log`  
+Do the same with journalctl: `journalctl | grep sealert`  
+Analyze the audit log and provide a human readable output with suggestions: `sealert -a /var/log/audit/audit.log`  
 
 ## Manage containers
 

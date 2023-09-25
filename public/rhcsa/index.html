@@ -478,10 +478,15 @@ Make the systemd-journald logs persistent: <code>mkdir -p /var/log/journal</code
 Start a network service: <code>systemctl start servicename</code><br>
 Stop a network service: <code>systemctl stop servicename</code></p>
 <h3 id="securely-transfer-files-between-systems">Securely transfer files between systems<a href="#securely-transfer-files-between-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>There are 3 options all made possible by SSH: <code>scp</code> and <code>sftp</code> and <code>rsync</code><br>
-<strong>scp</strong> is the most compatible option<br>
+<p>There are 3 options all made possible by SSH: <code>scp</code> and <code>sftp</code> and <code>rsync</code></p>
+<p><strong>scp</strong> is the most compatible option<br>
 <strong>sftp</strong> creates a regular FTP session using SSH<br>
 <strong>rsync</strong> will now also by default use SSH (no need for the <code>-e ssh</code> option)</p>
+<p>Use SCP to transfer some local files to a remote destination: <code>scp localfile01 localfile02 username@192.168.10.2:/remote/directory</code></p>
+<p>Use SFTP to securely transfer files: <code>sftp username@192.168.10.2</code><br>
+Download a file via SFTP: <code>get filename</code><br>
+Upload a file via SFTP: <code>put filename</code></p>
+<p>Download a directory and it&rsquo;s contents using rsync: <code>rsync -ar username@192.168.10.2:/etc /home/adam/rsyncdemo</code>  in format &ldquo;:/remote/directory /local/directory&rdquo;</p>
 <h2 id="configure-local-storage">Configure local storage<a href="#configure-local-storage" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>List block devices: <code>lsblk</code><br>
 Get UUID and labels of block devices: <code>blkid</code><br>
@@ -697,13 +702,32 @@ Note: The private key must not be shared and must be stored securely</p>
 <p>You should now be able to login using pubkey authentication as it&rsquo;s enabled by default</p>
 <p>To review current ssh server configuration check: <code>vim /etc/ssh/sshd_config</code>  You should see the line <code>#PubKeyAuthentication yes</code> it is commented out because it&rsquo;s the default setting</p>
 <p>Some settings that you might like to change in there would be <code>PasswordAuthentication</code> and <code>PermitRootLogin</code>  disabling both of these is generally a good option for improved security</p>
+<p>To restrict SSH login to specific users, the users can be defined with <code>AllowUsers username1 username2</code></p>
 <h3 id="set-enforcing-and-permissive-modes-for-selinux">Set enforcing and permissive modes for SELinux<a href="#set-enforcing-and-permissive-modes-for-selinux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Check the current SELinux status: <code>getenforce</code><br>
+Change the SELinux mode to permissive: <code>setenforce permissive</code><br>
+Change the SELinux mode to enforcing: <code>setenforce enforcing</code></p>
 <h3 id="list-and-identify-selinux-file-and-process-context">List and identify SELinux file and process context<a href="#list-and-identify-selinux-file-and-process-context" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>SELinux contexts follow the below standard:
+<strong>user</strong> specific context (you will see this as _u)<br>
+<strong>role</strong> specific context (you will see this as _r)<br>
+<strong>type</strong> which defines allowed operations (you will see this as _t)</p>
+<p>List directory contents including SELinux file contexts: <code>ls -laZ</code><br>
+List processes including SELinux process contexts: <code>ps auxZ</code><br>
+Find the SELinux process context for httpd: <code>ps auxZ | grep httpd</code></p>
 <h3 id="restore-default-file-contexts">Restore default file contexts<a href="#restore-default-file-contexts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Restore defaults as per policy for the entire filesystem: <code>touch /.autorelabel</code> followed by rebooting<br>
+Change the SELinux context on folder /web: <code>semanage-fcontext -a -t httpd_sys_content_t &quot;/web(/.*)?&quot;</code><br>
+Restore contexts per policy for a specific folder: <code>restorecon -R -v /web</code></p>
 <h3 id="manage-selinux-port-labels">Manage SELinux port labels<a href="#manage-selinux-port-labels" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <h3 id="use-boolean-settings-to-modify-system-selinux-settings">Use boolean settings to modify system SELinux settings<a href="#use-boolean-settings-to-modify-system-selinux-settings" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>List all SELinux boolean options: <code>getsebool -a</code><br>
+Set a SELinux boolean value persistently: <code>setsebool -P &lt;option&gt; [on/off]</code><br>
+For example, allow httpd access to user home directories: <code>setsebool -P httpd_enable_homedirs on</code></p>
 <h3 id="diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations<a href="#diagnose-and-address-routine-selinux-policy-violations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Search &ldquo;/var/log/audit.log&rdquo; for messages with AVC: <code>grep AVC /var/log/audit/audit.log</code></p>
+<p>Search &ldquo;/var/log/audit.log&rdquo; for messages with AVC: <code>grep AVC /var/log/audit/audit.log</code><br>
+Do the same with journalctl: <code>journalctl | grep sealert</code><br>
+Analyze the audit log and provide a human readable output with suggestions: <code>sealert -a /var/log/audit/audit.log</code></p>
 <h2 id="manage-containers">Manage containers<a href="#manage-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry<a href="#find-and-retrieve-container-images-from-a-remote-registry" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Red Hat container registry requires a login (which you can get for free with a Developer account)
