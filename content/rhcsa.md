@@ -251,7 +251,7 @@ Create a logical volume of a specific size: `lvcreate -L 1.5G volumegroup01 -n l
 To mount by label when editing /etc/fstab use: `LABEL=labelofpartition`  to specify the device  
 To mount by UUID when editing /etc/fstab use: `UUID="000000011-0001-ab00-ba0000001234"`  to specify the device  
 
-** You can also use systemd-mount which I'll not cover for now **
+** You can also use systemd-mount which is likely to be the best method in future but is not needed for the exam **
 
 ### Add new partitions and logical volumes, and swap to a system non-destructively
 Format a swap partition: `mkswap /dev/sdX`  
@@ -562,6 +562,24 @@ Remove a container image: `podman rmi imagename`
 View logs from a container: `podman logs containername`  
 
 ### Build a container from a Containerfile
+Create a directory for your container: `mkdir mycontainer` switch into the directory `cd mycontainer`   
+Create a basic script to echo some words: `vim myecho`  
+Inside this file:
+~~~
+#!/bin/bash
+# script to echo some words
+echo "this is mycontainer!"
+~~~
+Set it as executable: `chmod 755 myecho`  
+Create the Containerfile: `vim Containerfile`  
+Inside this file:
+~~~
+FROM registry.access.redhat.com/rhel9/rhel9-minimal
+ADD myecho /usr/local/bin
+ENTRYPOINT "/usr/local/bin/myecho"
+~~~
+Build the container: `buildah build -t mycontainer`  
+Run the container: `podman run mycontainer` it should output the text "this is mycontainer!"  
 
 ### Perform basic container management such as running, starting, stopping, and listing running containers
 Start a container in the background: `podman run -d nginx`  
@@ -569,6 +587,13 @@ Start a container with an interactive shell: `podman run -it fedora`
 Stop a container: `podman stop containername`  
 Restart a container: `podman restart containername`  
 List running containers: `podman ps`  
+
+Create a systemd service for a container: `podman generate systemd --name containername --files`  
+Move the resulting .service file to `/home/adam/.config/systemd/user` for example: `mv container-name.service /home/adam/.config/systemd/user`  
+Enable session linger for the user running the container: `loginctl enable-linger adam`
+Enable the systemd service for the container: `systemctl --user enable container-name.service`  
+Start the systemd service to also start the container: `systemctl --user start container-name.service`  
+The container will now start on boot
 
 ### Run a service inside a container
 Run nginx with port forwards from the host: `podman run -d -p 8080:80 nginx`  

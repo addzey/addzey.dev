@@ -518,7 +518,7 @@ Create a logical volume of a specific size: <code>lvcreate -L 1.5G volumegroup01
 <h3 id="configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label<a href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>To mount by label when editing /etc/fstab use: <code>LABEL=labelofpartition</code>  to specify the device<br>
 To mount by UUID when editing /etc/fstab use: <code>UUID=&quot;000000011-0001-ab00-ba0000001234&quot;</code>  to specify the device</p>
-<p>** You can also use systemd-mount which I&rsquo;ll not cover for now **</p>
+<p>** You can also use systemd-mount which is likely to be the best method in future but is not needed for the exam **</p>
 <h3 id="add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively">Add new partitions and logical volumes, and swap to a system non-destructively<a href="#add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Format a swap partition: <code>mkswap /dev/sdX</code><br>
 Mount a swap partition: <code>swapon -a</code> or <code>swapon /dev/sdX</code></p>
@@ -764,12 +764,32 @@ Inspect an image that exists locally: <code>podman inspect imagename</code></p>
 Remove a container image: <code>podman rmi imagename</code><br>
 View logs from a container: <code>podman logs containername</code></p>
 <h3 id="build-a-container-from-a-containerfile">Build a container from a Containerfile<a href="#build-a-container-from-a-containerfile" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a directory for your container: <code>mkdir mycontainer</code> switch into the directory <code>cd mycontainer</code><br>
+Create a basic script to echo some words: <code>vim myecho</code><br>
+Inside this file:</p>
+<pre tabindex="0"><code>#!/bin/bash
+# script to echo some words
+echo &quot;this is mycontainer!&quot;
+</code></pre><p>Set it as executable: <code>chmod 755 myecho</code><br>
+Create the Containerfile: <code>vim Containerfile</code><br>
+Inside this file:</p>
+<pre tabindex="0"><code>FROM registry.access.redhat.com/rhel9/rhel9-minimal
+ADD myecho /usr/local/bin
+ENTRYPOINT &quot;/usr/local/bin/myecho&quot;
+</code></pre><p>Build the container: <code>buildah build -t mycontainer</code><br>
+Run the container: <code>podman run mycontainer</code> it should output the text &ldquo;this is mycontainer!&rdquo;</p>
 <h3 id="perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers">Perform basic container management such as running, starting, stopping, and listing running containers<a href="#perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Start a container in the background: <code>podman run -d nginx</code><br>
 Start a container with an interactive shell: <code>podman run -it fedora</code><br>
 Stop a container: <code>podman stop containername</code><br>
 Restart a container: <code>podman restart containername</code><br>
 List running containers: <code>podman ps</code></p>
+<p>Create a systemd service for a container: <code>podman generate systemd --name containername --files</code><br>
+Move the resulting .service file to <code>/home/adam/.config/systemd/user</code> for example: <code>mv container-name.service /home/adam/.config/systemd/user</code><br>
+Enable session linger for the user running the container: <code>loginctl enable-linger adam</code>
+Enable the systemd service for the container: <code>systemctl --user enable container-name.service</code><br>
+Start the systemd service to also start the container: <code>systemctl --user start container-name.service</code><br>
+The container will now start on boot</p>
 <h3 id="run-a-service-inside-a-container">Run a service inside a container<a href="#run-a-service-inside-a-container" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Run nginx with port forwards from the host: <code>podman run -d -p 8080:80 nginx</code><br>
 Allow the port through the host firewall: <code>firewall-cmd --add-port=8080/tcp</code><br>

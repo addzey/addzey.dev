@@ -198,7 +198,7 @@ Create a logical volume of a specific size: &lt;code&gt;lvcreate -L 1.5G volumeg
 &lt;h3 id=&#34;configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label&#34;&gt;Configure systems to mount file systems at boot by universally unique ID (UUID) or label&lt;/h3&gt;
 &lt;p&gt;To mount by label when editing /etc/fstab use: &lt;code&gt;LABEL=labelofpartition&lt;/code&gt;  to specify the device&lt;br&gt;
 To mount by UUID when editing /etc/fstab use: &lt;code&gt;UUID=&amp;quot;000000011-0001-ab00-ba0000001234&amp;quot;&lt;/code&gt;  to specify the device&lt;/p&gt;
-&lt;p&gt;** You can also use systemd-mount which I&amp;rsquo;ll not cover for now **&lt;/p&gt;
+&lt;p&gt;** You can also use systemd-mount which is likely to be the best method in future but is not needed for the exam **&lt;/p&gt;
 &lt;h3 id=&#34;add-new-partitions-and-logical-volumes-and-swap-to-a-system-non-destructively&#34;&gt;Add new partitions and logical volumes, and swap to a system non-destructively&lt;/h3&gt;
 &lt;p&gt;Format a swap partition: &lt;code&gt;mkswap /dev/sdX&lt;/code&gt;&lt;br&gt;
 Mount a swap partition: &lt;code&gt;swapon -a&lt;/code&gt; or &lt;code&gt;swapon /dev/sdX&lt;/code&gt;&lt;/p&gt;
@@ -444,12 +444,32 @@ Inspect an image that exists locally: &lt;code&gt;podman inspect imagename&lt;/c
 Remove a container image: &lt;code&gt;podman rmi imagename&lt;/code&gt;&lt;br&gt;
 View logs from a container: &lt;code&gt;podman logs containername&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;build-a-container-from-a-containerfile&#34;&gt;Build a container from a Containerfile&lt;/h3&gt;
+&lt;p&gt;Create a directory for your container: &lt;code&gt;mkdir mycontainer&lt;/code&gt; switch into the directory &lt;code&gt;cd mycontainer&lt;/code&gt;&lt;br&gt;
+Create a basic script to echo some words: &lt;code&gt;vim myecho&lt;/code&gt;&lt;br&gt;
+Inside this file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# script to echo some words
+echo &amp;quot;this is mycontainer!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Set it as executable: &lt;code&gt;chmod 755 myecho&lt;/code&gt;&lt;br&gt;
+Create the Containerfile: &lt;code&gt;vim Containerfile&lt;/code&gt;&lt;br&gt;
+Inside this file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FROM registry.access.redhat.com/rhel9/rhel9-minimal
+ADD myecho /usr/local/bin
+ENTRYPOINT &amp;quot;/usr/local/bin/myecho&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Build the container: &lt;code&gt;buildah build -t mycontainer&lt;/code&gt;&lt;br&gt;
+Run the container: &lt;code&gt;podman run mycontainer&lt;/code&gt; it should output the text &amp;ldquo;this is mycontainer!&amp;rdquo;&lt;/p&gt;
 &lt;h3 id=&#34;perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers&#34;&gt;Perform basic container management such as running, starting, stopping, and listing running containers&lt;/h3&gt;
 &lt;p&gt;Start a container in the background: &lt;code&gt;podman run -d nginx&lt;/code&gt;&lt;br&gt;
 Start a container with an interactive shell: &lt;code&gt;podman run -it fedora&lt;/code&gt;&lt;br&gt;
 Stop a container: &lt;code&gt;podman stop containername&lt;/code&gt;&lt;br&gt;
 Restart a container: &lt;code&gt;podman restart containername&lt;/code&gt;&lt;br&gt;
 List running containers: &lt;code&gt;podman ps&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create a systemd service for a container: &lt;code&gt;podman generate systemd --name containername --files&lt;/code&gt;&lt;br&gt;
+Move the resulting .service file to &lt;code&gt;/home/adam/.config/systemd/user&lt;/code&gt; for example: &lt;code&gt;mv container-name.service /home/adam/.config/systemd/user&lt;/code&gt;&lt;br&gt;
+Enable session linger for the user running the container: &lt;code&gt;loginctl enable-linger adam&lt;/code&gt;
+Enable the systemd service for the container: &lt;code&gt;systemctl --user enable container-name.service&lt;/code&gt;&lt;br&gt;
+Start the systemd service to also start the container: &lt;code&gt;systemctl --user start container-name.service&lt;/code&gt;&lt;br&gt;
+The container will now start on boot&lt;/p&gt;
 &lt;h3 id=&#34;run-a-service-inside-a-container&#34;&gt;Run a service inside a container&lt;/h3&gt;
 &lt;p&gt;Run nginx with port forwards from the host: &lt;code&gt;podman run -d -p 8080:80 nginx&lt;/code&gt;&lt;br&gt;
 Allow the port through the host firewall: &lt;code&gt;firewall-cmd --add-port=8080/tcp&lt;/code&gt;&lt;br&gt;
