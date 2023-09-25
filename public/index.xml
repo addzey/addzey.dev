@@ -90,13 +90,54 @@ List existing filesystem ACL&amp;rsquo;s for a folder: &lt;code&gt;getfacl /fold
 if [ -z $1 ]
 then
 	echo &amp;quot;an input is required&amp;quot;
+    exit
 else
 	echo &amp;quot;you have provided the input $1&amp;quot;
 fi
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;use-looping-constructs-for-etc-to-process-file-command-line-input&#34;&gt;Use Looping constructs (for, etc.) to process file, command line input&lt;/h3&gt;
-&lt;h3 id=&#34;process-script-inputs-1-2-etc&#34;&gt;Process script inputs ($1, $2, etc.)&lt;/h3&gt;
-&lt;h3 id=&#34;processing-output-of-shell-commands-within-a-script&#34;&gt;Processing output of shell commands within a script&lt;/h3&gt;
-&lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script for n+1 until 10
+NUMBER=1
+
+while [ $NUMBER -lt 10 ]
+    do ((NUMBER++))
+    echo $NUMBER
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script of a for loop
+for i in red white blue
+    do echo $i
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script of a for loop reading input from a file
+for i in ($cat /tmp/users.csv)
+do
+    USER=$i
+    echo username is $USER
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;process-script-inputs-1-2-etc&#34;&gt;Process script inputs ($1, $2, etc.)&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script to process 2 arguments
+if [ -z $1 ]
+then
+    echo &amp;quot;you must provide 2 arguments&amp;quot;
+elif [ -z $2 ]
+    echo &amp;quot;you must provide 2 arguments&amp;quot;
+else
+    echo &amp;quot;you have provide $# arguments which are $1 and $2&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;processing-output-of-shell-commands-within-a-script&#34;&gt;Processing output of shell commands within a script&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# Example bash script to process the output of a shell command
+
+echo &amp;quot;enter a directory to fix the file permissions (set as 755)&amp;quot;
+read FIXFILES
+
+for i in $(find $FIXFILES -type f -not -perm 755)
+    echo &amp;quot;fixing file permissions on file $i&amp;quot;
+    chmod 755 $i
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;operate-running-systems&#34;&gt;Operate running systems&lt;/h2&gt;
 &lt;p&gt;Display memory usage: &lt;code&gt;free -m&lt;/code&gt;&lt;br&gt;
 Display uptime and load average: &lt;code&gt;uptime&lt;/code&gt;&lt;br&gt;
 Nice levels for processes: &lt;strong&gt;-20&lt;/strong&gt; is highest priority and &lt;strong&gt;19&lt;/strong&gt; is lowest priority&lt;/p&gt;
@@ -294,6 +335,8 @@ Kill the service: &lt;code&gt;killall httpd&lt;/code&gt;&lt;br&gt;
 Check that the service has stopped and it&amp;rsquo;s Active status is &amp;ldquo;Activating&amp;rdquo; - this should show that it will auto-restart in 60 seconds&lt;br&gt;
 &lt;code&gt;systemctl status httpd&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-systems-to-boot-into-a-specific-target-automatically&#34;&gt;Configure systems to boot into a specific target automatically&lt;/h3&gt;
+&lt;p&gt;Get current default boot target: &lt;code&gt;systemctl get-default&lt;/code&gt;&lt;br&gt;
+Set the multiuser.target as default: &lt;code&gt;systemctl set-default multi-user.target&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-time-service-clients&#34;&gt;Configure time service clients&lt;/h3&gt;
 &lt;p&gt;See current time status: &lt;code&gt;timedatectl status&lt;/code&gt;&lt;br&gt;
 Set the timezone: &lt;code&gt;timedatectl set-timezone Country/State&lt;/code&gt;&lt;br&gt;

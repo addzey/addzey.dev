@@ -410,13 +410,54 @@ List existing filesystem ACL&rsquo;s for a folder: <code>getfacl /folder/path</c
 if [ -z $1 ]
 then
 	echo &quot;an input is required&quot;
+    exit
 else
 	echo &quot;you have provided the input $1&quot;
 fi
 </code></pre><h3 id="use-looping-constructs-for-etc-to-process-file-command-line-input">Use Looping constructs (for, etc.) to process file, command line input<a href="#use-looping-constructs-for-etc-to-process-file-command-line-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h3 id="process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)<a href="#process-script-inputs-1-2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h3 id="processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script<a href="#processing-output-of-shell-commands-within-a-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h2 id="operate-running-systems">Operate running systems<a href="#operate-running-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<pre tabindex="0"><code>#!/bin/bash
+# Example bash script for n+1 until 10
+NUMBER=1
+
+while [ $NUMBER -lt 10 ]
+    do ((NUMBER++))
+    echo $NUMBER
+done
+</code></pre><pre tabindex="0"><code>#!/bin/bash
+# Example bash script of a for loop
+for i in red white blue
+    do echo $i
+done
+</code></pre><pre tabindex="0"><code>#!/bin/bash
+# Example bash script of a for loop reading input from a file
+for i in ($cat /tmp/users.csv)
+do
+    USER=$i
+    echo username is $USER
+done
+</code></pre><h3 id="process-script-inputs-1-2-etc">Process script inputs ($1, $2, etc.)<a href="#process-script-inputs-1-2-etc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre tabindex="0"><code>#!/bin/bash
+# Example bash script to process 2 arguments
+if [ -z $1 ]
+then
+    echo &quot;you must provide 2 arguments&quot;
+elif [ -z $2 ]
+    echo &quot;you must provide 2 arguments&quot;
+else
+    echo &quot;you have provide $# arguments which are $1 and $2&quot;
+fi
+</code></pre><h3 id="processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script<a href="#processing-output-of-shell-commands-within-a-script" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre tabindex="0"><code>#!/bin/bash
+# Example bash script to process the output of a shell command
+
+echo &quot;enter a directory to fix the file permissions (set as 755)&quot;
+read FIXFILES
+
+for i in $(find $FIXFILES -type f -not -perm 755)
+    echo &quot;fixing file permissions on file $i&quot;
+    chmod 755 $i
+done
+</code></pre><h2 id="operate-running-systems">Operate running systems<a href="#operate-running-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Display memory usage: <code>free -m</code><br>
 Display uptime and load average: <code>uptime</code><br>
 Nice levels for processes: <strong>-20</strong> is highest priority and <strong>19</strong> is lowest priority</p>
@@ -614,6 +655,8 @@ Kill the service: <code>killall httpd</code><br>
 Check that the service has stopped and it&rsquo;s Active status is &ldquo;Activating&rdquo; - this should show that it will auto-restart in 60 seconds<br>
 <code>systemctl status httpd</code></p>
 <h3 id="configure-systems-to-boot-into-a-specific-target-automatically">Configure systems to boot into a specific target automatically<a href="#configure-systems-to-boot-into-a-specific-target-automatically" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Get current default boot target: <code>systemctl get-default</code><br>
+Set the multiuser.target as default: <code>systemctl set-default multi-user.target</code></p>
 <h3 id="configure-time-service-clients">Configure time service clients<a href="#configure-time-service-clients" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>See current time status: <code>timedatectl status</code><br>
 Set the timezone: <code>timedatectl set-timezone Country/State</code><br>

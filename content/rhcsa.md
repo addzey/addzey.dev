@@ -109,16 +109,69 @@ Update mandb to be able to search for text: `mandb`
 if [ -z $1 ]
 then
 	echo "an input is required"
+    exit
 else
 	echo "you have provided the input $1"
 fi
 ~~~
 
 ### Use Looping constructs (for, etc.) to process file, command line input
+~~~
+#!/bin/bash
+# Example bash script for n+1 until 10
+NUMBER=1
+
+while [ $NUMBER -lt 10 ]
+    do ((NUMBER++))
+    echo $NUMBER
+done
+~~~
+
+~~~
+#!/bin/bash
+# Example bash script of a for loop
+for i in red white blue
+    do echo $i
+done
+~~~
+
+~~~
+#!/bin/bash
+# Example bash script of a for loop reading input from a file
+for i in ($cat /tmp/users.csv)
+do
+    USER=$i
+    echo username is $USER
+done
+~~~
 
 ### Process script inputs ($1, $2, etc.)
+~~~
+#!/bin/bash
+# Example bash script to process 2 arguments
+if [ -z $1 ]
+then
+    echo "you must provide 2 arguments"
+elif [ -z $2 ]
+    echo "you must provide 2 arguments"
+else
+    echo "you have provide $# arguments which are $1 and $2"
+fi
+~~~
 
 ### Processing output of shell commands within a script  
+~~~
+#!/bin/bash
+# Example bash script to process the output of a shell command
+
+echo "enter a directory to fix the file permissions (set as 755)"
+read FIXFILES
+
+for i in $(find $FIXFILES -type f -not -perm 755)
+    echo "fixing file permissions on file $i"
+    chmod 755 $i
+done
+~~~
 
 ## Operate running systems
 Display memory usage: `free -m`  
@@ -356,6 +409,8 @@ Check that the service has stopped and it's Active status is "Activating" - this
 `systemctl status httpd`  
 
 ### Configure systems to boot into a specific target automatically
+Get current default boot target: `systemctl get-default`  
+Set the multiuser.target as default: `systemctl set-default multi-user.target`  
 
 ### Configure time service clients
 See current time status: `timedatectl status`  
