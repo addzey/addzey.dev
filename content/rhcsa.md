@@ -360,7 +360,27 @@ Extend a logical volume to use all available free space: `lvextend -l +100%FREE 
 
 ### Create and configure set-GID directories for collaboration
 
+
 ### Diagnose and correct file permission problems
+Ownership permissions follow **UGO**  
+**User**  
+**Group**  
+**Others**  
+
+Ownership permissions checks **EXIT** on match, for example if there is a match on **user** then the permission check will stop without checking permissions for group or others  
+
+Access permissions follow **RWE**  
+**Read (4)**  
+**Write (2)**  
+**Execute (1)**  
+For a **folder** execute permission allows navigating into it  
+For a **file** execute permission allows to run the file (eg. bash script)  
+
+Special permissions  
+**SUID (4)** - for a file it will run-as owner - for a folder it will do nothing  
+**SGID (2)** - for a file it will run-as group - for a folder it will make the files inherit the group owner  
+**Stick Bit (1)** - for a file it will do nothing - for a folder it will ensure only the file owner can delete the file  
+
 
 ## Deploy, configure, and maintain systems
 
