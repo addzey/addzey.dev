@@ -45,9 +45,6 @@ Recursively search for the text "root" in /etc": `grep -R root /etc`
 Find the text "adam" in /etc/shadow but case-insensitive: `grep -i Adam /etc/shadow`  
 
 ### Access remote systems using SSH
-Create a public/private key pair for current user: `ssh-keygen`  
-Note: The public key can be shared  
-Note: The private key must not be shared and must be stored securely  
 Connect to a remote system using SSH: `ssh username@10.0.0.1`  
 Things to keep in mind: `~/.ssh/known_hosts` which is a record of public keys for hosts you have connected to previously
  
@@ -202,6 +199,10 @@ Start a network service: `systemctl start servicename`
 Stop a network service: `systemctl stop servicename`  
 
 ### Securely transfer files between systems
+There are 3 options all made possible by SSH: `scp` and `sftp` and `rsync`  
+**scp** is the most compatible option  
+**sftp** creates a regular FTP session using SSH  
+**rsync** will now also by default use SSH (no need for the `-e ssh` option)  
 
 ## Configure local storage
 List block devices: `lsblk`  
@@ -453,6 +454,17 @@ Reload firewall: `firewall-cmd --reload`
 ### Manage default file permissions
 
 ### Configure key-based authentication for SSH
+Create a public/private key pair for current user: `ssh-keygen`  
+Note: The public key can be shared  
+Note: The private key must not be shared and must be stored securely
+
+Transfer the public key to destination server: `ssh-copy-id 192.168.10.10`  
+
+You should now be able to login using pubkey authentication as it's enabled by default  
+
+To review current ssh server configuration check: `vim /etc/ssh/sshd_config`  You should see the line `#PubKeyAuthentication yes` it is commented out because it's the default setting  
+
+Some settings that you might like to change in there would be `PasswordAuthentication` and `PermitRootLogin`  disabling both of these is generally a good option for improved security  
 
 ### Set enforcing and permissive modes for SELinux
 
@@ -466,7 +478,6 @@ Reload firewall: `firewall-cmd --reload`
 
 ### Diagnose and address routine SELinux policy violations
 Search "/var/log/audit.log" for messages with AVC: `grep AVC /var/log/audit/audit.log`  
-
 
 ## Manage containers
 
@@ -494,7 +505,6 @@ Stop a container: `podman stop containername`
 Restart a container: `podman restart containername`  
 List running containers: `podman ps`  
 
-
 ### Run a service inside a container
 Run nginx with port forwards from the host: `podman run -d -p 8080:80 nginx`  
 Allow the port through the host firewall: `firewall-cmd --add-port=8080/tcp`  
@@ -504,7 +514,6 @@ Allow the port through the host firewall again to survive reboot: `firewall-cmd 
 This will first require enabling regular user accounts to stay logged in/start services on boot: `loginctl enable-linger username`  
 Create the local folder to storing the systemd user units: `mkdir -p .config/systemd/user`  
 Create a systemd unit for a container: `podman generate systemd --name nginx --files`  
-
 
 ### Attach persistent storage to a container
 Store web public html persistently outside the container: `podman run -d -p 8080:80 -v /home/adam/public_html:public_html:Z nginx`  
