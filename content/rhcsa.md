@@ -359,7 +359,11 @@ Extend a logical volume by 2GB and resize the filesystem: `lvextend -L +2GB volu
 Extend a logical volume to use all available free space: `lvextend -l +100%FREE volumegroup01/logicalvolume02`  
 
 ### Create and configure set-GID directories for collaboration
+Create a shared folder for students to collaborate: `mkdir /data/students`  
+Set the group owner on folder students: `chown :students /data/students`  
+Set the group owner "students" to be inherited: `chmod g+s /data/students`  
 
+Ensure only the original owner of the file can delete files: `chmod +t /data/students`  
 
 ### Diagnose and correct file permission problems
 Ownership permissions follow **UGO**  
@@ -377,10 +381,9 @@ For a **folder** execute permission allows navigating into it
 For a **file** execute permission allows to run the file (eg. bash script)  
 
 Special permissions  
-**SUID (4)** - for a file it will run-as owner - for a folder it will do nothing  
+**SUID (4)** - for a file it will run-as owner - for a folder it will do nothing (big security risk, avoid using this)  
 **SGID (2)** - for a file it will run-as group - for a folder it will make the files inherit the group owner  
 **Stick Bit (1)** - for a file it will do nothing - for a folder it will ensure only the file owner can delete the file  
-
 
 ## Deploy, configure, and maintain systems
 

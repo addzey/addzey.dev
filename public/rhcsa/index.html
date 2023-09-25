@@ -593,6 +593,10 @@ Add the line:</p>
 <p>Extend a logical volume by 2GB and resize the filesystem: <code>lvextend -L +2GB volumegroup01/logicalvolume02 -r</code><br>
 Extend a logical volume to use all available free space: <code>lvextend -l +100%FREE volumegroup01/logicalvolume02</code></p>
 <h3 id="create-and-configure-set-gid-directories-for-collaboration">Create and configure set-GID directories for collaboration<a href="#create-and-configure-set-gid-directories-for-collaboration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Create a shared folder for students to collaborate: <code>mkdir /data/students</code><br>
+Set the group owner on folder students: <code>chown :students /data/students</code><br>
+Set the group owner &ldquo;students&rdquo; to be inherited: <code>chmod g+s /data/students</code></p>
+<p>Ensure only the original owner of the file can delete files: <code>chmod +t /data/students</code></p>
 <h3 id="diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems<a href="#diagnose-and-correct-file-permission-problems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Ownership permissions follow <strong>UGO</strong><br>
 <strong>User</strong><br>
@@ -606,7 +610,7 @@ Extend a logical volume to use all available free space: <code>lvextend -l +100%
 For a <strong>folder</strong> execute permission allows navigating into it<br>
 For a <strong>file</strong> execute permission allows to run the file (eg. bash script)</p>
 <p>Special permissions<br>
-<strong>SUID (4)</strong> - for a file it will run-as owner - for a folder it will do nothing<br>
+<strong>SUID (4)</strong> - for a file it will run-as owner - for a folder it will do nothing (big security risk, avoid using this)<br>
 <strong>SGID (2)</strong> - for a file it will run-as group - for a folder it will make the files inherit the group owner<br>
 <strong>Stick Bit (1)</strong> - for a file it will do nothing - for a folder it will ensure only the file owner can delete the file</p>
 <h2 id="deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems<a href="#deploy-configure-and-maintain-systems" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
