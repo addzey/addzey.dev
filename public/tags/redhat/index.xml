@@ -15,11 +15,12 @@
       
       <guid>https://addzey.dev/rhcsa/</guid>
       <description>Introduction Below are my study notes created while preparing to take the RHCSA exam
+I have sat and passed RHCSA on 26/09/2023
 You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
-Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here
-Use input-output redirection (&amp;gt;, &amp;raquo;, |, 2&amp;gt;, etc.</description>
+Understand and use essential tools Access a shell prompt and issue commands with correct syntax I would say this objective is well covered throughout, so I wont add any explanations or examples here</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Below are my study notes created while preparing to take the RHCSA exam&lt;/p&gt;
+&lt;p&gt;Below are my study notes created while preparing to take the RHCSA exam&lt;br&gt;
+I have sat and &lt;strong&gt;passed&lt;/strong&gt; RHCSA on 26/09/2023&lt;/p&gt;
 &lt;p&gt;You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: &lt;a href=&#34;https://developers.redhat.com/&#34;&gt;https://developers.redhat.com/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;understand-and-use-essential-tools&#34;&gt;Understand and use essential tools&lt;/h2&gt;
 &lt;h3 id=&#34;access-a-shell-prompt-and-issue-commands-with-correct-syntax&#34;&gt;Access a shell prompt and issue commands with correct syntax&lt;/h3&gt;

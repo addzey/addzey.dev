@@ -9,9 +9,10 @@ toc = true
 +++
 
 # Introduction
-Below are my study notes created while preparing to take the RHCSA exam
+Below are my study notes created while preparing to take the RHCSA exam  
+I have sat and **passed** RHCSA on 26/09/2023  
 
-You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
+You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/  
 
 ## Understand and use essential tools
 
