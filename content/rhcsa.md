@@ -9,10 +9,9 @@ toc = true
 +++
 
 # Introduction
+Below are my study notes created while preparing to take the RHCSA exam
+
 You can create a RedHat developer account for free which includes a RHEL subscription for up to 16 devices: https://developers.redhat.com/
- 
-I'll be updating this as I go through practice tasks before taking the RHCSA exam!  
-Exam is booked in for **26/09/23** 
 
 ## Understand and use essential tools
 
