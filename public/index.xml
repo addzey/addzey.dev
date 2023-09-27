@@ -551,9 +551,21 @@ Create a systemd unit for a container: &lt;code&gt;podman generate systemd --nam
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/aws-dop/</guid>
-      <description>Introduction Placeholder, expect to sit this exam early 2024</description>
+      <description>Introduction Placeholder</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, expect to sit this exam early 2024&lt;/p&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>AWS: SOA Study Notes</title>
+      <link>https://addzey.dev/aws-soa/</link>
+      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/aws-soa/</guid>
+      <description>Introduction Placeholder</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Placeholder&lt;/p&gt;
 </content>
     </item>
     

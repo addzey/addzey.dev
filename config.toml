@@ -91,6 +91,11 @@ paginate = 5
         url = "/aws-saa"
       [[languages.en.menu.main]]
         weight = 40
+        identifier = "AWS SOA"
+        name = "AWS SOA"
+        url = "/aws-soa"
+      [[languages.en.menu.main]]
+        weight = 50
         identifier = "AWS DOP"
         name = "AWS DOP"
         url = "/aws-dop"

@@ -1,0 +1,13 @@
++++
+title = "AWS: SOA Study Notes"
+date = "2023-09-23"
+author = "Adam"
+tags = ["AWS", "SysOps Administrator Associate","AWS SOA", "Study Notes"]
+keywords = ["AWS DOP"]
+description = "My study notes for AWS: SysOps Administrator Associate (AWS: SOAP) certification"
+toc = false
+safeHTML = true
++++
+
+# Introduction
+Placeholder
