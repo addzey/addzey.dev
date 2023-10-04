@@ -7,8 +7,6 @@ author = "Adam"
 # About
 I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, along the way I hope to improve my technical documentation skills
 
-Like what you see and think I might be a good fit for your technical team? You can contact me on [LinkedIn](https://www.linkedin.com/in/adam-rogers-098466258/)
-
 ## How was this blog created?
 - Static site generated with [Hugo](https://gohugo.io/)
 - Deployed with a CI/CD pipeline via GitHub, site source code is available [here](https://github.com/addzey/addzey.dev)
