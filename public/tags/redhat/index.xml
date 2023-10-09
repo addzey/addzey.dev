@@ -439,7 +439,7 @@ Using the -a switch along with the -G switch means it will &lt;strong&gt;append&
 Delete a group: &lt;code&gt;groupdel groupname&lt;/code&gt;&lt;br&gt;
 Change the name of a group: &lt;code&gt;groupmod -n newgroupname oldgroupname&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configure-superuser-access&#34;&gt;Configure superuser access&lt;/h3&gt;
-&lt;p&gt;View current config of sudo/superuser access: &lt;code&gt;visduo /etc/sudoers&lt;/code&gt;&lt;br&gt;
+&lt;p&gt;View current config of sudo/superuser access: &lt;code&gt;visudo /etc/sudoers&lt;/code&gt;&lt;br&gt;
 Members of the group &amp;ldquo;wheel&amp;rdquo; should be allowed sudo/superuser access
 Add a user to group &amp;ldquo;wheel&amp;rdquo;: &lt;code&gt;usermod -aG wheel username&lt;/code&gt;&lt;br&gt;
 You can now run things as superuser/root by using &amp;ldquo;sudo&amp;rdquo; in front of the commands: &lt;code&gt;sudo reboot&lt;/code&gt;&lt;/p&gt;
