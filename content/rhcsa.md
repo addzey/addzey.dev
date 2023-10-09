@@ -551,7 +551,7 @@ Delete a group: ``groupdel groupname``
 Change the name of a group: ``groupmod -n newgroupname oldgroupname``  
 
 ### Configure superuser access
-View current config of sudo/superuser access: `visduo /etc/sudoers`  
+View current config of sudo/superuser access: `visudo /etc/sudoers`  
 Members of the group "wheel" should be allowed sudo/superuser access
 Add a user to group "wheel": `usermod -aG wheel username`  
 You can now run things as superuser/root by using "sudo" in front of the commands: `sudo reboot`  
