@@ -5,7 +5,7 @@ author = "Adam"
 +++
 
 # About
-I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, along the way I hope to improve my technical documentation skills
+I will be using this as a personal Wiki for my homelab, self-hosted services and notes from my tech studies, along the way I hope to improve my technical documentation skills  
 
 ## How was this blog created?
 - Static site generated with [Hugo](https://gohugo.io/)

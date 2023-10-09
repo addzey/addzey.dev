@@ -751,10 +751,10 @@ Pod </description>
       <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/about/</guid>
-      <description>About I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, along the way I hope to improve my technical documentation skills
+      <description>About I will be using this as a personal Wiki for my homelab, self-hosted services and notes from my tech studies, along the way I hope to improve my technical documentation skills
 How was this blog created?  Static site generated with Hugo Deployed with a CI/CD pipeline via GitHub, site source code is available here Using a fork of Terminal theme with some customizations I&amp;rsquo;ve made like integrating FontAwesome, which is available here  </description>
       <content>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
-&lt;p&gt;I will be using this as a personal Wiki for my homelab, self-hosted services and tech studies, along the way I hope to improve my technical documentation skills&lt;/p&gt;
+&lt;p&gt;I will be using this as a personal Wiki for my homelab, self-hosted services and notes from my tech studies, along the way I hope to improve my technical documentation skills&lt;/p&gt;
 &lt;h2 id=&#34;how-was-this-blog-created&#34;&gt;How was this blog created?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Static site generated with &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;
