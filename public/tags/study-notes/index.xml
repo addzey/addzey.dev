@@ -443,7 +443,7 @@ Change the name of a group: &lt;code&gt;groupmod -n newgroupname oldgroupname&lt
 Members of the group &amp;ldquo;wheel&amp;rdquo; should be allowed sudo/superuser access
 Add a user to group &amp;ldquo;wheel&amp;rdquo;: &lt;code&gt;usermod -aG wheel username&lt;/code&gt;&lt;br&gt;
 You can now run things as superuser/root by using &amp;ldquo;sudo&amp;rdquo; in front of the commands: &lt;code&gt;sudo reboot&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Grant superuser access only for specific commands: &lt;code&gt;visduo /etc/sudoers&lt;/code&gt;&lt;br&gt;
+&lt;p&gt;Grant superuser access only for specific commands: &lt;code&gt;visudo /etc/sudoers&lt;/code&gt;&lt;br&gt;
 Add the following line to the sudoers file: &lt;code&gt;username ALL=(root) /bin/ping&lt;/code&gt;&lt;br&gt;
 The above will allow the user to execute &amp;ldquo;/bin/ping&amp;rdquo; as root&lt;/p&gt;
 &lt;h2 id=&#34;manage-security&#34;&gt;Manage security&lt;/h2&gt;

@@ -772,7 +772,7 @@ Change the name of a group: <code>groupmod -n newgroupname oldgroupname</code></
 Members of the group &ldquo;wheel&rdquo; should be allowed sudo/superuser access
 Add a user to group &ldquo;wheel&rdquo;: <code>usermod -aG wheel username</code><br>
 You can now run things as superuser/root by using &ldquo;sudo&rdquo; in front of the commands: <code>sudo reboot</code></p>
-<p>Grant superuser access only for specific commands: <code>visduo /etc/sudoers</code><br>
+<p>Grant superuser access only for specific commands: <code>visudo /etc/sudoers</code><br>
 Add the following line to the sudoers file: <code>username ALL=(root) /bin/ping</code><br>
 The above will allow the user to execute &ldquo;/bin/ping&rdquo; as root</p>
 <h2 id="manage-security">Manage security<a href="#manage-security" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>

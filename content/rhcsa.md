@@ -556,7 +556,7 @@ Members of the group "wheel" should be allowed sudo/superuser access
 Add a user to group "wheel": `usermod -aG wheel username`  
 You can now run things as superuser/root by using "sudo" in front of the commands: `sudo reboot`  
 
-Grant superuser access only for specific commands: `visduo /etc/sudoers`  
+Grant superuser access only for specific commands: `visudo /etc/sudoers`  
 Add the following line to the sudoers file: `username ALL=(root) /bin/ping`  
 The above will allow the user to execute "/bin/ping" as root
 
