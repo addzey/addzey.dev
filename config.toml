@@ -96,9 +96,9 @@ paginate = 5
         url = "/aws-soa"
       [[languages.en.menu.main]]
         weight = 50
-        identifier = "AWS DOP"
-        name = "AWS DOP"
-        url = "/aws-dop"
+        identifier = "CNCF CKA"
+        name = "CNCF CKA"
+        url = "/cncf-cka"
       [[languages.en.menu.main]]
         weight = 100
         pre = '<i class="fa-brands fa-github-square"></i>'

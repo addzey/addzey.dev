@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/study-notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/study-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CNCF: CKA Study Notes</title>
+      <link>https://addzey.dev/cncf-cka/</link>
+      <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/cncf-cka/</guid>
+      <description>Introduction Placeholder testing</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Placeholder testing&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>RHCSA Study Notes</title>
       <link>https://addzey.dev/rhcsa/</link>
@@ -544,38 +556,14 @@ Create a systemd unit for a container: &lt;code&gt;podman generate systemd --nam
     </item>
     
     <item>
-      <title>AWS: DOP Study Notes</title>
-      <link>https://addzey.dev/aws-dop/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/aws-dop/</guid>
-      <description>Introduction Placeholder</description>
-      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
       <title>AWS: SOA Study Notes</title>
       <link>https://addzey.dev/aws-soa/</link>
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/aws-soa/</guid>
-      <description>Introduction Placeholder</description>
+      <description>Introduction Used handwritten notes for this one</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>RHCE Study Notes</title>
-      <link>https://addzey.dev/rhce/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/rhce/</guid>
-      <description>Introduction Placeholder, considering this one</description>
-      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, considering this one&lt;/p&gt;
+&lt;p&gt;Used handwritten notes for this one&lt;/p&gt;
 </content>
     </item>
     

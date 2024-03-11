@@ -7,7 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Adam Rogers</copyright>
-    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://addzey.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certified Kubernetes Administrator</title>
+      <link>https://addzey.dev/tags/certified-kubernetes-administrator/</link>
+      <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/certified-kubernetes-administrator/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>CKA</title>
+      <link>https://addzey.dev/tags/cka/</link>
+      <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/cka/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Study Notes</title>
+      <link>https://addzey.dev/tags/study-notes/</link>
+      <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://addzey.dev/tags/study-notes/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>RedHat</title>
       <link>https://addzey.dev/tags/redhat/</link>
@@ -39,16 +69,6 @@
     </item>
     
     <item>
-      <title>Study Notes</title>
-      <link>https://addzey.dev/tags/study-notes/</link>
-      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/study-notes/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>AWS</title>
       <link>https://addzey.dev/tags/aws/</link>
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
@@ -59,41 +79,11 @@
     </item>
     
     <item>
-      <title>AWS DOP</title>
-      <link>https://addzey.dev/tags/aws-dop/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/aws-dop/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>AWS SOA</title>
       <link>https://addzey.dev/tags/aws-soa/</link>
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/tags/aws-soa/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>DevOps Engineer Professional</title>
-      <link>https://addzey.dev/tags/devops-engineer-professional/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/devops-engineer-professional/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>RHCE</title>
-      <link>https://addzey.dev/tags/rhce/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/tags/rhce/</guid>
       <description></description>
       <content></content>
     </item>

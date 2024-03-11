@@ -543,17 +543,5 @@ Create a systemd unit for a container: &lt;code&gt;podman generate systemd --nam
 </content>
     </item>
     
-    <item>
-      <title>RHCE Study Notes</title>
-      <link>https://addzey.dev/rhce/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/rhce/</guid>
-      <description>Introduction Placeholder, considering this one</description>
-      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, considering this one&lt;/p&gt;
-</content>
-    </item>
-    
   </channel>
 </rss>

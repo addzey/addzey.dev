@@ -544,18 +544,6 @@ Create a systemd unit for a container: &lt;code&gt;podman generate systemd --nam
     </item>
     
     <item>
-      <title>RHCE Study Notes</title>
-      <link>https://addzey.dev/rhce/</link>
-      <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://addzey.dev/rhce/</guid>
-      <description>Introduction Placeholder, considering this one</description>
-      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder, considering this one&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
       <title>RHEL Disable Graphical Boot</title>
       <link>https://addzey.dev/posts/rhel-disable-graphical-boot/</link>
       <pubDate>Sun, 09 Jul 2023 16:23:54 +0930</pubDate>
