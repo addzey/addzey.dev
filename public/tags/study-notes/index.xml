@@ -14,9 +14,9 @@
       <pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/cncf-cka/</guid>
-      <description>Introduction Placeholder testing</description>
+      <description>Introduction Placeholder, study for this one is in progress and I hope to have some notes/examples updated here!</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Placeholder testing&lt;/p&gt;
+&lt;p&gt;Placeholder, study for this one is in progress and I hope to have some notes/examples updated here!&lt;/p&gt;
 </content>
     </item>
     
@@ -561,9 +561,9 @@ Create a systemd unit for a container: &lt;code&gt;podman generate systemd --nam
       <pubDate>Sat, 23 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://addzey.dev/aws-soa/</guid>
-      <description>Introduction Used handwritten notes for this one</description>
+      <description>Introduction I did pass the exam but used handwritten notes for this one</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;Used handwritten notes for this one&lt;/p&gt;
+&lt;p&gt;I did pass the exam but used handwritten notes for this one&lt;/p&gt;
 </content>
     </item>
     

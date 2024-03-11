@@ -10,4 +10,4 @@ safeHTML = true
 +++
 
 # Introduction
-Placeholder testing
+Placeholder, study for this one is in progress and I hope to have some notes/examples updated here!

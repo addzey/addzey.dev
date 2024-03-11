@@ -10,4 +10,4 @@ safeHTML = true
 +++
 
 # Introduction
-Used handwritten notes for this one
+I did pass the exam but used handwritten notes for this one
